@@ -1,3 +1,7 @@
+/* eslint-disable import/no-anonymous-default-export */
+
+import { Poppins } from 'next/font/google';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,9 +12,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        lightHover: '#F0F0F0',
+        darkHover: '#1c1c1c',
+        darkTheme: '#1E1E1E',
       },
+      fontFamily: {
+        Poppins: ["Poppins", "sans-serif"],
+      }
     },
   },
   plugins: [],
