@@ -5,7 +5,7 @@ import React from 'react';
 const Projects = () => {
   return (
     <div
-      id="about"
+      id="projects"
       className="w-full px-[12%] py-10 scroll-mt-20 flex flex-col items-center"
     >
       <h4 className="text-center mb-2 text-lg">Projects</h4>
@@ -22,13 +22,13 @@ const Projects = () => {
               ({ project, title, description, language }, idx) => {
                 return (
                   <li
-                    className="border border-gray-900 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-4 duration-500"
+                    className="border border-gray-900 rounded-3xl p-6 cursor-pointer hover:bg-lightHover duration-500"
                     key={idx}
                   >
                     <Image
                       src={project}
                       alt={title}
-                      className="w-full mt-2 rounded-lg"
+                      className="w-full mt-2 rounded-2xl"
                     />
                     <h3 className="my-2 font-semibold text-gray-800 text-left">
                       {title}
@@ -51,7 +51,7 @@ const Projects = () => {
                 );
               }
             )}
-            <li className="border border-gray-900 bg-gray-900 text-white flex items-center justify-center text-lg rounded-xl p-6 cursor-pointer hover:bg-white hover:text-gray-950 duration-500">
+            <li className="border border-gray-900 bg-gray-900 text-white flex items-center justify-center text-lg rounded-3xl p-6 cursor-pointer hover:bg-lightHover hover:text-gray-950 duration-500">
               Show more
             </li>
           </ul>

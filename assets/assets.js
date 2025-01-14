@@ -23,6 +23,12 @@ import project_1 from '../public/project_1.png'
 import project_2 from '../public/project_2.png'
 import project_3 from '../public/project_3.png'
 import project_4 from '../public/project_4.png'
+import ic_fb from './ic_fb.png'
+import ic_ig from './ic_ig.png'
+import ic_gmail from './ic_gmail.png'
+import ic_github from './ic_github.png'
+import ic_linkedin from './ic_linkedin.png'
+import ic_behance from './ic_behance.png'
 
 export const assets = {
     ic_moon,
@@ -48,6 +54,12 @@ export const assets = {
     project_2,
     project_3,
     project_4,
+    ic_fb,
+    ic_ig,
+    ic_gmail,
+    ic_linkedin,
+    ic_behance,
+    ic_github,
 }
 
 export const infoList = [
@@ -64,4 +76,13 @@ export const projectList = [
     { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management', language: ['ReactJs', 'MaterialUI', 'Laravel', 'RestAPI'] },
     { project: assets.project_2, title: 'Hilink', description: 'A modern travel app UI built with Next.js, TypeScript, and Tailwind CSS, offering a clean, intuitive design for exploring travel destinations and campsites.', language: ['ReactJs', 'NextJs', 'TailwindCSS'] },
     { project: assets.project_3, title: 'EmoCare', description: 'A mobile app prototype designed to provide AI-driven mental health support. Users can ask mental health-related questions, and the AI responds based on their needs.', language: ['Java', 'OpenAI', 'Tensorflow'] },
-    { project: assets.project_4, title: 'Wfit', description: 'A product filtering website using Vanilla JS and Tailwind CSS. The key features are search, filter by category, and add items to cart.', language: ['HTML', 'TawilwindCSS', 'Javascript'] }]
+    { project: assets.project_4, title: 'WFit', description: 'A product filtering website using Vanilla JS and Tailwind CSS. The key features are search, filter by category, and add items to cart.', language: ['HTML', 'TailwindCSS', 'Javascript'] }]
+
+export const socialList = [
+    { icon: assets.ic_gmail, link: "mailto:raulbarquilla003@gmail.com", title: 'raulbarquilla003@gmail.com' },
+    { icon: assets.ic_fb, link: 'https://www.facebook.com/raulbarquillajr/', title: 'facebook.com/raulbarquillajr' },
+    { icon: assets.ic_ig, link: "https://instagram.com/hqkuuuuu", title: '@hqkuuuuu' },
+    { icon: assets.ic_github, link: "https://github.com/hakkuuuu", title: 'github.com/hakkuuuu' },
+    { icon: assets.ic_linkedin, link: "https://linkedin.com/in/rbarquillajr", title: 'linkedin.com/in/rbarquillajr/' },
+    { icon: assets.ic_behance, link: "https://behance.net/raulbarquillajr", title: 'behance.net/raulbarquillajr' },
+]
