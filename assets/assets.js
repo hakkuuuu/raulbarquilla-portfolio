@@ -73,10 +73,10 @@ export const toolList = [
 ]
 
 export const projectList = [
-    { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management', language: ['ReactJs', 'MaterialUI', 'Laravel', 'RestAPI'] },
-    { project: assets.project_2, title: 'Hilink', description: 'A modern travel app UI built with Next.js, TypeScript, and Tailwind CSS, offering a clean, intuitive design for exploring travel destinations and campsites.', language: ['ReactJs', 'NextJs', 'TailwindCSS'] },
-    { project: assets.project_3, title: 'EmoCare', description: 'A mobile app prototype designed to provide AI-driven mental health support. Users can ask mental health-related questions, and the AI responds based on their needs.', language: ['Java', 'OpenAI', 'Tensorflow'] },
-    { project: assets.project_4, title: 'WFit', description: 'A product filtering website using Vanilla JS and Tailwind CSS. The key features are search, filter by category, and add items to cart.', language: ['HTML', 'TailwindCSS', 'Javascript'] }]
+    { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management', language: ['ReactJs', 'MaterialUI', 'Laravel', 'RestAPI'], link: 'https://github.com/Think-and-Clack/heroes-connect-frontend', demo: 'https://heroesconnect.site/' },
+    { project: assets.project_2, title: 'Hilink', description: 'A modern travel app UI built with Next.js, TypeScript, and Tailwind CSS, offering a clean, intuitive design for exploring travel destinations and campsites.', language: ['ReactJs', 'NextJs', 'TailwindCSS'], link: 'https://github.com/hakkuuuu/travel-app', demo: 'https://travel-app-navy-eight.vercel.app/' },
+    { project: assets.project_4, title: 'WFit', description: 'A product filtering website using HTML, Vanilla JavaScript, and Tailwind CSS. The key features are search, filter by category, and add items to shopping cart.', language: ['HTML', 'TailwindCSS', 'Javascript'], link: 'https://github.com/hakkuuuu/wfit-store', demo: 'https://wfit-store.vercel.app/' },
+    { project: assets.project_3, title: 'EmoCare', description: 'A mobile app prototype designed to provide AI-driven mental health support. Users can ask mental health-related questions, and the AI responds based on their needs.', language: ['Java', 'OpenAI', 'Tensorflow'], link: 'https://github.com/raffittee/EmoCare/tree/raul-copy', demo: 'https://github.com/raffittee/EmoCare/tree/raul-copy' }]
 
 export const socialList = [
     { icon: assets.ic_gmail, link: "mailto:raulbarquilla003@gmail.com", title: 'raulbarquilla003@gmail.com' },

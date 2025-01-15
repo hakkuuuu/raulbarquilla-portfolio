@@ -19,10 +19,10 @@ const Projects = () => {
         <div className="flex-1">
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-6xl mb-6">
             {projectList?.map(
-              ({ project, title, description, language }, idx) => {
+              ({ project, title, description, language, link, demo }, idx) => {
                 return (
                   <li
-                    className="border border-gray-900 rounded-3xl p-6 cursor-pointer hover:bg-lightHover duration-500"
+                    className="border border-gray-900 rounded-3xl p-6 cursor-pointer"
                     key={idx}
                   >
                     <Image
@@ -30,9 +30,39 @@ const Projects = () => {
                       alt={title}
                       className="w-full mt-2 rounded-2xl"
                     />
-                    <h3 className="my-2 font-semibold text-gray-800 text-left">
-                      {title}
-                    </h3>
+                    <div className="flex flex-row justify-between item-center w-full mt-2">
+                      <h3 className="text-lg my-4 font-semibold text-gray-800">
+                        {title}
+                      </h3>
+                      {/* Actions (GitHub Link and Demo Button) */}
+                      <div className="flex flex-row items-center gap-2">
+                        {/* GitHub Icon */}
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-6 h-6"
+                        >
+                          <Image
+                            src={assets.ic_github}
+                            alt="github"
+                            className="w-full h-full"
+                          />
+                        </a>
+
+                        {/* Demo Button */}
+                        <a
+                          href={demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <button className="text-sm text-white bg-gray-900 rounded-2xl px-4 py-1 hover:bg-white hover:border border-gray-900 hover:text-gray-900">
+                            Demo
+                          </button>
+                        </a>
+                      </div>
+                    </div>
+                    <hr className="mb-4 border-gray-600" />
                     <p className="text-gray-600 text-sm text-left">
                       {description}
                     </p>
