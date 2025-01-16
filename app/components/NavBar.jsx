@@ -26,7 +26,7 @@ const NavBar = () => {
   return (
     <>
       <nav
-        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-3 flex items-center justify-between z-50 text-gray-900 ${
+        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-3 flex items-center justify-between z-50 ${
           isScroll ? 'bg-white bg-opacity-50 backdrop-blur-lg shadow-sm' : ''
         }`}
       >
@@ -51,7 +51,7 @@ const NavBar = () => {
           </button>
           <a
             href="#contact"
-            className="hidden lg:flex items-center gap-3 px-8 py-2 border border-gray-600 rounded-full ml-4 hover:bg-darkHover hover:text-white duration-500"
+            className="hidden lg:flex items-center gap-3 px-8 py-2 border border-gray-600 rounded-full ml-4 hover:bg-lightHover hover:text-gray-900 duration-500"
           >
             Contact
           </a>

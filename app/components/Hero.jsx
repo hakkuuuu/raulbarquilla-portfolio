@@ -18,7 +18,7 @@ const Hero = () => {
       <h1 className="text-2xl sm:text-6xl lg:text-[62px]">
         web developer based in the Philippines.
       </h1>
-      <p className="max-w-2xl mx-auto">
+      <p className="text-gray-600 max-w-2xl mx-auto">
         I'm a freelance web designer and web developer specializing in creating
         stunning, user-friendly websites and applications that help businesses
         thrive online.
@@ -27,14 +27,14 @@ const Hero = () => {
       <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
         <a
           href="#contact"
-          className="px-10 py-3 border border-white bg-gray-950 text-white rounded-full flex item-center gap-2"
+          className="px-10 py-3 border border-white bg-gray-950 hover:bg-gray-800 text-white rounded-full flex item-center gap-2"
         >
           Contact me
         </a>
         <a
           href="/my_resume.pdf"
           download
-          className="px-10 py-3 border rounded-full border-gray-900 flex item-center gap-2"
+          className="px-10 py-3 border rounded-full border-gray-900 hover:bg-lightHover flex item-center gap-2"
         >
           Download Resume
         </a>
