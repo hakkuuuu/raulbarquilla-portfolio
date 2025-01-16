@@ -80,9 +80,9 @@ export const projectList = [
 
 export const socialList = [
     { icon: assets.ic_gmail, link: "mailto:raulbarquilla003@gmail.com", title: 'raulbarquilla003@gmail.com' },
-    { icon: assets.ic_fb, link: 'https://www.facebook.com/raulbarquillajr/', title: 'facebook.com/raulbarquillajr' },
+    { icon: assets.ic_fb, link: 'https://www.facebook.com/raulbarquillajr', title: 'raulbarquillajr' },
     { icon: assets.ic_ig, link: "https://instagram.com/hqkuuuuu", title: '@hqkuuuuu' },
-    { icon: assets.ic_github, link: "https://github.com/hakkuuuu", title: 'github.com/hakkuuuu' },
-    { icon: assets.ic_linkedin, link: "https://linkedin.com/in/rbarquillajr", title: 'linkedin.com/in/rbarquillajr/' },
-    { icon: assets.ic_behance, link: "https://behance.net/raulbarquillajr", title: 'behance.net/raulbarquillajr' },
+    { icon: assets.ic_github, link: "https://github.com/hakkuuuu", title: 'hakkuuuu' },
+    { icon: assets.ic_linkedin, link: "https://linkedin.com/in/rbarquillajr", title: 'rbarquillajr' },
+    { icon: assets.ic_behance, link: "https://behance.net/raulbarquillajr", title: 'raulbarquillajr' },
 ]

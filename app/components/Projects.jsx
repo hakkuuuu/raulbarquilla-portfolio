@@ -1,4 +1,4 @@
-import { assets, projectList, toolList } from '@/assets/assets';
+import { assets, projectList } from '@/assets/assets';
 import Image from 'next/image';
 import React from 'react';
 
@@ -10,7 +10,7 @@ const Projects = () => {
     >
       <h4 className="text-center mb-2 text-lg">Projects</h4>
       <h2 className="text-center text-5xl mb-2">My Latest Work</h2>
-      <p className="text-center my-6 max-w-2xl">
+      <p className="text-center text-gray-600 my-6 max-w-2xl">
         Here’s a showcase of my most recent projects that demonstrate my
         expertise in web development, front-end design, and UI/UX.
       </p>
@@ -56,13 +56,13 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <button className="text-sm text-white bg-gray-900 rounded-2xl px-4 py-1 hover:bg-white hover:border border-gray-900 hover:text-gray-900">
+                          <button className="text-sm text-white bg-gray-900 rounded-2xl px-4 py-1 hover:bg-gray-800">
                             Demo
                           </button>
                         </a>
                       </div>
                     </div>
-                    <hr className="mb-4 border-gray-600" />
+                    <hr className="mb-4 border-gray-500" />
                     <p className="text-gray-600 text-sm text-left">
                       {description}
                     </p>
