@@ -22,13 +22,13 @@ const Projects = () => {
               ({ project, title, description, language, link, demo }, idx) => {
                 return (
                   <li
-                    className="border border-gray-900 rounded-3xl p-6 cursor-pointer"
+                    className="border border-gray-700 p-6 cursor-pointer"
                     key={idx}
                   >
                     <Image
                       src={project}
                       alt={title}
-                      className="w-full mt-2 rounded-2xl"
+                      className="w-full mt-2"
                     />
                     <div className="flex flex-row justify-between item-center w-full mt-2">
                       <h3 className="text-lg my-4 font-semibold text-gray-800">
@@ -81,7 +81,7 @@ const Projects = () => {
                 );
               }
             )}
-            <li className="border border-gray-900 bg-gray-900 text-white flex items-center justify-center text-lg rounded-3xl p-6 cursor-pointer hover:bg-lightHover hover:text-gray-950 duration-500">
+            <li className="border border-gray-700 bg-gray-700 text-white flex items-center justify-center text-lg p-6 cursor-pointer hover:bg-lightHover hover:text-gray-950 duration-500">
               Show more
             </li>
           </ul>

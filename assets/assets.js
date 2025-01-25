@@ -23,6 +23,7 @@ import project_1 from '../public/project_1.png'
 import project_2 from '../public/project_2.png'
 import project_3 from '../public/project_3.png'
 import project_4 from '../public/project_4.png'
+import project_5 from '../public/project_5.png'
 import ic_fb from './ic_fb.png'
 import ic_ig from './ic_ig.png'
 import ic_gmail from './ic_gmail.png'
@@ -54,6 +55,7 @@ export const assets = {
     project_2,
     project_3,
     project_4,
+    project_5,
     ic_fb,
     ic_ig,
     ic_gmail,
@@ -74,6 +76,7 @@ export const toolList = [
 
 export const projectList = [
     { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management', language: ['ReactJs', 'MaterialUI', 'Laravel', 'RestAPI'], link: 'https://github.com/Think-and-Clack/heroes-connect-frontend', demo: 'https://heroesconnect.site/' },
+    { project: assets.project_5, title: 'Hakomerch', description: 'HakoMerch is a MERN stack app for merchandise management, built with React.js and Tailwind CSS for frontend UI, and Express.js and MongoDB for backend.', language: ['ReactJs', 'TailwindCSS', 'Express.js', 'MongoDB'], link: 'https://github.com/hakkuuuu/hakomerch-product-store', demo: 'https://hakomerch-product-store.onrender.com/' },
     { project: assets.project_2, title: 'Hilink', description: 'A modern travel app UI built with Next.js, TypeScript, and Tailwind CSS, offering a clean, intuitive design for exploring travel destinations and campsites.', language: ['ReactJs', 'NextJs', 'TailwindCSS'], link: 'https://github.com/hakkuuuu/travel-app', demo: 'https://travel-app-navy-eight.vercel.app/' },
     { project: assets.project_4, title: 'WFit', description: 'A product filtering website using HTML, Vanilla JavaScript, and Tailwind CSS. The key features are search, filter by category, and add items to shopping cart.', language: ['HTML', 'TailwindCSS', 'Javascript'], link: 'https://github.com/hakkuuuu/wfit-store', demo: 'https://wfit-store.vercel.app/' },
     { project: assets.project_3, title: 'EmoCare', description: 'A mobile app prototype designed to provide AI-driven mental health support. Users can ask mental health-related questions, and the AI responds based on their needs.', language: ['Java', 'OpenAI', 'Tensorflow'], link: 'https://github.com/raffittee/EmoCare/tree/raul-copy', demo: 'https://github.com/raffittee/EmoCare/tree/raul-copy' }]
