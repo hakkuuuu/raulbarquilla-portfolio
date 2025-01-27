@@ -18,7 +18,7 @@ const About = () => {
         </div>
 
         <div className="flex-1">
-          <p className="mb-6 max-w-2xl">
+          <p className="text-gray-600 mb-6 max-w-2xl">
             I am a UI/UX Designer and Web Developer with 2 years of freelance
             experience. <br></br> I specialize in designing and building
             intuitive, user-focused digital experiences using tools like Figma,
