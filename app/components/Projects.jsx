@@ -15,37 +15,40 @@ const Projects = () => {
         expertise in web development, front-end design, and UI/UX.
       </p>
 
-      <div className="flex flex-col lg:flex-row items-center gap-24 my-10">
+      <div className="flex flex-col lg:flex-row items-center gap-12 my-10">
         <div className="flex-1">
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-6xl mb-6">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mb-6">
             {projectList?.map(
-              ({ project, title, description, language, link, demo }, idx) => {
-                return (
-                  <li
-                    className="border border-gray-700 p-6 cursor-pointer"
-                    key={idx}
-                  >
-                    <Image
-                      src={project}
-                      alt={title}
-                      className="w-full mt-2"
-                    />
-                    <div className="flex flex-row justify-between item-center w-full mt-2">
-                      <h3 className="text-lg my-4 font-semibold text-gray-800">
+              ({ project, title, description, language, link, demo }, idx) => (
+                <li
+                  key={idx}
+                  className="border border-gray-300 shadow-sm hover:shadow-md p-0 transition-shadow duration-300 cursor-pointer bg-white"
+                >
+                  {/* Project Image */}
+                  <Image
+                    src={project}
+                    alt={title}
+                    className="w-full h-48 object-cover"
+                  />
+
+                  {/* Card Content */}
+                  <div className="p-6">
+                    {/* Title and Actions */}
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg font-bold text-gray-800">
                         {title}
                       </h3>
-                      {/* Actions (GitHub Link and Demo Button) */}
-                      <div className="flex flex-row items-center gap-2">
+                      <div className="flex items-center gap-3">
                         {/* GitHub Icon */}
                         <a
                           href={link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-6 h-6"
+                          className="w-6 h-6 hover:opacity-80"
                         >
                           <Image
                             src={assets.ic_github}
-                            alt="github"
+                            alt="GitHub"
                             className="w-full h-full"
                           />
                         </a>
@@ -56,33 +59,37 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <button className="text-sm text-white bg-gray-900 rounded-2xl px-4 py-1 hover:bg-gray-800">
+                          <button className="text-sm text-white bg-gray-900 rounded-lg px-4 py-1 hover:bg-gray-800">
                             Demo
                           </button>
                         </a>
                       </div>
                     </div>
-                    <hr className="mb-4 border-gray-500" />
-                    <p className="text-gray-600 text-sm text-left">
+
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mt-4 line-clamp-3">
                       {description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 my-3">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mt-4">
                       {language.map((lang, idx) => (
                         <span
                           key={idx}
-                          className="text-xs text-gray-600 bg-gray-200 py-1 px-3 rounded-xl"
+                          className="text-xs text-gray-700 bg-gray-200 py-1 px-3 rounded-lg"
                         >
                           {lang}
                         </span>
                       ))}
                     </div>
-                  </li>
-                );
-              }
+                  </div>
+                </li>
+              )
             )}
-            <li className="border border-gray-700 bg-gray-700 text-white flex items-center justify-center text-lg p-6 cursor-pointer hover:bg-lightHover hover:text-gray-950 duration-500">
-              Show more
+
+            {/* Show More */}
+            <li className="border border-dashed border-gray-300 bg-gray-100 text-gray-700 flex items-center justify-center text-lg font-medium p-6cursor-pointer hover:bg-gray-200 hover:border-gray-400 transition-all">
+              Show More
             </li>
           </ul>
         </div>
