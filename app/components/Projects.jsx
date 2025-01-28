@@ -16,26 +16,26 @@ const Projects = () => {
       </p>
 
       <div className="flex flex-col lg:flex-row items-center gap-12 my-10">
-        <div className="flex-1">
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mb-6">
+        <div>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 max-w-7xl">
             {projectList?.map(
               ({ project, title, description, language, link, demo }, idx) => (
                 <li
                   key={idx}
-                  className="border border-gray-300 shadow-sm hover:shadow-md p-0 transition-shadow duration-300 cursor-pointer bg-white"
+                  className="w-full sm:w-[500px] lg:w-[580px] border border-gray-300 shadow-sm hover:bg-gray-50 hover:border-gray-500 px-8 py-6 transition-shadow duration-300 cursor-pointer bg-white flex flex-col sm:flex-row items-center sm:items-start gap-6 rounded-2xl"
                 >
                   {/* Project Image */}
                   <Image
                     src={project}
                     alt={title}
-                    className="w-full h-48 object-cover"
+                    className="w-24 rounded-full object-cover flex-shrink-0"
                   />
 
                   {/* Card Content */}
-                  <div className="p-6">
+                  <div className="flex-1 w-full">
                     {/* Title and Actions */}
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-lg font-bold text-gray-800">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+                      <h3 className="text-lg font-medium text-gray-800">
                         {title}
                       </h3>
                       <div className="flex items-center gap-3">
@@ -44,7 +44,7 @@ const Projects = () => {
                           href={link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-6 h-6 hover:opacity-80"
+                          className="w-6 h-6 hover:opacity-70"
                         >
                           <Image
                             src={assets.ic_github}
@@ -59,7 +59,7 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <button className="text-sm text-white bg-gray-900 rounded-lg px-4 py-1 hover:bg-gray-800">
+                          <button className="text-sm text-white bg-gray-800 rounded-lg px-4 py-1 hover:bg-gray-600">
                             Demo
                           </button>
                         </a>
@@ -67,16 +67,14 @@ const Projects = () => {
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-600 text-sm mt-4 line-clamp-3">
-                      {description}
-                    </p>
+                    <p className="text-gray-600 text-sm mt-2">{description}</p>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mt-4">
                       {language.map((lang, idx) => (
                         <span
                           key={idx}
-                          className="text-xs text-gray-700 bg-gray-200 py-1 px-3 rounded-lg"
+                          className="text-xs text-gray-600 bg-gray-100 py-1 px-3 rounded-lg"
                         >
                           {lang}
                         </span>
@@ -88,7 +86,7 @@ const Projects = () => {
             )}
 
             {/* Show More */}
-            <li className="border border-dashed border-gray-300 bg-gray-100 text-gray-700 flex items-center justify-center text-lg font-medium p-6cursor-pointer hover:bg-gray-200 hover:border-gray-400 transition-all">
+            <li className="border border-dashed border-gray-300 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center text-lg font-medium p-6 cursor-pointer hover:bg-gray-200 hover:border-gray-400 transition-all">
               Show More
             </li>
           </ul>
