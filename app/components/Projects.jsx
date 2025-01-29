@@ -22,7 +22,7 @@ const Projects = () => {
               ({ project, title, description, language, link, demo }, idx) => (
                 <li
                   key={idx}
-                  className="w-full sm:w-[500px] lg:w-[580px] border border-gray-300 shadow-sm hover:bg-gray-50 hover:border-gray-500 px-8 py-6 transition-shadow duration-300 cursor-pointer bg-white flex flex-col sm:flex-row items-center sm:items-start gap-6 rounded-2xl"
+                  className="w-full sm:w-[500px] lg:w-[580px] border border-gray-300 shadow-sm hover:bg-lightHover hover:-translate-y-2 duration-500 px-8 py-6 cursor-pointer bg-white flex flex-col sm:flex-row items-center sm:items-start gap-6 rounded-2xl"
                 >
                   {/* Project Image */}
                   <Image

@@ -8,29 +8,32 @@
 
 ---
 
-## 🌟 About  
+## 🌟 About
 
-This is my **personal portfolio** built with **Next.js** and **Tailwind CSS**, featuring:  
+This is my **personal portfolio** built with **Next.js** and **Tailwind CSS**, featuring:
 
-- 🚀 **Smooth Single-Page Navigation**.  
-- ⚡ **Optimized Performance** with **Next.js & Vercel**.  
-- 🎨 **Modern & Responsive UI** using **Tailwind CSS**.  
+- 🚀 **Smooth Single-Page Navigation** with Framer Motion animations.
+- ⚡ **Optimized Performance** with **Next.js & Vercel**.
+- 🎨 **Modern & Responsive UI** using **Tailwind CSS**.
 - 🛠 **Reusable Components** for easy scalability.
 
 ---
 
-## 🛠 Tech Stack  
+## 🛠 Tech Stack
 
-🔹 **Frontend:** Next.js, React, Tailwind CSS
-🔹 **Deployment:** Vercel  
-
----
-
-## 📸 Live Preview  
-
-🔗 **[View Portfolio](#)** (https://raulbarquilla-portfolio.vercel.app/)  
-
-<img src="./public/portfolio_img.png" alt="Portfolio Screenshot" width="80%"/>
+🔹 **Frontend:** Next.js, React, Tailwind CSS, Framer Motion
+🔹 **Deployment:** Vercel
 
 ---
 
+## 📸 Live Preview
+
+<p align="center">
+  🔗 <strong><a href="https://raulbarquilla-portfolio.vercel.app/">View Portfolio</a></strong>
+</p>
+
+<p align="center">
+  <img src="./public/portfolio_img.png" alt="Portfolio Screenshot" width="80%"/>
+</p>
+
+---
