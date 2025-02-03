@@ -86,9 +86,9 @@ const Projects = () => {
             )}
 
             {/* Show More */}
-            <li className="border border-dashed border-gray-300 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center text-lg font-medium p-6 cursor-pointer hover:bg-gray-200 hover:border-gray-400 transition-all">
+            {/* <li className="border border-dashed border-gray-300 rounded-lg bg-gray-100 text-gray-700 flex items-center justify-center text-lg font-medium p-6 cursor-pointer hover:bg-gray-200 hover:border-gray-400 transition-all">
               Show More
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
