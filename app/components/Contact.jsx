@@ -32,8 +32,7 @@ const Contact = () => {
     } catch (error) {
       console.error('Submission Error:', error);
       toast.error('An unexpected error occurred!');
-    }
-    finally {
+    } finally {
       setIsLoading(false);
     }
   };
@@ -43,9 +42,9 @@ const Contact = () => {
       <div id="contact" className="w-full px-[12%] py-10 scroll-mt-20">
         <div className="flex flex-wrap justify-between items-start">
           <div className="w-full lg:w-1/2 my-8 lg:mb-0">
-            <h5 className="text-gray-800 mb-2 text-lg">Connect with me</h5>
-            <h2 className="text-gray-800 text-5xl">Get in touch</h2>
-            <p className="text-gray-600 my-6 max-w-lg">
+            <h5 className="mb-2 text-lg">Connect with me</h5>
+            <h2 className="text-5xl text-blue-700">Get in touch</h2>
+            <p className="my-6 max-w-lg">
               Feel free to reach out! You can send me a message or follow me on
               social media.
             </p>
@@ -60,16 +59,16 @@ const Contact = () => {
                     className="flex items-center justify-center sm:justify-start gap-4"
                   >
                     <Image src={icon} alt="social icon" className="w-6" />
-                    <p className="text-sm text-gray-600">{title}</p>
+                    <p className="text-sm text-gray-200">{title}</p>
                   </a>
                 ))}
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 bg-white p-10 shadow rounded-lg">
+          <div className="w-full lg:w-1/2 p-10 border border-gray-500 shadow rounded-lg">
             <form onSubmit={onSubmit} className="space-y-4">
               <div>
-                <label className="block text-gray-700 font-medium mb-1">
+                <label className="block text-gray-200 font-medium mb-1">
                   Full Name
                 </label>
                 <input
@@ -77,11 +76,11 @@ const Contact = () => {
                   type="text"
                   name="fullName"
                   placeholder="e.g. Juan Dela Cruz"
-                  className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-gray-800"
+                  className="w-full border border-gray-500 rounded-md p-3"
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1">
+                <label className="block text-gray-200 font-medium mb-1">
                   Email
                 </label>
                 <input
@@ -89,11 +88,11 @@ const Contact = () => {
                   type="email"
                   name="email"
                   placeholder="e.g. juandelacruz@gmail.com"
-                  className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-gray-800"
+                  className="w-full border border-gray-500 rounded-md p-3"
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1">
+                <label className="block text-gray-200 font-medium mb-1">
                   Message
                 </label>
                 <textarea
@@ -101,19 +100,19 @@ const Contact = () => {
                   placeholder="Your message"
                   name="message"
                   rows="4"
-                  className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-1 focus:ring-gray-700"
+                  className="w-full border border-gray-500 rounded-md p-3"
                 ></textarea>
               </div>
               <button
                 type="submit"
                 className={`w-full py-3 rounded-full transition ${
                   isLoading
-                    ? "bg-gray-600 text-gray-300 cursor-not-allowed"
-                    : "bg-gray-900 text-white hover:bg-gray-700"
+                    ? 'bg-gray-800 text-gray-300 cursor-not-allowed'
+                    : 'bg-blue-700 hover:bg-blue-800'
                 }`}
                 disabled={isLoading} // Disable button when loading
               >
-                {isLoading ? "Sending..." : "Send Message"}
+                {isLoading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
@@ -121,7 +120,7 @@ const Contact = () => {
       </div>
       <ToastContainer />
       <footer className="flex flex-col items-center justify-center mt-8 bg-gray-950 w-full">
-        <span className="text-center text-white text-sm p-8">
+        <span className="text-center text-sm p-8">
           © 2025 Raul Barquilla Jr. All rights reserved.
         </span>
       </footer>

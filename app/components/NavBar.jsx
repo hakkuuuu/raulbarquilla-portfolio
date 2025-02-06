@@ -26,37 +26,39 @@ const NavBar = () => {
   return (
     <>
       <nav
-        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-3 flex items-center justify-between z-50 ${
-          isScroll ? 'bg-white bg-opacity-50 backdrop-blur-lg shadow-sm' : ''
+        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-2 flex items-center justify-between z-20 ${
+          isScroll ? 'backdrop-blur-lg border-bborder-white/10 shadow-lg' : ''
         }`}
       >
-        <a href="#home">
-          <span className="font-medium text-lg">Raul B. Barquilla Jr.</span>
+        <a href="#home" className="font-semibold text-base">
+          Dev<span className="font-bold text-md text-blue-700">.Haku</span>
         </a>
-        <ul className="hidden md:flex text-lg items-center gap-6 lg:gap-8 rounded-full px-12 py-3">
+        <ul className="hidden md:flex text-md items-center gap-6 lg:gap-8 rounded-full px-12 py-2 ml-auto ">
           <li>
-            <a href="#home">Home</a>
+            <a href="#home" className="hover:text-blue-700">
+              Home
+            </a>
           </li>
           <li>
-            <a href="#about">About</a>
+            <a href="#about" className="hover:text-blue-700">
+              About
+            </a>
           </li>
           <li>
-            <a href="#projects">Projects</a>
+            <a href="#projects" className="hover:text-blue-700">
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="#contact" className="hover:text-blue-700">
+              Contact
+            </a>
           </li>
         </ul>
 
         <div className="flex items-center gap-2">
-          <button>
-            <Image src={assets.ic_moon} alt="moon_icon" className="w-8" />
-          </button>
-          <a
-            href="#contact"
-            className="hidden lg:flex items-center gap-3 px-8 py-2 border border-gray-600 rounded-full ml-4 hover:bg-lightHover hover:text-gray-900 duration-500"
-          >
-            Contact
-          </a>
           <button className="block md:hidden" onClick={openMenu}>
-            <Image src={assets.ic_menu_black} alt="menu" className="w-10" />
+            <Image src={assets.ic_menu_white} alt="menu" className="w-10" />
           </button>
         </div>
 
@@ -64,33 +66,45 @@ const NavBar = () => {
 
         <ul
           ref={sideMenuRef}
-          className="flex md:hidden flex-col gap-4 py-6 fixed px-10 -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-gray-100 transition duration-1000"
+          className="flex md:hidden flex-col gap-4 py-6 fixed px-10 -right-64 top-0 bottom-0 w-64 z-50 h-screen transition duration-1000"
         >
           <div onClick={closeMenu}>
             <Image
-              src={assets.ic_close_black}
+              src={assets.ic_close_white}
               alt="close"
               className="w-8 cursor-pointer"
             />
           </div>
 
           <li>
-            <a onClick={closeMenu} href="#home">
+            <a onClick={closeMenu} href="#home" className="hover:text-blue-700">
               Home
             </a>
           </li>
           <li>
-            <a onClick={closeMenu} href="#about">
+            <a
+              onClick={closeMenu}
+              href="#about"
+              className="hover:text-blue-700"
+            >
               About
             </a>
           </li>
           <li>
-            <a onClick={closeMenu} href="#projects">
+            <a
+              onClick={closeMenu}
+              href="#projects"
+              className="hover:text-blue-700"
+            >
               Projects
             </a>
           </li>
           <li>
-            <a onClick={closeMenu} href="#contact">
+            <a
+              onClick={closeMenu}
+              href="#contact"
+              className="hover:text-blue-700"
+            >
               Contact
             </a>
           </li>
