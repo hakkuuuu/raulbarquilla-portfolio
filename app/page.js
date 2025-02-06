@@ -17,6 +17,7 @@ export default function Home() {
         <LoadingScreen onComplete={() => setIsLoading(false)} />
       ) : (
         <>
+        
           <NavBar />
 
           <motion.div

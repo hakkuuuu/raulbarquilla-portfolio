@@ -19,7 +19,7 @@ const Projects = () => {
 
       <div className="flex flex-col lg:flex-row items-center gap-12 my-12">
         <div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-6xl mx-auto px-4">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-6xl mx-auto">
             {projectList?.map(
               ({ project, title, description, language, link, demo }, idx) => (
                 <li

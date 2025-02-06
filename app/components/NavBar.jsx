@@ -27,8 +27,8 @@ const NavBar = () => {
 
   return (
     <nav
-  className={`w-full fixed px-6 sm:px-8 lg:px-12 xl:px-[8%] py-2 flex items-center z-20 border-b border-white/10 transition-all duration-300 ${
-    isScroll ? 'backdrop-blur-lg' : 'bg-transparent'
+  className={`w-full fixed px-6 sm:px-8 lg:px-12 xl:px-[12%] py-2 flex items-center z-20 border-b border-white/10 transition-all duration-300 ${
+    isScroll ? 'bg-transparent backdrop-blur-lg' : 'bg-[#070707]'
   }`}
     >
       {/* Logo */}
@@ -37,7 +37,7 @@ const NavBar = () => {
       </a>
 
       {/* Desktop Menu */}
-      <ul className="hidden md:flex text-md items-center gap-6 lg:gap-8 rounded-full px-8 sm:px-12 py-2 ml-auto">
+      <ul className="hidden md:flex text-md items-center gap-6 lg:gap-8 rounded-full px-2 sm:px-2 py-2 ml-auto">
         {['Home', 'About', 'Projects', 'Contact'].map((item) => (
           <li key={item}>
             <a href={`#${item.toLowerCase()}`} className="hover:text-blue-700">

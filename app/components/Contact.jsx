@@ -7,6 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
 
+  const fields = [
+    { label: 'Full Name', name: 'fullName', type: 'text', placeholder: 'e.g. Juan Dela Cruz' },
+    { label: 'Email', name: 'email', type: 'email', placeholder: 'e.g. juandelacruz@gmail.com' },
+    { label: 'Message', name: 'message', type: 'textarea', placeholder: 'Your message' },
+  ];
+
   const onSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -66,55 +72,43 @@ const Contact = () => {
             </div>
           </div>
           <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10 border border-gray-500 shadow rounded-lg">
-            <form onSubmit={onSubmit} className="space-y-4">
-              <div>
-                <label className="block text-gray-200 font-medium mb-1">
-                  Full Name
-                </label>
-                <input
-                  required
-                  type="text"
-                  name="fullName"
-                  placeholder="e.g. Juan Dela Cruz"
-                  className="w-full border border-gray-500 rounded-md p-2 sm:p-3 text-sm sm:text-base"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-200 font-medium mb-1">
-                  Email
-                </label>
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  placeholder="e.g. juandelacruz@gmail.com"
-                  className="w-full border border-gray-500 rounded-md p-2 sm:p-3 text-sm sm:text-base"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-200 font-medium mb-1">
-                  Message
-                </label>
-                <textarea
-                  required
-                  placeholder="Your message"
-                  name="message"
-                  rows="4"
-                  className="w-full border border-gray-500 rounded-md p-2 sm:p-3 text-sm sm:text-base"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className={`w-full py-2 sm:py-3 rounded-full transition ${
-                  isLoading
-                    ? 'bg-gray-800 text-gray-300 cursor-not-allowed'
-                    : 'bg-blue-700 hover:bg-blue-800'
-                }`}
-                disabled={isLoading}
-              >
-                {isLoading ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
+          <form onSubmit={onSubmit} className="space-y-4">
+    {fields.map((field, index) => (
+      <div key={index}>
+        <label className="block text-gray-200 font-medium mb-1">
+          {field.label}
+        </label>
+        {field.type === 'textarea' ? (
+          <textarea
+            required
+            name={field.name}
+            placeholder={field.placeholder}
+            rows="4"
+            className="textarea-field"
+          ></textarea>
+        ) : (
+          <input
+            required
+            type={field.type}
+            name={field.name}
+            placeholder={field.placeholder}
+            className="input-field"
+          />
+        )}
+      </div>
+    ))}
+    <button
+      type="submit"
+      className={`w-full py-2 sm:py-3 rounded-full transition ${
+        isLoading
+          ? 'bg-gray-800 text-gray-300 cursor-not-allowed'
+          : 'bg-blue-700 hover:bg-blue-800'
+      }`}
+      disabled={isLoading}
+    >
+      {isLoading ? 'Sending...' : 'Send Message'}
+    </button>
+  </form>
           </div>
         </div>
       </div>
