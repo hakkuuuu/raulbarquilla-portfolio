@@ -44,22 +44,22 @@ const Contact = () => {
           <div className="w-full lg:w-1/2 my-8 lg:mb-0">
             <h5 className="mb-2 text-lg">Connect with me</h5>
             <h2 className="text-5xl text-blue-700">Get in touch</h2>
-            <p className="my-6 max-w-lg">
+            <p className="my-6 max-w-lg text-gray-300">
               Feel free to reach out! You can send me a message or follow me on
               social media.
             </p>
             <div>
-              <div className="flex flex-col items-start gap-6 max-w-2xl mx-auto my-7">
+              <div className="flex flex-col items-start gap-6 max-w-2xl mx-auto my-7 ">
                 {socialList.map(({ icon, link, title }, index) => (
                   <a
                     key={index}
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center sm:justify-start gap-4"
+                    className="flex items-center justify-center sm:justify-start gap-4 "
                   >
                     <Image src={icon} alt="social icon" className="w-6" />
-                    <p className="text-sm text-gray-200">{title}</p>
+                    <p className="text-sm text-gray-300">{title}</p>
                   </a>
                 ))}
               </div>
@@ -119,8 +119,8 @@ const Contact = () => {
         </div>
       </div>
       <ToastContainer />
-      <footer className="flex flex-col items-center justify-center mt-8 bg-gray-950 w-full">
-        <span className="text-center text-sm p-8">
+      <footer className="flex flex-col items-center justify-center mt-8 w-full border-t border-white/10 ">
+        <span className="text-center text-sm p-6">
           © 2025 Raul Barquilla Jr. All rights reserved.
         </span>
       </footer>

@@ -8,6 +8,7 @@
   color: whitesmoke;
 }
 
+
 @layer utilities {
   @keyframes blink {
     0%, 100% {
