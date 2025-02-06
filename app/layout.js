@@ -15,8 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${poppins.variable} antialiased leading-8 overflow-x-hidden`}>
-        {children}
+      <body className={`${poppins.variable} antialiased leading-8 overflow-x-hidden relative`}>
+        
+        {/* Page Content */}
+        <div className="relative z-10">{children}</div>
       </body>
     </html>
   );

@@ -2,16 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: Poppins;
-  background: #070707;
+
+body {
+  font-family: Poppins, sans-serif;
   color: whitesmoke;
+  background: #070707;
 }
 
+.input-field,
+.textarea-field {
+  @apply w-full border border-gray-500 rounded-md p-2 sm:p-3 text-sm sm:text-base bg-transparent;
+}
+
+@keyframes starfield {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -500px 500px;
+  }
+}
+
+.animate-starfield {
+  background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  animation: starfield 60s linear infinite;
+  opacity: 0.5;
+}
+
+.bg-radial-gradient {
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
 
 @layer utilities {
   @keyframes blink {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
     }
     50% {
@@ -38,9 +68,7 @@
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
