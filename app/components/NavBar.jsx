@@ -26,14 +26,14 @@ const NavBar = () => {
   return (
     <>
       <nav
-        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-2 flex items-center justify-between z-20 ${
-          isScroll ? 'backdrop-blur-lg border-bborder-white/10 shadow-lg' : ''
+        className={`w-full fixed px-12 lg:px-8 xl:px-[8%] py-2 flex items-center z-20 border-b border-white/10  ${
+          isScroll ? 'backdrop-blur-lg shadow-lg' : ''
         }`}
       >
-        <a href="#home" className="font-semibold text-base">
+        <a href="#home" className="font-semibold text-md px-20">
           Dev<span className="font-bold text-md text-blue-700">.Haku</span>
         </a>
-        <ul className="hidden md:flex text-md items-center gap-6 lg:gap-8 rounded-full px-12 py-2 ml-auto ">
+        <ul className="hidden md:flex text-md items-center gap-6 lg:gap-8 rounded-full px-20 py-2 ml-auto">
           <li>
             <a href="#home" className="hover:text-blue-700">
               Home
