@@ -1,56 +1,65 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export const LoadingScreen = ({ onComplete }) => {
-  const [text, setText] = useState('');
-  const [phase, setPhase] = useState(1); // Tracks which text is being displayed
+  const [text, setText] = useState("");
+  const [phase, setPhase] = useState(1);
+  const [fadeOut, setFadeOut] = useState(false); // Controls fade effect
 
-  const text1 = 'Hello, World! 🌎';
-  const text2 = `I'm Raul, Welcome to my digital space! 🚀`;
+  const texts = [
+    "Initializing system...🔄",
+    "Loading environment... 🚀",
+    "Welcome to Dev.Haku's Space 🌌",
+  ];
 
   useEffect(() => {
     let index = 0;
     let interval;
 
     const startTyping = (fullText, nextPhase) => {
+      setFadeOut(false); // Reset fade-out effect
+      index = 0;
+
       interval = setInterval(() => {
         setText(fullText.substring(0, index));
         index++;
 
         if (index > fullText.length) {
           clearInterval(interval);
-
-          if (nextPhase) {
-            setTimeout(() => {
-              setPhase(nextPhase); // Switch to the next phase
-            }, 1000);
-          } else {
-            setTimeout(onComplete, 1000);
-          }
+          setTimeout(() => {
+            setFadeOut(true); // Fade out before switching
+            setTimeout(() => setPhase(nextPhase), 500);
+          }, 1500);
         }
-      }, 100);
+      }, 80);
     };
 
-    if (phase === 1) {
-      startTyping(text1, 2);
-    } else if (phase === 2) {
-      setTimeout(() => {
-        setText(''); // Clear the text before starting the second part
-        startTyping(text2, null);
-      }, 1000);
+    if (phase <= texts.length) {
+      startTyping(texts[phase - 1], phase + 1);
+    } else {
+      setTimeout(onComplete, 1200); // Call onComplete after the last phase
     }
 
     return () => clearInterval(interval);
   }, [phase, onComplete]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#070707] text-gray-100 flex flex-col items-center justify-center">
-      <div className="mb-4 text-4xl font-mono font-bold">
+    <div className="fixed inset-0 z-50 bg-[#070707] text-gray-100 flex flex-col items-center justify-center p-4 transition-all duration-1000">
+      {/* Typing Text */}
+      <div
+        className={`mb-4 text-3xl md:text-4xl font-mono font-bold text-center transition-all duration-700 ${
+          fadeOut ? "opacity-0 blur-md" : "opacity-100 blur-0"
+        }`}
+      >
         {text} <span className="animate-blink ml-1">|</span>
       </div>
 
-      <div className="w-[300px] h-[2px] bg-gray-800 rounded relative overflow-hidden">
+      {/* Progress Bar */}
+      <div className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] h-[3px] bg-gray-800 rounded relative overflow-hidden">
         <div className="w-full h-full bg-blue-700 shadow-[0_0_15px_#3b82f6] animate-loading-bar"></div>
       </div>
+
+      {/* Background Glow Effect */}
+      <div className="absolute inset-0 bg-[#070707] transition-all duration-1000 ease-in-out blur-lg opacity-20"></div>
     </div>
   );
 };

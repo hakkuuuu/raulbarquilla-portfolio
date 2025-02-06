@@ -11,11 +11,6 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        lightHover: '#EAEAEA',
-        darkHover: '#1c1c1c',
-        darkTheme: '#1E1E1E',
-      },
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],
       }
