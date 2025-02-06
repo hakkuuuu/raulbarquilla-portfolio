@@ -65,7 +65,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 p-10 border border-gray-500 shadow rounded-lg">
+          <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10 border border-gray-500 shadow rounded-lg">
             <form onSubmit={onSubmit} className="space-y-4">
               <div>
                 <label className="block text-gray-200 font-medium mb-1">
@@ -76,7 +76,7 @@ const Contact = () => {
                   type="text"
                   name="fullName"
                   placeholder="e.g. Juan Dela Cruz"
-                  className="w-full border border-gray-500 rounded-md p-3"
+                  className="w-full border border-gray-500 rounded-md p-2 sm:p-3 text-sm sm:text-base"
                 />
               </div>
               <div>
@@ -88,7 +88,7 @@ const Contact = () => {
                   type="email"
                   name="email"
                   placeholder="e.g. juandelacruz@gmail.com"
-                  className="w-full border border-gray-500 rounded-md p-3"
+                  className="w-full border border-gray-500 rounded-md p-2 sm:p-3 text-sm sm:text-base"
                 />
               </div>
               <div>
@@ -100,17 +100,17 @@ const Contact = () => {
                   placeholder="Your message"
                   name="message"
                   rows="4"
-                  className="w-full border border-gray-500 rounded-md p-3"
+                  className="w-full border border-gray-500 rounded-md p-2 sm:p-3 text-sm sm:text-base"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className={`w-full py-3 rounded-full transition ${
+                className={`w-full py-2 sm:py-3 rounded-full transition ${
                   isLoading
                     ? 'bg-gray-800 text-gray-300 cursor-not-allowed'
                     : 'bg-blue-700 hover:bg-blue-800'
                 }`}
-                disabled={isLoading} // Disable button when loading
+                disabled={isLoading}
               >
                 {isLoading ? 'Sending...' : 'Send Message'}
               </button>

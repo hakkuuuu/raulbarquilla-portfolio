@@ -28,15 +28,18 @@ const Projects = () => {
                 >
                   <div className="flex flex-col h-full">
                     {/* Title and Actions */}
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-lg font-medium">{title}</h3>
-                      <div className="flex items-center gap-3">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                      <h3 className="text-base sm:text-lg font-medium">
+                        {title}
+                      </h3>
+
+                      <div className="flex items-center gap-2 sm:gap-3">
                         {/* GitHub Icon */}
                         <a
                           href={link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-6 h-6 hover:opacity-70"
+                          className="w-5 h-5 sm:w-6 sm:h-6 hover:opacity-70"
                         >
                           <Image
                             src={assets.ic_github_white || '/placeholder.svg'}
@@ -52,7 +55,7 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <button className="text-sm bg-blue-700 rounded-lg px-4 py-1 hover:bg-blue-800">
+                          <button className="text-xs sm:text-sm bg-blue-700 rounded-lg px-3 sm:px-4 py-1 hover:bg-blue-800">
                             Demo
                           </button>
                         </a>
