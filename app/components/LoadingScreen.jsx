@@ -6,8 +6,7 @@ export const LoadingScreen = ({ onComplete }) => {
   const [fadeOut, setFadeOut] = useState(false); // Controls fade effect
 
   const texts = [
-    'Initializing system...🔄',
-    'Loading environment... 🚀',
+    '<Hello, world/>',
     "Welcome to Dev.Haku's Space 🌌",
   ];
 
@@ -28,7 +27,7 @@ export const LoadingScreen = ({ onComplete }) => {
           setTimeout(() => {
             setFadeOut(true); // Fade out before switching
             setTimeout(() => setPhase(nextPhase), 500);
-          }, 1500);
+          }, 500);
         }
       }, 80);
     };
@@ -36,7 +35,7 @@ export const LoadingScreen = ({ onComplete }) => {
     if (phase <= texts.length) {
       startTyping(texts[phase - 1], phase + 1);
     } else {
-      setTimeout(onComplete, 1200); // Call onComplete after the last phase
+      setTimeout(onComplete, 500); // Call onComplete after the last phase
     }
 
     return () => clearInterval(interval);

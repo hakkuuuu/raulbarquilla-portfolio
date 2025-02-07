@@ -10,7 +10,7 @@ const Projects = () => {
     >
       <h4 className="text-center mb-2 text-lg">Projects</h4>
       <h2 className="text-center text-5xl mb-2 text-blue-700">
-        My Latest Work
+        My latest work
       </h2>
       <p className="text-center text-gray-300 my-6 max-w-2xl">
         Here’s a showcase of my most recent projects that demonstrate my
@@ -24,7 +24,7 @@ const Projects = () => {
               ({ project, title, description, language, link, demo }, idx) => (
                 <li
                   key={idx}
-                  className="w-full border border-gray-600 shadow-sm hover:-translate-y-2 duration-500 p-9 cursor-pointer flex flex-col rounded-2xl"
+                  className="hover:hover-glow w-full bg-[#0F0F0F] shadow-sm duration-500 p-9 cursor-pointer flex flex-col rounded-2xl"
                 >
                   <div className="flex flex-col h-full">
                     {/* Title and Actions */}
@@ -39,13 +39,14 @@ const Projects = () => {
                           href={link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-5 h-5 sm:w-6 sm:h-6 hover:opacity-70"
+                          className="w-6 h-6 sm:w-6 sm:h-6 hover:opacity-70"
                         >
                           <Image
                             src={assets.ic_github_white || '/placeholder.svg'}
                             alt="GitHub"
                             width={24}
                             height={24}
+                            className='opacity-80'
                           />
                         </a>
 
@@ -72,7 +73,7 @@ const Projects = () => {
                       {language.map((lang, idx) => (
                         <span
                           key={idx}
-                          className="text-xs text-blue-600 bg-blue-500/10 py-1 px-3 rounded-lg"
+                          className="text-xs text-blue-700 bg-blue-500/10 py-1 px-3 rounded-lg"
                         >
                           {lang}
                         </span>

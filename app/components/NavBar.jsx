@@ -38,7 +38,7 @@ const NavBar = () => {
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex text-md items-center gap-6 lg:gap-8 rounded-full px-2 sm:px-2 py-2 ml-auto">
-        {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+        {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
           <li key={item}>
             <a href={`#${item.toLowerCase()}`} className="hover:text-blue-700">
               {item}

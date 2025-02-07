@@ -71,7 +71,7 @@ export const assets = {
 export const infoList = [
     { icon: assets.ic_code_white, iconDark: assets.ic_code_dark, title: 'Languages', description: 'HTML, CSS, Tailwind, MaterialUI, JavaScript, ReactJs, NextJs' },
     { icon: assets.ic_edu_white, iconDark: assets.ic_edu_dark, title: 'Education', description: <>Bicol University 2023 <br></br> BS Computer Science <br></br> Daraga, Albay</> },
-    { icon: assets.ic_project_white, iconDark: assets.ic_project_dark, title: 'Projects', description: 'Built projects focusing on frontend development.' }
+    { icon: assets.ic_project_white, iconDark: assets.ic_project_dark, title: 'Projects', description: 'Built projects with a focus on frontend development.' }
 ]
 
 export const toolList = [
@@ -94,3 +94,46 @@ export const socialList = [
     { icon: assets.ic_linkedin, link: "https://linkedin.com/in/rbarquillajr", title: 'rbarquillajr' },
     { icon: assets.ic_behance, link: "https://behance.net/raulbarquillajr", title: 'raulbarquillajr' },
 ]
+
+export const skills = [
+    { name: "HTML", level: 95 },
+    { name: "CSS", level: 95 },
+    { name: "JavaScript", level: 90 },
+    { name: "Tailwind", level: 90 },
+    { name: "React.js", level: 85 },
+    { name: "Next.js", level: 80 },
+    { name: "Node.js", level: 75 },
+    { name: "Express.js", level: 75 },
+    { name: "MongoDB", level: 70 },
+    { name: "Material-UI", level: 85 },
+    { name: "Bootstrap", level: 80 },
+    { name: "Git & GitHub", level: 85 },
+];
+
+export const services = [
+    {
+        title: "Web Development",
+        description:
+            "Building fast, responsive, and user-friendly websites using the latest technologies.",
+        icon: assets.ic_close_white,
+    },
+    {
+        title: "UI/UX Design",
+        description:
+            "Designing visually appealing and intuitive interfaces for a seamless user experience.",
+        icon: assets.ic_close_white,
+    },
+    {
+        title: "Freelance Projects",
+        description:
+            "Providing web development and branding services tailored to business needs.",
+        icon: assets.ic_close_white,
+    },
+];
+
+
+export const fields = [
+    { label: 'Full Name', name: 'fullName', type: 'text', placeholder: 'e.g. Juan Dela Cruz' },
+    { label: 'Email', name: 'email', type: 'email', placeholder: 'e.g. juandelacruz@gmail.com' },
+    { label: 'Message', name: 'message', type: 'textarea', placeholder: 'Your message' },
+];

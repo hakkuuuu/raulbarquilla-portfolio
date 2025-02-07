@@ -1,4 +1,4 @@
-import { socialList } from '@/assets/assets';
+import { fields, socialList } from '@/assets/assets';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,12 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
-
-  const fields = [
-    { label: 'Full Name', name: 'fullName', type: 'text', placeholder: 'e.g. Juan Dela Cruz' },
-    { label: 'Email', name: 'email', type: 'email', placeholder: 'e.g. juandelacruz@gmail.com' },
-    { label: 'Message', name: 'message', type: 'textarea', placeholder: 'Your message' },
-  ];
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -47,7 +41,7 @@ const Contact = () => {
     <>
       <div id="contact" className="w-full px-[12%] py-10 scroll-mt-20">
         <div className="flex flex-wrap justify-between items-start">
-          <div className="w-full lg:w-1/2 my-8 lg:mb-0">
+          <div className="w-full lg:w-1/2 my-3 lg:mb-0">
             <h5 className="mb-2 text-lg">Connect with me</h5>
             <h2 className="text-5xl text-blue-700">Get in touch</h2>
             <p className="my-6 max-w-lg text-gray-300">
@@ -71,44 +65,44 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10 border border-gray-500 shadow rounded-lg">
-          <form onSubmit={onSubmit} className="space-y-4">
-    {fields.map((field, index) => (
-      <div key={index}>
-        <label className="block text-gray-200 font-medium mb-1">
-          {field.label}
-        </label>
-        {field.type === 'textarea' ? (
-          <textarea
-            required
-            name={field.name}
-            placeholder={field.placeholder}
-            rows="4"
-            className="textarea-field"
-          ></textarea>
-        ) : (
-          <input
-            required
-            type={field.type}
-            name={field.name}
-            placeholder={field.placeholder}
-            className="input-field"
-          />
-        )}
-      </div>
-    ))}
-    <button
-      type="submit"
-      className={`w-full py-2 sm:py-3 rounded-full transition ${
-        isLoading
-          ? 'bg-gray-800 text-gray-300 cursor-not-allowed'
-          : 'bg-blue-700 hover:bg-blue-800'
-      }`}
-      disabled={isLoading}
-    >
-      {isLoading ? 'Sending...' : 'Send Message'}
-    </button>
-  </form>
+          <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10 bg-[#0F0F0F] shadow rounded-2xl hover:hover-glow">
+            <form onSubmit={onSubmit} className="space-y-4">
+              {fields.map((field, index) => (
+                <div key={index}>
+                  <label className="block text-gray-300 font-medium mb-1  ">
+                    {field.label}
+                  </label>
+                  {field.type === 'textarea' ? (
+                    <textarea
+                      required
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      rows="4"
+                      className="textarea-field"
+                    ></textarea>
+                  ) : (
+                    <input
+                      required
+                      type={field.type}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      className="input-field"
+                    />
+                  )}
+                </div>
+              ))}
+              <button
+                type="submit"
+                className={`w-full py-2 sm:py-3 rounded-full transition ${
+                  isLoading
+                    ? 'bg-gray-800 text-gray-300 cursor-not-allowed'
+                    : 'bg-blue-700 hover:bg-blue-800'
+                }`}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
           </div>
         </div>
       </div>

@@ -6,35 +6,44 @@ const Hero = () => {
   return (
     <div
       id="home"
-      className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 pt-3 space-y-3"
+      className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 pt-3 space-y-4"
     >
-      <div>
+      <div className="relative w-32 h-32">
+        {/* Blurred Background */}
+        <div className="absolute inset-0 bg-blue-700 bg-opacity-40 blur-2xl rounded-full"></div>
+
+        {/* Foreground Image */}
         <Image
           src={assets.hero_img}
-          alt="hero_image"
-          className="rounded-full w-32"
+          alt="Raul Barquilla Jr.'s Profile Picture"
+          className="relative rounded-full object-cover w-36"
         />
       </div>
-      <h1 className="font-semibold text-2xl sm:text-6xl lg:text-[62px] text-blue-700">
-        Hi there! I'm Raul.
+
+      <h1 className="font-semibold text-2xl sm:text-6xl lg:text-[62px]">
+        Hi there!<span className=" text-blue-700"> I'm Raul.</span>
       </h1>
-      <p className=" max-w-2xl mx-auto text-gray-200">
-        I'm a freelance web designer and web developer specializing in creating
-        stunning, user-friendly websites and applications that help businesses
-        thrive online.
+      <p className="max-w-2xl mx-auto text-gray-200">
+        I'm a web designer and developer based in the Philippines, specializing
+        in creating functional, visually appealing, and user-friendly websites
+        and applications tailored to business needs.
       </p>
 
       <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
         <a
           href="#contact"
-          className="px-10 py-3  bg-blue-700 hover:bg-blue-800 rounded-full flex item-center gap-2"
+          className="px-10 py-3 bg-blue-700 hover:bg-opacity-80 rounded-full flex items-center gap-2 shadow-md transition-all"
+          aria-label="Get in touch with Raul"
         >
-          Contact me
+          Contact Me
         </a>
         <a
-          href="/my_resume.pdf"
+          href="/barquilla_raul_resume.pdf"
           download
-          className="px-10 py-3 border rounded-full border-white hover:bg-black flex item-center gap-2"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-10 py-3 border rounded-full border-gray-500 hover:shadow-lg hover:text-blue-700 hover:hover-glow flex items-center gap-2 transition-all"
+          aria-label="Download Raul's resume in PDF format"
         >
           Download Resume
         </a>
