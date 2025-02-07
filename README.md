@@ -1,4 +1,4 @@
-# 🚀 Raul Barquilla Jr. - Next.js Portfolio
+<h1 align="center">🚀 Raul Barquilla Jr. - Next.js Portfolio</h1>
 
 <p align="center"> 
 <img src="https://img.shields.io/badge/React-v18.2.0-blue" alt="React"> 
@@ -16,27 +16,20 @@ Welcome to my personal portfolio built with Next.js and Tailwind CSS. It showcas
 
 ## 🛠 Tech Stack
 
-🔹 Frontend:
-<br></br>
+🔹 Frontend: <br></br>
 
 - Next.js
 - React
 - Tailwind CSS
-- Framer Motion
+- Framer Motion <br></br>
 
-<br></br>
-
-🔹 Deployment:
-<br></br>
+🔹 Deployment: <br></br>
 
 - Vercel
 
-## 📸 Live Preview
+## 📸 Live Preview <p>🔗 <strong><a href="https://raulbarquilla-portfolio.vercel.app/">Check out my live portfolio</a></strong></p>
 
-<p align="center">
-  🔗 <strong><a href="https://raulbarquilla-portfolio.vercel.app/">Check out my live portfolio</a></strong>
-</p>
-<p align="center"> <img src="./public/image.png" alt="Portfolio Screenshot" width="100%"/> </p>
+<p align="center"> <img src="./public/portfolio_img.png" alt="Portfolio Screenshot" width="100%"/> </p>
 
 ## ⚡ Features
 
@@ -50,4 +43,4 @@ Welcome to my personal portfolio built with Next.js and Tailwind CSS. It showcas
 Feel free to reach out to me:
 
 - Email: raulbarquilla003@gmail.com
-- GitHub: https://github.com/hakkuuuu
+- Facebook: https://www.facebook.com/raulbarquillajr

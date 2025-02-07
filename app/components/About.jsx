@@ -8,7 +8,7 @@ const About = () => {
       <h4 className="text-center mb-2 text-lg">Introduction</h4>
       <h2 className="text-center text-5xl text-blue-700">About me</h2>
 
-      <div className="flex w-full flex-col lg:flex-row items-center gap-24 my-20">
+      <div className="flex w-full flex-col lg:flex-row items-center gap-24 my-12 sm:my-20">
         <div className="w-64 sm:w-80 rounded-3xl max-w-none">
           <Image
             src={assets.about_img}
@@ -31,10 +31,14 @@ const About = () => {
             {infoList.map(({ icon, title, description }, index) => {
               return (
                 <li
-                  className="border border-gray-600 rounded-3xl p-6 cursor-pointer hover:-translate-y-4 duration-500"
+                  className="border border-gray-800 rounded-3xl p-6 cursor-pointer hover:hover-glow duration-500"
                   key={index}
                 >
-                  <Image src={icon} alt={title} className="w-7 mt-2" />
+                  <Image
+                    src={icon}
+                    alt={title}
+                    className="w-7 mt-2 opacity-80"
+                  />
                   <h3 className="my-2 font-semibold text-blue-500">{title}</h3>
                   <p className="text-sm text-gray-300">{description}</p>
                 </li>
@@ -49,7 +53,7 @@ const About = () => {
                 return (
                   <li
                     key={index}
-                    className="border border-gray-500 p-2 rounded-xl"
+                    className="hover:hover-glow border border-gray-800 p-2 rounded-xl"
                   >
                     <Image src={tool} alt="tool" className="w-5 sm:w-6" />
                   </li>

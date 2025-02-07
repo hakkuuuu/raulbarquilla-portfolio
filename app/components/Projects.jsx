@@ -24,7 +24,7 @@ const Projects = () => {
               ({ project, title, description, language, link, demo }, idx) => (
                 <li
                   key={idx}
-                  className="w-full border border-gray-600 shadow-sm hover:-translate-y-2 duration-500 p-9 cursor-pointer flex flex-col rounded-2xl"
+                  className="hover:hover-glow w-full border border-gray-800 shadow-sm duration-500 p-9 cursor-pointer flex flex-col rounded-2xl"
                 >
                   <div className="flex flex-col h-full">
                     {/* Title and Actions */}
@@ -39,13 +39,14 @@ const Projects = () => {
                           href={link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-5 h-5 sm:w-6 sm:h-6 hover:opacity-70"
+                          className="w-6 h-6 sm:w-6 sm:h-6 hover:opacity-70"
                         >
                           <Image
                             src={assets.ic_github_white || '/placeholder.svg'}
                             alt="GitHub"
                             width={24}
                             height={24}
+                            className='opacity-80'
                           />
                         </a>
 
