@@ -39,7 +39,7 @@ const Contact = () => {
 
   return (
     <>
-      <div id="contact" className="w-full px-[12%] py-10 scroll-mt-20">
+      <section id="contact" className="w-full px-[12%] py-10">
         <div className="flex flex-wrap justify-between items-start">
           <div className="w-full lg:w-1/2 my-3 lg:mb-0">
             <h5 className="mb-2 text-lg">Connect with me</h5>
@@ -105,7 +105,7 @@ const Contact = () => {
             </form>
           </div>
         </div>
-      </div>
+      </section>
       <ToastContainer />
       <footer className="flex flex-col items-center justify-center mt-8 w-full border-t border-white/10 ">
         <span className="text-center text-sm p-6">
