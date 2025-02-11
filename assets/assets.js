@@ -1,6 +1,4 @@
 
-import ic_moon from './ic_moon.png'
-import ic_sun from './ic_sun.png'
 import ic_menu_white from './ic_menu_white.png'
 import ic_menu_black from './ic_menu_black.png'
 import ic_close_white from './ic_close_white.png'
@@ -34,8 +32,6 @@ import ic_linkedin from './ic_linkedin.png'
 import ic_behance from './ic_behance.png'
 
 export const assets = {
-    ic_moon,
-    ic_sun,
     ic_menu_white,
     ic_menu_black,
     ic_close_white,
@@ -69,14 +65,14 @@ export const assets = {
 }
 
 export const infoList = [
-    { icon: assets.ic_code_white, iconDark: assets.ic_code_dark, title: 'Languages', description: 'HTML, CSS, Tailwind, MaterialUI, JavaScript, ReactJs, NextJs' },
     { icon: assets.ic_edu_white, iconDark: assets.ic_edu_dark, title: 'Education', description: <>Bicol University 2023 <br></br> BS Computer Science <br></br> Daraga, Albay</> },
-    { icon: assets.ic_project_white, iconDark: assets.ic_project_dark, title: 'Projects', description: 'Built projects with a focus on frontend development.' }
+    { icon: assets.ic_project_white, iconDark: assets.ic_project_dark, title: 'Projects', description: 'Developed over 5 projects specializing in React.js and Next.js' },
+    { icon: assets.ic_code_white, iconDark: assets.ic_code_dark, title: 'Tools I use', description: 'VSCode, Git, Github, Postman, DBeaver, Notion, Figma' },
 ]
 
-export const toolList = [
-    assets.ic_vscode, assets.ic_git, assets.ic_figma, assets.ic_postman, assets.ic_dbeaver
-]
+// export const toolList = [
+//     assets.ic_vscode, assets.ic_git, assets.ic_figma, assets.ic_postman, assets.ic_dbeaver
+// ]
 
 export const projectList = [
     { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management', language: ['ReactJs', 'MaterialUI', 'Laravel', 'PostgresSQL'], link: 'https://github.com/Think-and-Clack/heroes-connect-frontend', demo: 'https://heroesconnect.site/' },
@@ -104,33 +100,11 @@ export const skills = [
     { name: "Next.js", level: 80 },
     { name: "Node.js", level: 75 },
     { name: "Express.js", level: 75 },
-    { name: "MongoDB", level: 70 },
-    { name: "Material-UI", level: 85 },
-    { name: "Bootstrap", level: 80 },
+    { name: "MongoDB", level: 75 },
+    { name: "Material-UI", level: 90 },
+    { name: "Bootstrap", level: 90 },
     { name: "Git & GitHub", level: 85 },
 ];
-
-export const services = [
-    {
-        title: "Web Development",
-        description:
-            "Building fast, responsive, and user-friendly websites using the latest technologies.",
-        icon: assets.ic_close_white,
-    },
-    {
-        title: "UI/UX Design",
-        description:
-            "Designing visually appealing and intuitive interfaces for a seamless user experience.",
-        icon: assets.ic_close_white,
-    },
-    {
-        title: "Freelance Projects",
-        description:
-            "Providing web development and branding services tailored to business needs.",
-        icon: assets.ic_close_white,
-    },
-];
-
 
 export const fields = [
     { label: 'Full Name', name: 'fullName', type: 'text', placeholder: 'e.g. Juan Dela Cruz' },

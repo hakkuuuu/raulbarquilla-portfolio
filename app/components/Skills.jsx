@@ -5,7 +5,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="w-11/12 max-w-4xl mx-auto mb-20 scroll-mt-20"
+      className="w-11/12 max-w-4xl mx-auto min-h-screen"
     >
       <h4 className="text-center mb-2 text-lg">Skills</h4>
       <h2 className="text-center text-5xl mb-6 text-blue-700">
