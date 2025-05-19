@@ -4,9 +4,9 @@ import React from 'react';
 
 const Projects = () => {
   return (
-    <div
+    <section
       id="projects"
-      className="w-full px-[12%] py-10 scroll-mt-20 flex flex-col items-center"
+      className="w-full px-[12%] py-10 flex flex-col items-center"
     >
       <h4 className="text-center mb-2 text-lg">Projects</h4>
       <h2 className="text-center text-5xl mb-2 text-blue-700">
@@ -24,7 +24,7 @@ const Projects = () => {
               ({ project, title, description, language, link, demo }, idx) => (
                 <li
                   key={idx}
-                  className="hover:hover-glow w-full bg-[#0F0F0F] shadow-sm duration-500 p-9 cursor-pointer flex flex-col rounded-2xl"
+                  className="hover:hover-glow w-full bg-[#0F0F0F] duration-500 p-9 cursor-pointer flex flex-col rounded-2xl"
                 >
                   <div className="flex flex-col h-full">
                     {/* Title and Actions */}
@@ -86,7 +86,7 @@ const Projects = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

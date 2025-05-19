@@ -4,7 +4,7 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <div
+    <section
       id="home"
       className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 pt-3 space-y-4"
     >
@@ -15,8 +15,11 @@ const Hero = () => {
         {/* Foreground Image */}
         <Image
           src={assets.hero_img}
+          height={500}
+          width={500}
+          quality={100}
           alt="Raul Barquilla Jr.'s Profile Picture"
-          className="relative rounded-full object-cover w-36"
+          className="relative rounded-full object-cover"
         />
       </div>
 
@@ -48,7 +51,7 @@ const Hero = () => {
           Download Resume
         </a>
       </div>
-    </div>
+    </section>
   );
 };
 
