@@ -12,7 +12,7 @@ const Skills = () => {
         My technical level
       </h2>
       <p className="text-center text-gray-300 mb-6">
-        Here are the languages I specialize in, showcasing my proficiency and
+        Here are the technologies I specialize in, showcasing my proficiency and
         experience in web development. I have strong expertise in JavaScript and
         its modern frameworks, building dynamic and scalable web applications.
       </p>

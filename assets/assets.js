@@ -75,9 +75,9 @@ export const infoList = [
 // ]
 
 export const projectList = [
-    { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management', language: ['ReactJs', 'MaterialUI', 'Laravel', 'PostgresSQL'], link: 'https://github.com/Think-and-Clack/heroes-connect-frontend', demo: 'https://heroesconnect.site/' },
+    { project: assets.project_7, title: 'HakoStore', description: 'A full-stack inventory management web application that allows users to manage products efficiently. Built with a modern tech stack — React, Vite, Tailwind CSS, Express, and Neon Postgres.', language: ['ReactJs', 'TailwindCSS', 'DaisyUI', 'Express.js', 'Node.js', "PostgresSQP"], link: 'https://github.com/hakkuuuu/Hakostore', demo: 'https://hakostore.onrender.com/' },
+    { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management.', language: ['ReactJs', 'MaterialUI', 'Laravel', 'PostgresSQL'], link: 'https://github.com/Think-and-Clack/heroes-connect-frontend', demo: 'https://heroesconnect.site/' },
     { project: assets.project_2, title: 'Hakomerch', description: 'A merchandise management app built with the MERN stack, utilizing React.js and Tailwind CSS for the frontend UI, and Express.js with MongoDB for the backend.', language: ['ReactJs', 'TailwindCSS', 'Express.js', 'MongoDB'], link: 'https://github.com/hakkuuuu/hakomerch-product-store', demo: 'https://hakomerch-product-store.onrender.com/' },
-    { project: assets.project_7, title: 'HakoStore', description: 'A full-stack inventory management web application that allows users to manage products efficiently. Built with a modern tech stack — React, Vite, Tailwind CSS, Express, and Neon Postgres', language: ['ReactJs', 'TailwindCSS', 'DaisyUI', 'Express.js', 'Node.js', "PostgresSQP"], link: 'https://github.com/hakkuuuu/Hakostore', demo: 'https://hakostore.onrender.com/' },
     { project: assets.project_6, title: 'Hakomovies', description: 'A movie browsing platform built using ReactJS, TailwindCSS, and TMDB API. Featureing search for movies, explore top IMDB, and view detailed information in a modern interface.', language: ['ReactJs', 'TailwindCSS', 'TMDB API'], link: 'https://github.com/hakkuuuu/hakomovies', demo: 'https://hakomovies.vercel.app/' },
     { project: assets.project_3, title: 'Hilink', description: 'A modern travel app UI built with Next.js, TypeScript, and Tailwind CSS, offering a clean, intuitive design for exploring travel destinations and campsites.', language: ['ReactJs', 'NextJs', 'TailwindCSS'], link: 'https://github.com/hakkuuuu/travel-app', demo: 'https://travel-app-navy-eight.vercel.app/' },
     { project: assets.project_4, title: 'WFit', description: 'A product filtering website using HTML, JavaScript, and Tailwind CSS. The key features are search, filter by category, and add items to shopping cart.', language: ['HTML', 'TailwindCSS', 'Javascript'], link: 'https://github.com/hakkuuuu/wfit-store', demo: 'https://wfit-store.vercel.app/' },
@@ -102,6 +102,7 @@ export const skills = [
     { name: "Node.js", level: 75 },
     { name: "Express.js", level: 75 },
     { name: "MongoDB", level: 75 },
+    { name: "PostgreSQL", level: 75 },
     { name: "Material-UI", level: 90 },
     { name: "Bootstrap", level: 90 },
     { name: "Git & GitHub", level: 85 },
