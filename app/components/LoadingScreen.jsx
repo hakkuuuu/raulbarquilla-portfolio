@@ -7,7 +7,7 @@ export const LoadingScreen = ({ onComplete }) => {
 
   const texts = [
     '<Hello, world/>',
-    "Welcome to Dev.Haku's Space 🌌",
+    "Welcome to Dev.Haku's Space🌌",
   ];
 
   useEffect(() => {

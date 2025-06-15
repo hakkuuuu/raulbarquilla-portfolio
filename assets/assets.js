@@ -3,7 +3,7 @@ import ic_menu_white from './ic_menu_white.png'
 import ic_menu_black from './ic_menu_black.png'
 import ic_close_white from './ic_close_white.png'
 import ic_close_black from './ic_close_black.png'
-import hero_img from './hero_img.png'
+import hero_img from '../public/hero_img.png'
 import about_img from './about_img.png'
 
 import ic_code_dark from './ic_code_dark.png'
@@ -75,7 +75,7 @@ export const infoList = [
 // ]
 
 export const projectList = [
-    { project: assets.project_7, title: 'HakoStore', description: 'A full-stack inventory management web application that allows users to manage products efficiently. Built with a modern tech stack — React, Vite, Tailwind CSS, Express, and Neon Postgres.', language: ['ReactJs', 'TailwindCSS', 'DaisyUI', 'Express.js', 'Node.js', "PostgresSQP"], link: 'https://github.com/hakkuuuu/Hakostore', demo: 'https://hakostore.onrender.com/' },
+    { project: assets.project_7, title: 'HakoStore', description: 'A full-stack inventory management web application that allows users to manage products efficiently. Built with a modern tech stack — React, Vite, Tailwind CSS, Express, and Neon Postgres.', language: ['ReactJs', 'TailwindCSS', 'DaisyUI', 'Express.js', 'Node.js', "PostgresSQL"], link: 'https://github.com/hakkuuuu/Hakostore', demo: 'https://hakostore.onrender.com/' },
     { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management.', language: ['ReactJs', 'MaterialUI', 'Laravel', 'PostgresSQL'], link: 'https://github.com/Think-and-Clack/heroes-connect-frontend', demo: 'https://heroesconnect.site/' },
     { project: assets.project_2, title: 'Hakomerch', description: 'A merchandise management app built with the MERN stack, utilizing React.js and Tailwind CSS for the frontend UI, and Express.js with MongoDB for the backend.', language: ['ReactJs', 'TailwindCSS', 'Express.js', 'MongoDB'], link: 'https://github.com/hakkuuuu/hakomerch-product-store', demo: 'https://hakomerch-product-store.onrender.com/' },
     { project: assets.project_6, title: 'Hakomovies', description: 'A movie browsing platform built using ReactJS, TailwindCSS, and TMDB API. Featureing search for movies, explore top IMDB, and view detailed information in a modern interface.', language: ['ReactJs', 'TailwindCSS', 'TMDB API'], link: 'https://github.com/hakkuuuu/hakomovies', demo: 'https://hakomovies.vercel.app/' },
@@ -88,7 +88,7 @@ export const socialList = [
     { icon: assets.ic_fb, link: 'https://www.facebook.com/raulbarquillajr', title: 'raulbarquillajr' },
     { icon: assets.ic_ig, link: "https://instagram.com/hqkuuuuu", title: '@hqkuuuuu' },
     { icon: assets.ic_github_white, link: "https://github.com/hakkuuuu", title: 'hakkuuuu' },
-    { icon: assets.ic_linkedin, link: "https://linkedin.com/in/rbarquillajr", title: 'rbarquillajr' },
+    // { icon: assets.ic_linkedin, link: "https://linkedin.com/in/rbarquillajr", title: 'rbarquillajr' },
     { icon: assets.ic_behance, link: "https://behance.net/raulbarquillajr", title: 'raulbarquillajr' },
 ]
 
@@ -96,6 +96,8 @@ export const skills = [
     { name: "HTML", level: 95 },
     { name: "CSS", level: 95 },
     { name: "JavaScript", level: 90 },
+    { name: "Python", level: 70 },
+    { name: "Django", level: 70 },
     { name: "Tailwind", level: 90 },
     { name: "React.js", level: 85 },
     { name: "Next.js", level: 80 },

@@ -17,7 +17,7 @@ const Hero = () => {
           src={assets.hero_img}
           height={500}
           width={500}
-          quality={100}
+          quality={80}
           alt="Raul Barquilla Jr.'s Profile Picture"
           className="relative rounded-full object-cover"
         />
