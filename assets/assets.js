@@ -89,7 +89,7 @@ export const socialList = [
     { icon: assets.ic_fb, link: 'https://www.facebook.com/raulbarquillajr', title: 'raulbarquillajr' },
     { icon: assets.ic_ig, link: "https://instagram.com/hqkuuuuu", title: '@hqkuuuuu' },
     { icon: assets.ic_github_white, link: "https://github.com/hakkuuuu", title: 'hakkuuuu' },
-    // { icon: assets.ic_linkedin, link: "https://linkedin.com/in/rbarquillajr", title: 'rbarquillajr' },
+    // { icon: assets.ic_linkedin, link: "https://www.linkedin.com/in/raul-b-barquilla-jr-756058373/", title: 'rbarquillajr' },
     { icon: assets.ic_behance, link: "https://behance.net/raulbarquillajr", title: 'raulbarquillajr' },
 ]
 
