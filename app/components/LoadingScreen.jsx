@@ -7,7 +7,7 @@ export const LoadingScreen = ({ onComplete }) => {
 
   const texts = [
     '<Hello, world/>',
-    "Welcome to Dev.Haku's Space 🌌",
+    "Welcome to Dev.Haku's Space🌌",
   ];
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export const LoadingScreen = ({ onComplete }) => {
   }, [phase, onComplete]);
 
   return (
-    <div className="fixed inset-0 z-50 text-gray-100 flex flex-col items-center justify-center p-4 transition-all duration-1000">
+    <section className="fixed inset-0 z-50 text-gray-100 flex flex-col items-center justify-center p-4 transition-all duration-1000">
       {/* Typing Text */}
       <div
         className={`mb-4 text-3xl md:text-4xl font-mono font-bold text-center transition-all duration-700 ${
@@ -59,6 +59,6 @@ export const LoadingScreen = ({ onComplete }) => {
 
       {/* Background Glow Effect */}
       <div className="absolute inset-0 transition-all duration-1000 ease-in-out blur-lg opacity-20"></div>
-    </div>
+    </section>
   );
 };

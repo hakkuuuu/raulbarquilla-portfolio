@@ -5,14 +5,14 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="w-11/12 max-w-4xl mx-auto mb-20 scroll-mt-20"
+      className="w-11/12 max-w-4xl mx-auto min-h-screen"
     >
       <h4 className="text-center mb-2 text-lg">Skills</h4>
       <h2 className="text-center text-5xl mb-6 text-blue-700">
         My technical level
       </h2>
       <p className="text-center text-gray-300 mb-6">
-        Here are the languages I specialize in, showcasing my proficiency and
+        Here are the technologies I specialize in, showcasing my proficiency and
         experience in web development. I have strong expertise in JavaScript and
         its modern frameworks, building dynamic and scalable web applications.
       </p>

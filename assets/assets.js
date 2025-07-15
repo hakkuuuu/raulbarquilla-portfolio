@@ -1,11 +1,9 @@
 
-import ic_moon from './ic_moon.png'
-import ic_sun from './ic_sun.png'
 import ic_menu_white from './ic_menu_white.png'
 import ic_menu_black from './ic_menu_black.png'
 import ic_close_white from './ic_close_white.png'
 import ic_close_black from './ic_close_black.png'
-import hero_img from './hero_img.png'
+import hero_img from '../public/hero_img.png'
 import about_img from './about_img.png'
 
 import ic_code_dark from './ic_code_dark.png'
@@ -34,8 +32,6 @@ import ic_linkedin from './ic_linkedin.png'
 import ic_behance from './ic_behance.png'
 
 export const assets = {
-    ic_moon,
-    ic_sun,
     ic_menu_white,
     ic_menu_black,
     ic_close_white,
@@ -69,17 +65,19 @@ export const assets = {
 }
 
 export const infoList = [
-    { icon: assets.ic_code_white, iconDark: assets.ic_code_dark, title: 'Languages', description: 'HTML, CSS, Tailwind, MaterialUI, JavaScript, ReactJs, NextJs' },
     { icon: assets.ic_edu_white, iconDark: assets.ic_edu_dark, title: 'Education', description: <>Bicol University 2023 <br></br> BS Computer Science <br></br> Daraga, Albay</> },
-    { icon: assets.ic_project_white, iconDark: assets.ic_project_dark, title: 'Projects', description: 'Built projects with a focus on frontend development.' }
+    { icon: assets.ic_project_white, iconDark: assets.ic_project_dark, title: 'Projects', description: 'Developed over 5 projects specializing in React.js and Next.js' },
+    { icon: assets.ic_code_white, iconDark: assets.ic_code_dark, title: 'Tools I use', description: 'VSCode, Git, Github, Postman, DBeaver, Notion, Figma' },
 ]
 
-export const toolList = [
-    assets.ic_vscode, assets.ic_git, assets.ic_figma, assets.ic_postman, assets.ic_dbeaver
-]
+// export const toolList = [
+//     assets.ic_vscode, assets.ic_git, assets.ic_figma, assets.ic_postman, assets.ic_dbeaver
+// ]
 
 export const projectList = [
-    { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management', language: ['ReactJs', 'MaterialUI', 'Laravel', 'PostgresSQL'], link: 'https://github.com/Think-and-Clack/heroes-connect-frontend', demo: 'https://heroesconnect.site/' },
+    { project: assets.project_7, title: 'HakoStore', description: 'A full-stack inventory management web application that allows users to manage products efficiently. Built with a modern tech stack — React, Vite, Tailwind CSS, Express, and Neon Postgres.', language: ['ReactJs', 'TailwindCSS', 'DaisyUI', 'Express.js', 'Node.js', "PostgresSQL"], link: 'https://github.com/hakkuuuu/Hakostore', demo: 'https://hakostore.onrender.com/' },
+    { project: assets.project_8, title: 'Travelis', description: 'A comprehensive travel booking application built with Next.js 15, React, and MongoDB. Features destination discovery, user authentication, booking management, and an admin dashboard.', language: ['NextJs', 'TypeScript', 'TailwindCSS', 'MongoDB'], link: 'https://github.com/hakkuuuu/travel-app', demo: 'https://travel-app-w4qg.onrender.com/' },
+    { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management.', language: ['ReactJs', 'MaterialUI', 'Laravel', 'PostgresSQL'], link: 'https://github.com/Think-and-Clack/heroes-connect-frontend', demo: 'https://heroesconnect.site/' },
     { project: assets.project_2, title: 'Hakomerch', description: 'A merchandise management app built with the MERN stack, utilizing React.js and Tailwind CSS for the frontend UI, and Express.js with MongoDB for the backend.', language: ['ReactJs', 'TailwindCSS', 'Express.js', 'MongoDB'], link: 'https://github.com/hakkuuuu/hakomerch-product-store', demo: 'https://hakomerch-product-store.onrender.com/' },
     { project: assets.project_6, title: 'Hakomovies', description: 'A movie browsing platform built using ReactJS, TailwindCSS, and TMDB API. Featureing search for movies, explore top IMDB, and view detailed information in a modern interface.', language: ['ReactJs', 'TailwindCSS', 'TMDB API'], link: 'https://github.com/hakkuuuu/hakomovies', demo: 'https://hakomovies.vercel.app/' },
     { project: assets.project_3, title: 'Hilink', description: 'A modern travel app UI built with Next.js, TypeScript, and Tailwind CSS, offering a clean, intuitive design for exploring travel destinations and campsites.', language: ['ReactJs', 'NextJs', 'TailwindCSS'], link: 'https://github.com/hakkuuuu/travel-app', demo: 'https://travel-app-navy-eight.vercel.app/' },
@@ -91,7 +89,7 @@ export const socialList = [
     { icon: assets.ic_fb, link: 'https://www.facebook.com/raulbarquillajr', title: 'raulbarquillajr' },
     { icon: assets.ic_ig, link: "https://instagram.com/hqkuuuuu", title: '@hqkuuuuu' },
     { icon: assets.ic_github_white, link: "https://github.com/hakkuuuu", title: 'hakkuuuu' },
-    { icon: assets.ic_linkedin, link: "https://linkedin.com/in/rbarquillajr", title: 'rbarquillajr' },
+    // { icon: assets.ic_linkedin, link: "https://www.linkedin.com/in/raul-b-barquilla-jr-756058373/", title: 'rbarquillajr' },
     { icon: assets.ic_behance, link: "https://behance.net/raulbarquillajr", title: 'raulbarquillajr' },
 ]
 
@@ -99,38 +97,19 @@ export const skills = [
     { name: "HTML", level: 95 },
     { name: "CSS", level: 95 },
     { name: "JavaScript", level: 90 },
+    { name: "Python", level: 70 },
+    { name: "Django", level: 70 },
     { name: "Tailwind", level: 90 },
     { name: "React.js", level: 85 },
     { name: "Next.js", level: 80 },
     { name: "Node.js", level: 75 },
     { name: "Express.js", level: 75 },
-    { name: "MongoDB", level: 70 },
-    { name: "Material-UI", level: 85 },
-    { name: "Bootstrap", level: 80 },
+    { name: "MongoDB", level: 75 },
+    { name: "PostgreSQL", level: 75 },
+    { name: "Material-UI", level: 90 },
+    { name: "Bootstrap", level: 90 },
     { name: "Git & GitHub", level: 85 },
 ];
-
-export const services = [
-    {
-        title: "Web Development",
-        description:
-            "Building fast, responsive, and user-friendly websites using the latest technologies.",
-        icon: assets.ic_close_white,
-    },
-    {
-        title: "UI/UX Design",
-        description:
-            "Designing visually appealing and intuitive interfaces for a seamless user experience.",
-        icon: assets.ic_close_white,
-    },
-    {
-        title: "Freelance Projects",
-        description:
-            "Providing web development and branding services tailored to business needs.",
-        icon: assets.ic_close_white,
-    },
-];
-
 
 export const fields = [
     { label: 'Full Name', name: 'fullName', type: 'text', placeholder: 'e.g. Juan Dela Cruz' },
