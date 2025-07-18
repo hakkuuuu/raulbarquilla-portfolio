@@ -4,12 +4,11 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section id="about" className="w-full px-[12%] min-h-screen my-20">
-      <h4 className="text-center mb-2 text-lg">Introduction</h4>
-      <h2 className="text-center text-5xl text-blue-700">About me</h2>
-
-      <div className="flex w-full flex-col lg:flex-row items-center gap-24 my-12 sm:my-20">
-        <div className="w-64 sm:w-80 rounded-3xl max-w-none">
+    <section className="section-container min-h-screen" id="about">
+      <h4 className="text-center mb-2 text-lg text-gray-600 dark:text-gray-400 font-medium">Introduction</h4>
+      <h2 className="text-center text-5xl font-bold text-gray-900 dark:text-white">About me</h2>
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24 my-12">
+        <div className="w-64 sm:w-80 rounded-3xl max-w-none shadow-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#0F0F0F]">
           <Image
             src={assets.about_img}
             alt="about_img"
@@ -19,23 +18,15 @@ const About = () => {
             className="rounded-3xl max-h-[400px] object-cover"
           />
         </div>
-
         <div className="flex-1">
-          <p className="max-w-2xl text-gray-300">
-            I'm Raul B. Barquilla Jr., 24, with one year of experience,
-            passionate about creating user-friendly, accessible, and visually
-            engaging digital experiences. I specialize in front-end development,
-            using Figma for UI/UX and Next.js, ReactJS, and Tailwind CSS to
-            build fast, responsive websites. My focus is on problem-solving
-            through design, writing clean, maintainable code, and ensuring
-            seamless user experiences.
+          <p className="max-w-3xl text-gray-600 dark:text-gray-300 text-lg">
+          I'm Raul B. Barquilla Jr., a 24-year-old fullstack developer with a year of experience building user-friendly and visually engaging web apps. I specialize in React, Next.js, TypeScript, and Tailwind CSS on the frontend, and Node.js, Express, Docker, MongoDB, and PostgreSQL on the backend. I focus on writing clean, maintainable code and delivering seamless user experiences.
           </p>
-
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl mt-8">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mt-8">
             {infoList.map(({ icon, title, description }, index) => {
               return (
                 <li
-                  className="bg-[#0F0F0F] rounded-3xl p-7 cursor-pointer hover:hover-glow duration-500"
+                  className="bg-gray-50 dark:bg-[#070707] rounded-xl p-7 border border-gray-200 dark:border-gray-700 shadow hover:shadow-blue-100 dark:hover:shadow-blue-900 transition duration-300 cursor-pointer"
                   key={index}
                 >
                   <Image
@@ -45,8 +36,8 @@ const About = () => {
                     width={28}
                     className="mt-2 opacity-80"
                   />
-                  <h3 className="my-2 font-semibold text-blue-500">{title}</h3>
-                  <p className="text-sm text-gray-300">{description}</p>
+                  <h3 className="my-2 font-semibold text-blue-700 dark:text-blue-500">{title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{description}</p>
                 </li>
               );
             })}

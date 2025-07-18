@@ -66,7 +66,7 @@ export const assets = {
 
 export const infoList = [
     { icon: assets.ic_edu_white, iconDark: assets.ic_edu_dark, title: 'Education', description: <>Bicol University 2023 <br></br> BS Computer Science <br></br> Daraga, Albay</> },
-    { icon: assets.ic_project_white, iconDark: assets.ic_project_dark, title: 'Projects', description: 'Developed over 5 projects specializing in React.js and Next.js' },
+    { icon: assets.ic_project_white, iconDark: assets.ic_project_dark, title: 'Projects', description: 'Developed over 10 projects specializing in React.js and Next.js' },
     { icon: assets.ic_code_white, iconDark: assets.ic_code_dark, title: 'Tools I use', description: 'VSCode, Git, Github, Postman, DBeaver, Notion, Figma' },
 ]
 
@@ -76,7 +76,7 @@ export const infoList = [
 
 export const projectList = [
     { project: assets.project_7, title: 'HakoStore', description: 'A full-stack inventory management web application that allows users to manage products efficiently. Built with a modern tech stack — React, Vite, Tailwind CSS, Express, and Neon Postgres.', language: ['ReactJs', 'TailwindCSS', 'DaisyUI', 'Express.js', 'Node.js', "PostgresSQL"], link: 'https://github.com/hakkuuuu/Hakostore', demo: 'https://hakostore.onrender.com/' },
-    { project: assets.project_8, title: 'Travelis', description: 'A comprehensive travel booking application built with Next.js 15, React, and MongoDB. Features destination discovery, user authentication, booking management, and an admin dashboard.', language: ['NextJs', 'TypeScript', 'TailwindCSS', 'MongoDB'], link: 'https://github.com/hakkuuuu/travel-app', demo: 'https://travel-app-w4qg.onrender.com/' },
+    { project: assets.project_8, title: 'Travelis', description: 'A comprehensive travel booking application built with Next.js 15, React, and MongoDB. Features destination discovery, user authentication, booking management, and an admin dashboard.', language: ['NextJs', 'TypeScript', 'TailwindCSS', 'Node.js', 'MongoDB'], link: 'https://github.com/hakkuuuu/travel-app', demo: 'https://travel-app-w4qg.onrender.com/' },
     { project: assets.project_1, title: 'HeroesConnect', description: 'An event proposal dashboard with admin and student interfaces, proposal submissions, multi-level approval, analytics, budget tracking, and user management.', language: ['ReactJs', 'MaterialUI', 'Laravel', 'PostgresSQL'], link: 'https://github.com/Think-and-Clack/heroes-connect-frontend', demo: 'https://heroesconnect.site/' },
     { project: assets.project_2, title: 'Hakomerch', description: 'A merchandise management app built with the MERN stack, utilizing React.js and Tailwind CSS for the frontend UI, and Express.js with MongoDB for the backend.', language: ['ReactJs', 'TailwindCSS', 'Express.js', 'MongoDB'], link: 'https://github.com/hakkuuuu/hakomerch-product-store', demo: 'https://hakomerch-product-store.onrender.com/' },
     { project: assets.project_6, title: 'Hakomovies', description: 'A movie browsing platform built using ReactJS, TailwindCSS, and TMDB API. Featureing search for movies, explore top IMDB, and view detailed information in a modern interface.', language: ['ReactJs', 'TailwindCSS', 'TMDB API'], link: 'https://github.com/hakkuuuu/hakomovies', demo: 'https://hakomovies.vercel.app/' },
@@ -89,7 +89,7 @@ export const socialList = [
     { icon: assets.ic_fb, link: 'https://www.facebook.com/raulbarquillajr', title: 'raulbarquillajr' },
     { icon: assets.ic_ig, link: "https://instagram.com/hqkuuuuu", title: '@hqkuuuuu' },
     { icon: assets.ic_github_white, link: "https://github.com/hakkuuuu", title: 'hakkuuuu' },
-    // { icon: assets.ic_linkedin, link: "https://www.linkedin.com/in/raul-b-barquilla-jr-756058373/", title: 'rbarquillajr' },
+    { icon: assets.ic_linkedin, link: "https://www.linkedin.com/in/raul-b-barquilla-jr-756058373/", title: 'rbarquillajr' },
     { icon: assets.ic_behance, link: "https://behance.net/raulbarquillajr", title: 'raulbarquillajr' },
 ]
 

@@ -39,12 +39,12 @@ const Contact = () => {
 
   return (
     <>
-      <section id="contact" className="w-full px-[12%] py-10">
-        <div className="flex flex-wrap justify-between items-start">
+      <section id="contact" className="w-full px-4 sm:px-8 lg:px-16 pt-28 pb-24">
+        <div className="flex flex-wrap justify-between items-start max-w-7xl mx-auto">
           <div className="w-full lg:w-1/2 my-3 lg:mb-0">
-            <h5 className="mb-2 text-lg">Connect with me</h5>
-            <h2 className="text-5xl text-blue-700">Get in touch</h2>
-            <p className="my-6 max-w-lg text-gray-300">
+            <h5 className="mb-2 text-lg text-gray-600 dark:text-gray-400 font-medium">Connect with me</h5>
+            <h2 className="text-5xl font-bold text-gray-900 dark:text-white">Get in touch</h2>
+            <p className="my-6 max-w-lg text-gray-600 dark:text-gray-300">
               Feel free to reach out! You can send me a message or follow me on
               social media.
             </p>
@@ -59,17 +59,17 @@ const Contact = () => {
                     className="flex items-center justify-center sm:justify-start gap-4 "
                   >
                     <Image src={icon} alt="social icon" className="w-6" />
-                    <p className="text-sm text-gray-300">{title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{title}</p>
                   </a>
                 ))}
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10 bg-[#0F0F0F] shadow rounded-2xl hover:hover-glow">
+          <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10 bg-gray-50 dark:bg-[#0F0F0F] shadow-lg rounded-2xl border border-gray-200 dark:border-gray-700 hover:shadow-blue-100 dark:hover:shadow-blue-900/30 transition">
             <form onSubmit={onSubmit} className="space-y-4">
               {fields.map((field, index) => (
                 <div key={index}>
-                  <label className="block text-gray-300 font-medium mb-1  ">
+                  <label className="block text-gray-900 dark:text-white font-medium mb-1">
                     {field.label}
                   </label>
                   {field.type === 'textarea' ? (
@@ -93,11 +93,7 @@ const Contact = () => {
               ))}
               <button
                 type="submit"
-                className={`w-full py-2 sm:py-3 rounded-full transition ${
-                  isLoading
-                    ? 'bg-gray-800 text-gray-300 cursor-not-allowed'
-                    : 'bg-blue-700 hover:bg-blue-800'
-                }`}
+                className={`w-full py-3 rounded-xl shadow-lg shadow-blue-700/30 bg-blue-700 hover:bg-blue-600 text-white font-semibold transition-all duration-300 ${isLoading ? 'opacity-60 cursor-not-allowed' : ''}`}
                 disabled={isLoading}
               >
                 {isLoading ? 'Sending...' : 'Send Message'}
@@ -108,7 +104,7 @@ const Contact = () => {
       </section>
       <ToastContainer />
       <footer className="flex flex-col items-center justify-center mt-8 w-full border-t border-white/10 ">
-        <span className="text-center text-sm p-6">
+        <span className="text-center text-sm p-6 text-gray-600 dark:text-gray-400">
           © 2025 Raul Barquilla Jr. All rights reserved.
         </span>
       </footer>
