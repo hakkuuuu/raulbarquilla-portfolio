@@ -8,7 +8,7 @@ const Skills = () => {
       className="w-full px-4 sm:px-8 lg:px-16 pt-28 pb-24 max-w-7xl mx-auto min-h-screen"
     >
       <h4 className="text-center mb-2 text-lg text-gray-600 dark:text-gray-400 font-medium">Skills</h4>
-      <h2 className="text-center text-5xl font-bold text-gray-900 dark:text-white mb-6">
+      <h2 className="text-center text-5xl font-bold text-blue-700 mb-6">
         My technical level
       </h2>
       <p className="text-center text-gray-600 dark:text-gray-300 mb-6">

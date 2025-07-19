@@ -12,7 +12,7 @@ const Projects = () => {
       className="w-full px-4 sm:px-8 lg:px-16 pt-28 pb-24 flex flex-col items-center"
     >
       <h4 className="text-center mb-2 text-lg text-gray-600 dark:text-gray-400 font-medium">Projects</h4>
-      <h2 className="text-center text-5xl font-bold text-gray-900 dark:text-white mb-2">
+      <h2 className="text-center text-5xl font-bold text-blue-700 mb-2">
         My latest work
       </h2>
       <p className="text-center text-gray-600 dark:text-gray-300 my-6 max-w-2xl">

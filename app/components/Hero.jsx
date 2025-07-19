@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen w-full px-4 sm:px-8 lg:px-16 pt-28 pb-24 flex items-center justify-center bg-gradient-to-b from-transparent to-gray-50 dark:to-gray-900/30"
+      className="min-h-screen w-full px-4 sm:px-8 lg:px-16 pt-28 pb-24 flex items-center justify-center"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
         {/* Left Content */}
