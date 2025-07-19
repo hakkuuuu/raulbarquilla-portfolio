@@ -39,18 +39,18 @@ const Contact = () => {
 
   return (
     <>
-      <section id="contact" className="w-full px-4 sm:px-8 lg:px-16 pt-28 pb-24">
-        <div className="flex flex-wrap justify-between items-start max-w-7xl mx-auto">
+      <section id="contact" className="w-full py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 flex flex-wrap justify-between items-start">
           <div className="w-full lg:w-1/2 my-3 lg:mb-0">
             <h5 className="mb-2 text-lg text-gray-600 dark:text-gray-400 font-medium">Connect with me</h5>
-            <h2 className="text-5xl font-bold text-gray-900 dark:text-white">Get in touch</h2>
+            <h2 className="text-5xl font-bold text-blue-700">Get in touch</h2>
             <p className="my-6 max-w-lg text-gray-600 dark:text-gray-300">
               Feel free to reach out! You can send me a message or follow me on
               social media.
             </p>
             <div>
               <div className="flex flex-col items-start gap-6 max-w-2xl mx-auto my-7 ">
-                {socialList.map(({ icon, link, title }, index) => (
+                {socialList.map(({ icon: Icon, link, title }, index) => (
                   <a
                     key={index}
                     href={link}
@@ -58,14 +58,14 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center sm:justify-start gap-4 "
                   >
-                    <Image src={icon} alt="social icon" className="w-6" />
+                    <Icon className="w-6 h-6" />
                     <p className="text-sm text-gray-600 dark:text-gray-300">{title}</p>
                   </a>
                 ))}
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10 bg-gray-50 dark:bg-[#0F0F0F] shadow-lg rounded-2xl border border-gray-200 dark:border-gray-700 hover:shadow-blue-100 dark:hover:shadow-blue-900/30 transition">
+          <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10 bg-gray-50 dark:bg-[#0F0F0F] shadow-md shadow-gray-200 dark:shadow-lg rounded-2xl border border-gray-200 dark:border-gray-700 hover:shadow-blue-100 dark:hover:shadow-blue-900/30 transition">
             <form onSubmit={onSubmit} className="space-y-4">
               {fields.map((field, index) => (
                 <div key={index}>

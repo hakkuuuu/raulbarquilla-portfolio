@@ -31,6 +31,10 @@ import ic_github_white from './ic_github_white.png'
 import ic_linkedin from './ic_linkedin.png'
 import ic_behance from './ic_behance.png'
 
+import { FiMail, FiFacebook, FiInstagram, FiGithub, FiLinkedin } from 'react-icons/fi';
+import { FaBehance } from 'react-icons/fa';
+import { FaGraduationCap, FaFolderOpen, FaTools } from 'react-icons/fa';
+
 export const assets = {
     ic_menu_white,
     ic_menu_black,
@@ -65,9 +69,9 @@ export const assets = {
 }
 
 export const infoList = [
-    { icon: assets.ic_edu_white, iconDark: assets.ic_edu_dark, title: 'Education', description: <>Bicol University 2023 <br></br> BS Computer Science <br></br> Daraga, Albay</> },
-    { icon: assets.ic_project_white, iconDark: assets.ic_project_dark, title: 'Projects', description: 'Developed over 10 projects specializing in React.js and Next.js' },
-    { icon: assets.ic_code_white, iconDark: assets.ic_code_dark, title: 'Tools I use', description: 'VSCode, Git, Github, Postman, DBeaver, Notion, Figma' },
+    { icon: FaGraduationCap, title: 'Education', description: <>Bicol University 2023 <br></br> BS Computer Science <br></br> Daraga, Albay</> },
+    { icon: FaFolderOpen, title: 'Projects', description: 'Developed over 10 projects specializing in React.js and Next.js' },
+    { icon: FaTools, title: 'Tools I use', description: 'VSCode, Git, Github, Postman, DBeaver, Notion, Figma' },
 ]
 
 // export const toolList = [
@@ -85,12 +89,12 @@ export const projectList = [
     { project: assets.project_5, title: 'EmoCare', description: 'A mobile app designed to provide AI-driven mental health support. Users can ask mental health-related questions, and the AI responds based on their needs.', language: ['Java', 'OpenAI', 'Tensorflow'], link: 'https://github.com/raffittee/EmoCare/tree/raul-copy', demo: 'https://github.com/raffittee/EmoCare/tree/raul-copy' }]
 
 export const socialList = [
-    { icon: assets.ic_gmail, link: "mailto:raulbarquilla003@gmail.com", title: 'raulbarquilla003@gmail.com' },
-    { icon: assets.ic_fb, link: 'https://www.facebook.com/raulbarquillajr', title: 'raulbarquillajr' },
-    { icon: assets.ic_ig, link: "https://instagram.com/hqkuuuuu", title: '@hqkuuuuu' },
-    { icon: assets.ic_github_white, link: "https://github.com/hakkuuuu", title: 'hakkuuuu' },
-    { icon: assets.ic_linkedin, link: "https://www.linkedin.com/in/raul-b-barquilla-jr-756058373/", title: 'rbarquillajr' },
-    { icon: assets.ic_behance, link: "https://behance.net/raulbarquillajr", title: 'raulbarquillajr' },
+    { icon: FiMail, link: "mailto:raulbarquilla003@gmail.com", title: 'raulbarquilla003@gmail.com' },
+    { icon: FiFacebook, link: 'https://www.facebook.com/raulbarquillajr', title: 'raulbarquillajr' },
+    { icon: FiInstagram, link: "https://instagram.com/hqkuuuuu", title: '@hqkuuuuu' },
+    { icon: FiGithub, link: "https://github.com/hakkuuuu", title: 'hakkuuuu' },
+    { icon: FiLinkedin, link: "https://www.linkedin.com/in/raul-b-barquilla-jr-756058373/", title: 'rbarquillajr' },
+    { icon: FaBehance, link: "https://behance.net/raulbarquillajr", title: 'raulbarquillajr' },
 ]
 
 export const skills = [
