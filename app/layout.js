@@ -16,7 +16,7 @@ export const viewport = {
 };
 
 export const metadata = {
-  metadataBase: new URL('https://your-domain.com'), // Replace with your actual domain
+  metadataBase: new URL('https://raulbarquilla-portfolio.vercel.app/'),
   title: "Raul Barquilla Jr. - Web Developer",
   description: "Full-stack web developer specializing in creating functional, visually appealing, and user-friendly websites and applications. Explore my portfolio of projects and get in touch for collaboration opportunities.",
   keywords: ["web developer", "frontend developer", "React developer", "Next.js developer", "Philippines developer"],
@@ -27,7 +27,7 @@ export const metadata = {
     url: '/',
     images: [
       {
-        url: "/portfolio_img.png",
+        url: "/hero_img.png",
         width: 1200,
         height: 630,
         alt: "Raul Barquilla Jr. - Web Developer Portfolio",
@@ -38,7 +38,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Raul Barquilla Jr. - Web Developer",
     description: "Full-stack web developer specializing in creating functional, visually appealing, and user-friendly websites and applications.",
-    images: ["/portfolio_img.png"],
+    images: ["hero_img.png"],
   },
   icons: {
     icon: "/favicon.ico",
