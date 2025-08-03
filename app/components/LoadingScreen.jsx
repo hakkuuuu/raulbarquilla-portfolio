@@ -6,10 +6,7 @@ export const LoadingScreen = ({ onComplete }) => {
   const [fadeOut, setFadeOut] = useState(false); // Controls fade effect
   const [skipped, setSkipped] = useState(false); // Track if user skipped
 
-  const texts = [
-    '<Hello, world/>',
-    "Welcome to Dev.Haku's Space🌌",
-  ];
+  const texts = ['<Hello, world/>', "Welcome to Dev.Haku's Space"];
 
   useEffect(() => {
     if (skipped) return; // If skipped, do nothing
@@ -52,7 +49,7 @@ export const LoadingScreen = ({ onComplete }) => {
 
   return (
     <section
-      className="fixed inset-0 z-50 text-gray-100 flex flex-col items-center justify-center p-4 transition-all duration-1000 cursor-pointer"
+      className="fixed inset-0 z-50 text-gray-800 dark:text-gray-100 flex flex-col items-center justify-center p-4 transition-all duration-1000 cursor-pointer"
       onClick={handleSkip}
       title="Click to skip"
     >
@@ -71,7 +68,9 @@ export const LoadingScreen = ({ onComplete }) => {
       </div>
 
       {/* Skip Hint */}
-      <div className="mt-6 text-xs text-gray-400 animate-pulse">Click anywhere to skip</div>
+      <div className="mt-6 text-xs text-gray-800 dark:text-gray-100 animate-pulse">
+        Click anywhere to skip
+      </div>
 
       {/* Background Glow Effect */}
       <div className="absolute inset-0 transition-all duration-1000 ease-in-out blur-lg opacity-20"></div>
