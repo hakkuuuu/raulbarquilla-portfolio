@@ -1,7 +1,6 @@
 'use client';
 
-import { assets, projectList } from '@/assets/assets';
-import Image from 'next/image';
+import { projectList } from '@/assets/assets';
 import React from 'react';
 import { FiGithub } from 'react-icons/fi';
 
