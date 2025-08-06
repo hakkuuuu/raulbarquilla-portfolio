@@ -53,12 +53,12 @@ const NavBar = () => {
       </a>
 
       {/* Desktop Menu */}
-      <ul className="hidden md:flex text-md items-center gap-6 lg:gap-8 rounded-full px-2 sm:px-2 py-2 ml-auto">
+      <ul className="hidden md:flex text-md items-center gap-6 lg:gap-1 rounded-full px-2 sm:px-2 py-2 ml-auto">
         {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
           <li key={item}>
             <a
               href={`#${item.toLowerCase()}`}
-              className="text-gray-700 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500 transition-colors"
+              className="text-gray-700 hover:text-blue-700 hover:bg-blue-800/10 rounded-xl py-2 px-4 dark:text-gray-300 dark:hover:text-blue-500 transition-colors"
             >
               {item}
             </a>
@@ -69,7 +69,7 @@ const NavBar = () => {
         <li>
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-blue-800/10 transition-colors"
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
             {theme === 'dark' ? (
@@ -108,27 +108,40 @@ const NavBar = () => {
       {/* Mobile Sidebar */}
       <ul
         ref={sideMenuRef}
-        className={`fixed top-0 bottom-0 right-0 w-64 bg-white dark:bg-[#070707] text-gray-900 dark:text-white flex flex-col gap-6 px-10 py-6 z-50 h-screen shadow-lg transition-transform duration-300 ${
+        className={`fixed top-0 bottom-0 right-0 w-full bg-white dark:bg-[#070707] text-gray-900 dark:text-white flex flex-col items-center gap-6 px-10 py-6 z-50 h-screen shadow-lg transition-transform duration-300 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Close Button */}
-        <div className="self-end">
+        <div className="mt-12 mb-6">
           <button
             onClick={closeMenu}
-            className="p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+            className="p-2 border text-gray-700 dark:text-gray-300 bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
             aria-label="Close menu"
           >
             <FiX className="w-6 h-6" />
           </button>
         </div>
 
+        <div className="flex flex-row items-center mb-2">
+          <Image
+            src="/logo.png"
+            alt="dev.daku Logo"
+            width={34}
+            height={34}
+            className="mr-2"
+          />
+          <span className="font-bold text-xl text-gray-900 dark:text-white">
+            dev
+          </span>
+          <span className="font-bold text-xl text-blue-700">.haku</span>
+        </div>
         {['Home', 'About', 'Projects', 'Contact'].map((item) => (
           <li key={item}>
             <a
               onClick={closeMenu}
               href={`#${item.toLowerCase()}`}
-              className="text-gray-700 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500 transition-colors"
+              className="text-gray-700 hover:text-blue-700 hover:bg-blue-800/10 rounded-xl py-4 px-20 dark:text-gray-300 dark:hover:text-blue-500 transition-colors"
             >
               {item}
             </a>
