@@ -116,7 +116,7 @@ const NavBar = () => {
         <div className="mt-12 mb-6">
           <button
             onClick={closeMenu}
-            className="p-2 border text-gray-700 dark:text-gray-300 bg-gray-50 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+            className="p-2 border text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-[#070707] hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
             aria-label="Close menu"
           >
             <FiX className="w-6 h-6" />
