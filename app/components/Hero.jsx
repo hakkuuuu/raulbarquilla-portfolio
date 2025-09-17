@@ -19,12 +19,12 @@ const Hero = () => {
               <span className="flex h-3 w-3 mr-2">
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500 animate-pulse"></span>
               </span>
-              Available to work
+              Remote work in progress
             </span>
           </div>
           <div className="space-y-3">
             <h2 className="text-gray-600 dark:text-gray-400 text-lg font-medium animate-fade-in">
-             Full Stack Web Developer
+              Full Stack Web Developer
             </h2>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight animate-slide-up">
               Hi, I'm <span className="text-blue-700">Raul</span>
@@ -34,7 +34,8 @@ const Hero = () => {
 
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto lg:mx-0 animate-fade-in">
             I'm a web designer and developer based in the Philippines, I like to
-            create functional, visually appealing, and user-friendly digital experiences.
+            create functional, visually appealing, and user-friendly digital
+            experiences.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-4">
@@ -93,10 +94,10 @@ const Hero = () => {
           <div className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto">
             {/* Background Effects */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur-3xl opacity-20 dark:opacity-30 animate-pulse"></div>
-            
+
             {/* Circular Border */}
             <div className="absolute inset-0 border-2 border-gray-200 dark:border-gray-700 rounded-full"></div>
-            
+
             {/* Image Container */}
             <div className="absolute inset-4 bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-gray-900 rounded-full p-2">
               <div className="relative w-full h-full rounded-full overflow-hidden">
