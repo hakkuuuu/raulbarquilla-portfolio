@@ -19,7 +19,7 @@ const Hero = () => {
               <span className="flex h-3 w-3 mr-2">
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500 animate-pulse"></span>
               </span>
-              Remote work in progress
+              Available to work
             </span>
           </div>
           <div className="space-y-3">
