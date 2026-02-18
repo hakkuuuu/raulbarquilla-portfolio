@@ -1,118 +1,183 @@
 'use client';
 
-import { assets } from '@/assets/assets';
-import Image from 'next/image';
 import React from 'react';
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { FiGithub, FiLinkedin, FiMail, FiArrowDownRight } from 'react-icons/fi';
+
+// Animation variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay },
+  }),
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    transition: { duration: 0.5, delay },
+  }),
+};
 
 const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen w-full px-4 sm:px-8 lg:px-16 pt-28 pb-24 flex items-center justify-center"
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden px-6 pt-20"
     >
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-        {/* Left Content */}
-        <div className="flex-1 text-center lg:text-left space-y-6">
-          <div className="flex items-center justify-center lg:justify-start mb-2 animate-fade-in">
-            <span className="relative flex items-center border border-blue-500 rounded-full px-4 py-1 text-blue-700 bg-white dark:bg-gray-900 font-medium text-sm">
-              <span className="flex h-3 w-3 mr-2">
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500 animate-pulse"></span>
-              </span>
-              Available to work
+      {/* Background glow blobs */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-500/10 dark:bg-blue-500/15 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-blue-400/10 dark:bg-blue-400/10 rounded-full blur-[80px]" />
+      </div>
+
+      {/* Subtle grid overlay */}
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.03] dark:opacity-[0.05]"
+        style={{
+          backgroundImage:
+            'linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(to right, #3b82f6 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+        }}
+      />
+
+      <div className="max-w-3xl mx-auto text-center space-y-6">
+        {/* Badge */}
+        <motion.div
+          className="flex justify-center"
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          custom={0.1}
+        >
+          <span className="inline-flex items-center gap-2 border border-blue-500/40 bg-blue-500/5 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-medium px-4 py-1.5 rounded-full tracking-wide uppercase">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
             </span>
-          </div>
-          <div className="space-y-3">
-            <h2 className="text-gray-600 dark:text-gray-400 text-lg font-medium animate-fade-in">
-              Full Stack Web Developer
-            </h2>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight animate-slide-up">
-              Hi, I'm <span className="text-blue-700">Raul</span>
-              <br />
-            </h1>
-          </div>
+            Available to work
+          </span>
+        </motion.div>
 
-          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto lg:mx-0 animate-fade-in">
-            I'm a web designer and developer based in the Philippines, I like to
-            create functional, visually appealing, and user-friendly digital
-            experiences.
-          </p>
+        {/* Headline */}
+        <div className="space-y-2">
+          <motion.p
+            className="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-widest uppercase"
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={0.2}
+          >
+            Full Stack Web Developer
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-4">
-            <a
-              href="#contact"
-              className="w-full sm:w-auto px-8 py-4 bg-blue-700 hover:bg-blue-600 text-white rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-blue-700/30 transition-all duration-300 animate-fade-in"
-              aria-label="Get in touch with Raul"
-            >
-              <FiMail className="w-5 h-5" />
-              Let's Talk
-            </a>
-            <a
-              href="/barquilla_raul_resume.pdf"
-              download
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 border rounded-xl border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-700 dark:hover:text-blue-500 flex items-center justify-center gap-2 transition-all duration-300 animate-fade-in"
-              aria-label="Download Raul's resume in PDF format"
-            >
-              View Resume
-            </a>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-6 justify-center lg:justify-start pt-6 animate-fade-in">
-            <a
-              href="https://github.com/hakkuuuu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-              aria-label="Visit my GitHub profile"
-            >
-              <FiGithub className="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/raul-b-barquilla-jr-756058373"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-              aria-label="Visit my LinkedIn profile"
-            >
-              <FiLinkedin className="w-6 h-6" />
-            </a>
-            <a
-              href="mailto:raulbarquilla003@gmail.com"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-              aria-label="Send me an email"
-            >
-              <FiMail className="w-6 h-6" />
-            </a>
-          </div>
+          <motion.h1
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-[1.1] tracking-tight"
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={0.3}
+          >
+            Hi, I'm{' '}
+            <span className="relative inline-block">
+              <span className="text-blue-600 dark:text-blue-500">Raul</span>
+              {/* Underline accent */}
+              <motion.span
+                className="absolute -bottom-1 left-0 h-[3px] bg-blue-600/40 dark:bg-blue-500/40 rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: '100%' }}
+                transition={{ duration: 0.6, delay: 0.8, ease: 'easeOut' }}
+              />
+            </span>
+          </motion.h1>
         </div>
 
-        {/* Right Content - Profile Image */}
-        <div className="flex-1 relative max-w-md lg:max-w-none animate-fade-in">
-          <div className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto">
-            {/* Background Effects */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur-3xl opacity-20 dark:opacity-30 animate-pulse"></div>
+        {/* Description */}
+        <motion.p
+          className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto leading-relaxed"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.45}
+        >
+          I'm a web designer and full-stack developer based in the Philippines,
+          building functional, visually appealing, and user-friendly digital
+          experiences.
+        </motion.p>
 
-            {/* Circular Border */}
-            <div className="absolute inset-0 border-2 border-gray-200 dark:border-gray-700 rounded-full"></div>
+        {/* CTA Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.55}
+        >
+          <a
+            href="#contact"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-xl shadow-lg shadow-blue-600/25 transition-all duration-200 hover:shadow-blue-500/30 hover:-translate-y-0.5"
+          >
+            <FiMail className="w-4 h-4" />
+            Let's Talk
+            <FiArrowDownRight className="w-4 h-4 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-200" />
+          </a>
+          <a
+            href="/barquilla_raul_resume.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-gray-200 dark:border-white/10 bg-white/60 dark:bg-white/5 text-gray-800 dark:text-gray-200 text-sm font-medium rounded-xl backdrop-blur-sm hover:bg-gray-50 dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 hover:-translate-y-0.5 transition-all duration-200"
+          >
+            View Resume
+          </a>
+        </motion.div>
 
-            {/* Image Container */}
-            <div className="absolute inset-4 bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-gray-900 rounded-full p-2">
-              <div className="relative w-full h-full rounded-full overflow-hidden">
-                <Image
-                  src={assets.hero_img}
-                  alt="Raul Barquilla Jr.'s Profile Picture"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 256px, 320px"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Social Links */}
+        <motion.div
+          className="flex items-center justify-center gap-4 pt-2"
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          custom={0.7}
+        >
+          {[
+            {
+              href: 'https://github.com/hakkuuuu',
+              icon: FiGithub,
+              label: 'GitHub',
+            },
+            {
+              href: 'https://www.linkedin.com/in/raul-b-barquilla-jr-756058373',
+              icon: FiLinkedin,
+              label: 'LinkedIn',
+            },
+            {
+              href: 'mailto:raulbarquilla003@gmail.com',
+              icon: FiMail,
+              label: 'Email',
+            },
+          ].map(({ href, icon: Icon, label }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith('mailto') ? undefined : '_blank'}
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="p-2.5 rounded-xl text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5"
+            >
+              <Icon className="w-5 h-5" />
+            </a>
+          ))}
+          {/* Divider */}
+          <span className="w-px h-5 bg-gray-200 dark:bg-white/10" />
+          <span className="text-xs text-gray-400 dark:text-gray-500 tracking-wide">
+            Philippines 🇵🇭
+          </span>
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-[#070707] to-transparent -z-10 pointer-events-none" />
+        </motion.div>
       </div>
     </section>
   );
