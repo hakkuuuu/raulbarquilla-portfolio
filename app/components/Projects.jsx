@@ -18,17 +18,17 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative w-full px-6 py-28 flex flex-col items-center overflow-hidden"
+      className="relative w-full px-4 sm:px-6 py-16 sm:py-28 flex flex-col items-center overflow-hidden"
     >
       {/* Background glow */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/10 rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[280px] sm:w-[500px] h-[280px] sm:h-[500px] bg-blue-500/10 dark:bg-blue-500/10 rounded-full blur-[100px] sm:blur-[120px]" />
       </div>
 
       {/* Header */}
-      <div className="max-w-3xl mx-auto text-center w-full">
+      <div className="max-w-3xl mx-auto text-center w-full px-2">
         <motion.p
-          className="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-widest uppercase mb-3"
+          className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400 tracking-widest uppercase mb-3"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -39,7 +39,7 @@ const Projects = () => {
         </motion.p>
 
         <motion.h2
-          className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white tracking-tight mb-4"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight mb-4"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -51,7 +51,7 @@ const Projects = () => {
         </motion.h2>
 
         <motion.p
-          className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto leading-relaxed"
+          className="text-sm sm:text-base lg:text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto leading-relaxed"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -65,7 +65,7 @@ const Projects = () => {
 
       {/* Project Grid */}
       <motion.ul
-        className="grid grid-cols-3 gap-5 max-w-5xl mx-auto mt-14 w-full"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 max-w-5xl mx-auto mt-10 sm:mt-14 w-full"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -76,7 +76,7 @@ const Projects = () => {
               key={idx}
               variants={fadeUp}
               custom={0.1 * idx + 0.3}
-              className="group bg-white/60 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/10 rounded-2xl p-6 shadow-sm hover:shadow-blue-100 dark:hover:shadow-blue-900/20 hover:border-blue-200 dark:hover:border-blue-500/20 transition-all duration-300 backdrop-blur-sm flex flex-col gap-4"
+              className="group bg-white/60 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/10 rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-blue-100 dark:hover:shadow-blue-900/20 hover:border-blue-200 dark:hover:border-blue-500/20 transition-all duration-300 backdrop-blur-sm flex flex-col gap-4"
             >
               {/* Title + actions */}
               <div className="flex items-start justify-between gap-3">
