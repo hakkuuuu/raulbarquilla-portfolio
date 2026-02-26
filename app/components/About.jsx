@@ -50,19 +50,19 @@ const About = () => {
 
         {/* Bio */}
         <motion.p
-          className="text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto"
+          className="text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           custom={0.2}
         >
-          I'm Raul B. Barquilla Jr., a 24-year-old fullstack developer with a
-          year of experience building user-friendly and visually engaging web
-          apps. I specialize in React, Next.js, TypeScript, and Tailwind CSS on
-          the frontend, and Node.js, Express, Docker, MongoDB, and PostgreSQL on
-          the backend. I focus on writing clean, maintainable code and
-          delivering seamless user experiences.
+          I'm Raul B. Barquilla Jr., a 24-year-old fullstack developer with
+          years of experience building user-friendly and visually engaging web
+          apps. I specialize in React Vite, Next.js, TypeScript, and TailwindCSS
+          on the frontend, and Laravel, Node.js, Express, MongoDB, and
+          PostgreSQL on the backend. I focus on writing clean, maintainable code
+          and delivering seamless user experiences.
         </motion.p>
       </div>
 

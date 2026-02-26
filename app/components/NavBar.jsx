@@ -61,7 +61,7 @@ const NavBar = () => {
             </span>
           </a>
 
-          <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 bg-gray-100/80 dark:bg-white/5 backdrop-blur-sm border border-gray-200/80 dark:border-white/10 rounded-full px-2 py-1.5">
+          <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 bg-gray-100/80 dark:bg-black/20 backdrop-blur-sm border border-gray-200/80 dark:border-white/10 rounded-full px-2 py-1.5">
             {NAV_ITEMS.map((item) => (
               <li key={item}>
                 <a
