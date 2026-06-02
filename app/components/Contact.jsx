@@ -6,12 +6,19 @@ import { motion } from 'framer-motion';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const WEB3FORMS_API_URL = process.env.NEXT_PUBLIC_WEB3FORMS_API_URL;
+const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay },
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.46, 0.45, 0.94],
+      delay,
+    },
   }),
 };
 
@@ -20,17 +27,25 @@ const Contact = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    if (!WEB3FORMS_ACCESS_KEY || !WEB3FORMS_API_URL) {
+      toast.error('Missing Web3Forms environment variables.');
+      return;
+    }
+
     setIsLoading(true);
 
     const formData = new FormData(event.target);
-    formData.append('access_key', 'e7f7e333-5af4-4569-999a-eac44cfb1db6');
+    formData.append('access_key', WEB3FORMS_ACCESS_KEY);
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(WEB3FORMS_API_URL, {
         method: 'POST',
         body: formData,
       });
+
       const data = await response.json();
+
       if (data.success) {
         toast.success('Message sent successfully!');
         event.target.reset();
@@ -38,6 +53,7 @@ const Contact = () => {
         toast.error(`Error: ${data.message}`);
       }
     } catch (error) {
+      console.error(error);
       toast.error('An unexpected error occurred!');
     } finally {
       setIsLoading(false);
@@ -115,6 +131,7 @@ const Contact = () => {
                 <div className="w-9 h-9 rounded-xl bg-white/60 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/10 flex items-center justify-center group-hover:bg-blue-50 dark:group-hover:bg-blue-500/10 group-hover:border-blue-200 dark:group-hover:border-blue-500/20 transition-all duration-200 shrink-0 shadow-sm backdrop-blur-sm">
                   <Icon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 </div>
+
                 <p className="text-sm text-gray-600 dark:text-gray-300 font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                   {title}
                 </p>
@@ -140,12 +157,13 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                     {field.label}
                   </label>
+
                   {field.type === 'textarea' ? (
                     <textarea
                       required
                       name={field.name}
                       placeholder={field.placeholder}
-                      rows="4"
+                      rows={4}
                       className="w-full text-sm px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-400 dark:focus:border-blue-500 transition-all duration-200 resize-none"
                     />
                   ) : (
@@ -178,7 +196,7 @@ const Contact = () => {
       <footer className="w-full border-t border-gray-200/60 dark:border-white/5">
         <div className="max-w-3xl mx-auto px-6 py-6 flex items-center justify-center">
           <span className="text-xs text-gray-400 dark:text-gray-600 tracking-wide">
-            © 2025 Raul Barquilla Jr. All rights reserved.
+            © 2026 Raul Barquilla Jr. All rights reserved.
           </span>
         </div>
       </footer>
