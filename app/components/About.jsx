@@ -57,7 +57,7 @@ const About = () => {
           viewport={{ once: true }}
           custom={0.2}
         >
-          I'm Raul B. Barquilla Jr., a 24-year-old fullstack developer with
+          I'm Raul B. Barquilla Jr., a 25-year-old fullstack developer with
           years of experience building user-friendly and visually engaging web
           apps. I specialize in React Vite, Next.js, TypeScript, and TailwindCSS
           on the frontend, and Laravel, Node.js, Express, MongoDB, and
