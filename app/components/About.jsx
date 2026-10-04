@@ -1,99 +1,45 @@
-'use client';
+import { about } from '../data/site';
+import Reveal from './ui/Reveal';
+import Section from './ui/Section';
+import ScrambleText from './motion/ScrambleText';
 
-import { infoList } from '@/assets/assets';
-import React from 'react';
-import { motion } from 'framer-motion';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay },
-  }),
-};
-
-const About = () => {
+/**
+ * Heading and bio in a narrow measure, then the facts as a four-cell strip
+ * with shared hairlines. Distinct from every other section: no cards, no
+ * split, no grid of equal boxes.
+ *
+ * Four facts fill a 2-column grid at sm and a 4-column grid at lg exactly.
+ * They enter left to right in sequence, matching the order they are read.
+ */
+export default function About() {
   return (
-    <section
-      id="about"
-      className="relative w-full px-6 py-28 flex flex-col items-center overflow-hidden"
-    >
-      {/* Background glow */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/10 rounded-full blur-[120px]" />
-      </div>
+    <Section id="about">
+      <Reveal from="left">
+        <p className="path-label mb-3">{about.path}</p>
+      </Reveal>
 
-      <div className="max-w-3xl mx-auto text-center w-full">
-        {/* Section label */}
-        <motion.p
-          className="text-sm font-medium text-gray-500 dark:text-gray-400 tracking-widest uppercase mb-3"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={0}
-        >
-          Introduction
-        </motion.p>
+      <h2 id="about-heading" aria-label={about.title} className="font-mono text-h2 text-fg">
+        <ScrambleText text={about.title} />
+      </h2>
 
-        <motion.h2
-          className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white tracking-tight mb-6"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={0.1}
-        >
-          About <span className="text-blue-600 dark:text-blue-500">me</span>
-        </motion.h2>
+      <Reveal from="left" delay={0.08}>
+        <div className="mt-4 flex max-w-prose flex-col gap-4 text-body text-fg-muted">
+          <p>{about.body}</p>
+          <p>{about.bodyExtra}</p>
+          <p>{about.bodyClose}</p>
+        </div>
+      </Reveal>
 
-        {/* Bio */}
-        <motion.p
-          className="text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={0.2}
-        >
-          I'm Raul B. Barquilla Jr., a 25-year-old fullstack developer with
-          years of experience building user-friendly and visually engaging web
-          apps. I specialize in React Vite, Next.js, TypeScript, and TailwindCSS
-          on the frontend, and Laravel, Node.js, Express, MongoDB, and
-          PostgreSQL on the backend. I focus on writing clean, maintainable code
-          and delivering seamless user experiences.
-        </motion.p>
-      </div>
-
-      {/* Info Cards */}
-      <motion.ul
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-14 w-full"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {infoList.map(({ icon: Icon, title, description }, index) => (
-          <motion.li
-            key={index}
-            variants={fadeUp}
-            custom={0.1 * index + 0.3}
-            className="group bg-white/60 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/10 rounded-2xl p-6 shadow-sm hover:shadow-blue-100 dark:hover:shadow-blue-900/20 hover:border-blue-200 dark:hover:border-blue-500/20 transition-all duration-300 backdrop-blur-sm cursor-pointer"
-          >
-            <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-500/10 flex items-center justify-center mb-4 group-hover:bg-blue-100 dark:group-hover:bg-blue-500/20 transition-colors duration-200">
-              <Icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+      <dl className="mt-10 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">
+        {about.facts.map((fact, i) => (
+          <Reveal key={fact.term} from="up" delay={i * 0.07} className="bg-page">
+            <div className="p-5">
+              <dt className="font-mono text-label uppercase text-fg-subtle">{fact.term}</dt>
+              <dd className="mt-3 text-body-sm text-fg">{fact.detail}</dd>
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm">
-              {title}
-            </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-              {description}
-            </p>
-          </motion.li>
+          </Reveal>
         ))}
-      </motion.ul>
-    </section>
+      </dl>
+    </Section>
   );
-};
-
-export default About;
+}

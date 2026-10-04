@@ -1,132 +1,79 @@
-'use client';
+import { personalProjects, professionalProjects, work } from '../data/site';
+import ProjectCard, { SPAN_CLASS } from './ProjectCard';
+import Reveal from './ui/Reveal';
+import Section from './ui/Section';
 
-import { projectList } from '@/assets/assets';
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94], delay },
-  }),
-};
-
-const Projects = () => {
+/**
+ * Two groups, because paid client work and personal projects answer different
+ * questions for a recruiter and should not be shuffled together.
+ *
+ * The personal group is a six-column bento. Spans come from the data and read
+ * 4+2, 3+3, 4+2 down the page, which gives the grid rhythm rather than one
+ * repeated tile size, and fills every row exactly with no empty cell.
+ *
+ * The span class sits on the Reveal wrapper, not the card, because the wrapper
+ * is the grid item. Tiles enter from the side of the grid they occupy.
+ *
+ * Mobile collapse is explicit: one column below `sm`, two equal columns from
+ * `sm`, and the authored spans only from `lg`, where a 2-of-6 tile is still
+ * wide enough to hold a screenshot.
+ */
+function Bento({ children }) {
   return (
-    <section
-      id="projects"
-      className="relative w-full px-4 sm:px-6 py-16 sm:py-28 flex flex-col items-center overflow-hidden"
-    >
-      {/* Background glow */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[280px] sm:w-[500px] h-[280px] sm:h-[500px] bg-blue-500/10 dark:bg-blue-500/10 rounded-full blur-[100px] sm:blur-[120px]" />
-      </div>
-
-      {/* Header */}
-      <div className="max-w-3xl mx-auto text-center w-full px-2">
-        <motion.p
-          className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400 tracking-widest uppercase mb-3"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={0}
-        >
-          Projects
-        </motion.p>
-
-        <motion.h2
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight mb-4"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={0.1}
-        >
-          My latest{' '}
-          <span className="text-blue-600 dark:text-blue-500">work</span>
-        </motion.h2>
-
-        <motion.p
-          className="text-sm sm:text-base lg:text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto leading-relaxed"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={0.2}
-        >
-          A showcase of my most recent projects demonstrating expertise in web
-          development, front-end design, and UI/UX.
-        </motion.p>
-      </div>
-
-      {/* Project Grid */}
-      <motion.ul
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 max-w-5xl mx-auto mt-10 sm:mt-14 w-full"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {projectList?.map(
-          ({ title, description, language, link, demo }, idx) => (
-            <motion.li
-              key={idx}
-              variants={fadeUp}
-              custom={0.1 * idx + 0.3}
-              className="group bg-white/60 dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/10 rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-blue-100 dark:hover:shadow-blue-900/20 hover:border-blue-200 dark:hover:border-blue-500/20 transition-all duration-300 backdrop-blur-sm flex flex-col gap-4"
-            >
-              {/* Title + actions */}
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white leading-snug">
-                  {title}
-                </h3>
-                <div className="flex items-center gap-2 shrink-0">
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    className="p-1.5 rounded-lg text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
-                  >
-                    <FiGithub className="w-4 h-4" />
-                  </a>
-                  <a
-                    href={demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Live Demo"
-                    className="p-1.5 rounded-lg text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 transition-all duration-200"
-                  >
-                    <FiExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed flex-1">
-                {description}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {language.map((lang, i) => (
-                  <span
-                    key={i}
-                    className="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 py-0.5 px-2.5 rounded-full"
-                  >
-                    {lang}
-                  </span>
-                ))}
-              </div>
-            </motion.li>
-          ),
-        )}
-      </motion.ul>
-    </section>
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5">
+      {children}
+    </div>
   );
-};
+}
 
-export default Projects;
+export default function Projects() {
+  return (
+    <Section id="projects" path={work.path} title={work.title} lead={work.lead}>
+      <div className="flex flex-col gap-14">
+        <div>
+          <Reveal from="left">
+            <div className="mb-5 border-t border-line pt-5">
+              <h3 className="font-mono text-label uppercase text-fg-subtle">
+                {work.professionalLabel}
+              </h3>
+              <p className="mt-2 max-w-prose text-body-sm text-fg-subtle">
+                {work.professionalNote}
+              </p>
+            </div>
+          </Reveal>
+
+          <Bento>
+            {professionalProjects.map((project, index) => (
+              <Reveal key={project.slug} from="up" className="lg:col-span-6">
+                <ProjectCard project={project} index={index} />
+              </Reveal>
+            ))}
+          </Bento>
+        </div>
+
+        <div>
+          <Reveal from="left">
+            <div className="mb-5 border-t border-line pt-5">
+              <h3 className="font-mono text-label uppercase text-fg-subtle">
+                {work.personalLabel}
+              </h3>
+            </div>
+          </Reveal>
+
+          <Bento>
+            {personalProjects.map((project, index) => (
+              <Reveal
+                key={project.slug}
+                from={index % 2 === 0 ? 'left' : 'right'}
+                delay={(index % 2) * 0.08}
+                className={SPAN_CLASS[project.span ?? 3]}
+              >
+                <ProjectCard project={project} index={index} />
+              </Reveal>
+            ))}
+          </Bento>
+        </div>
+      </div>
+    </Section>
+  );
+}

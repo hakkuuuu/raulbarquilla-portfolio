@@ -1,188 +1,283 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { useTheme } from '../context/ThemeContext';
-import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { List, X } from '@phosphor-icons/react';
+import { navItems, profile } from '../data/site';
+import ThemeToggle from './ThemeToggle';
 
-const NAV_ITEMS = ['Home', 'About', 'Skills', 'Projects', 'Contact'];
+const SECTION_IDS = navItems.map((item) => item.href.slice(1));
 
-const NavBar = () => {
-  const [isScroll, setIsScroll] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState('Home');
-  const sideMenuRef = useRef();
-  const { theme, toggleTheme } = useTheme();
+/**
+ * Fixed header. design_system.md section 15.
+ *
+ * Animation is GSAP only. Motion was removed from the project (ADR-018), so
+ * the underline is positioned imperatively rather than with a `layoutId`, and
+ * the drawer is a GSAP tween rather than AnimatePresence.
+ *
+ * The drawer stays mounted and is hidden with `inert`, which takes it out of
+ * the accessibility tree and the tab order without unmounting. That keeps the
+ * open and close animations symmetrical and avoids an exit-animation race.
+ *
+ * Scroll state comes from an IntersectionObserver sentinel, never a scroll
+ * listener. Taste Skill 5.D.
+ */
+export default function NavBar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const openMenu = () => setIsMenuOpen(true);
-  const closeMenu = () => setIsMenuOpen(false);
+  const sentinelRef = useRef(null);
+  const listRef = useRef(null);
+  const underlineRef = useRef(null);
+  const drawerRef = useRef(null);
+  const scrimRef = useRef(null);
+  const triggerRef = useRef(null);
 
+  /* Header background: a 1px sentinel at the top of the document. When it
+     leaves the viewport the page has scrolled. No per-frame work. */
   useEffect(() => {
-    const handleScroll = () => setIsScroll(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const el = sentinelRef.current;
+    if (!el) return undefined;
+    const io = new IntersectionObserver(([entry]) => setScrolled(!entry.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
-  // Close menu on outside click
+  /* Scroll spy. A collapsed root at 45% of the viewport height; whichever
+     section crosses that line is the one being read. */
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (sideMenuRef.current && !sideMenuRef.current.contains(e.target)) {
-        closeMenu();
+    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean);
+    if (!sections.length) return undefined;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-45% 0px -55% 0px', threshold: 0 },
+    );
+    sections.forEach((section) => io.observe(section));
+    return () => io.disconnect();
+  }, []);
+
+  /* Slide the underline to the active item. Replaces Motion's layoutId. */
+  useEffect(() => {
+    const list = listRef.current;
+    const bar = underlineRef.current;
+    if (!list || !bar) return undefined;
+
+    let cancelled = false;
+
+    const move = async () => {
+      const target = list.querySelector(`a[href="#${active}"]`);
+      if (!target) return;
+      const left = target.offsetLeft;
+      const width = target.offsetWidth;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        bar.style.transform = `translateX(${left}px)`;
+        bar.style.width = `${width}px`;
+        bar.style.opacity = '1';
+        return;
+      }
+
+      const { gsap } = await import('gsap');
+      if (cancelled) return;
+      gsap.to(bar, { x: left, width, opacity: 1, duration: 0.35, ease: 'power3.out' });
+    };
+
+    move();
+    window.addEventListener('resize', move);
+    return () => {
+      cancelled = true;
+      window.removeEventListener('resize', move);
+    };
+  }, [active]);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  /* Drawer: GSAP slide, focus trap, Escape, scroll lock, focus restore. */
+  useEffect(() => {
+    const drawer = drawerRef.current;
+    const scrim = scrimRef.current;
+    if (!drawer || !scrim) return undefined;
+
+    let cancelled = false;
+
+    (async () => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const { gsap } = await import('gsap');
+      if (cancelled) return;
+      const duration = reduce ? 0 : 0.3;
+      gsap.to(scrim, { opacity: menuOpen ? 1 : 0, duration, ease: 'power2.out' });
+      gsap.to(drawer, { xPercent: menuOpen ? 0 : 100, duration, ease: 'power3.out' });
+    })();
+
+    if (!menuOpen) {
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    const trigger = triggerRef.current;
+    const focusable = () =>
+      Array.from(drawer.querySelectorAll('a[href], button:not([disabled])'));
+
+    focusable()[0]?.focus();
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const items = focusable();
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
-    if (isMenuOpen) document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isMenuOpen]);
+
+    document.addEventListener('keydown', onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      cancelled = true;
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      trigger?.focus();
+    };
+  }, [menuOpen]);
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-500 ${
-          isScroll
-            ? 'bg-white/70 dark:bg-[#070707]/70 backdrop-blur-xl border-b border-gray-200/60 dark:border-white/5 shadow-sm shadow-black/5'
-            : 'bg-transparent border-b border-transparent'
+      <div ref={sentinelRef} aria-hidden="true" className="absolute top-0 h-px w-full" />
+
+      <header
+        className={`fixed inset-x-0 top-0 z-header border-b transition-colors duration-base ease-inout ${
+          scrolled
+            ? 'border-line bg-translucent backdrop-blur-md'
+            : 'border-transparent bg-transparent'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        <div className="container-page flex h-16 items-center justify-between gap-4">
           <a
             href="#home"
-            className="flex items-center gap-2 font-semibold text-sm text-gray-900 dark:text-white shrink-0 group"
+            className="flex shrink-0 items-center gap-2 rounded-md text-body-sm font-semibold text-fg"
           >
-            <div className="w-7 h-7 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-              <Image
-                src="/logo.png"
-                alt="dev.haku Logo"
-                width={18}
-                height={18}
-              />
-            </div>
-            <span className="tracking-tight">
-              dev<span className="text-blue-600 font-bold">.haku</span>
+            <Image src="/logo-square.png" alt="" width={20} height={20} aria-hidden="true" />
+            <span>
+              dev<span className="text-accent">.haku</span>
             </span>
+            <span className="sr-only">{profile.shortName}, back to top</span>
           </a>
 
-          <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 bg-gray-100/80 dark:bg-black/20 backdrop-blur-sm border border-gray-200/80 dark:border-white/10 rounded-full px-2 py-1.5">
-            {NAV_ITEMS.map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setActiveItem(item)}
-                  className={`relative text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 ${
-                    activeItem === item
-                      ? 'bg-white dark:bg-white/10 text-blue-600 dark:text-blue-400 shadow-sm shadow-black/10'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/5'
-                  }`}
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <nav aria-label="Sections" className="hidden md:block">
+            <ul ref={listRef} className="relative flex items-center gap-1">
+              {navItems.map((item) => {
+                const isActive = active === item.href.slice(1);
+                return (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      aria-current={isActive ? 'true' : undefined}
+                      className={`block rounded-md px-3 py-2 text-body-sm transition-colors duration-fast ease-inout ${
+                        isActive ? 'text-fg' : 'text-fg-muted hover:text-fg'
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
+              <span
+                ref={underlineRef}
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-px left-0 h-0.5 w-0 bg-accent opacity-0"
+              />
+            </ul>
+          </nav>
 
-          <div className="flex items-center gap-2 shrink-0">
-            {/* Theme Toggle */}
+          <div className="flex shrink-0 items-center gap-1">
+            <ThemeToggle />
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              ref={triggerRef}
+              type="button"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open navigation menu"
+              aria-expanded={menuOpen}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md text-fg-muted transition-colors duration-fast ease-inout hover:bg-sunken hover:text-fg active:translate-y-px md:hidden"
             >
-              {theme === 'dark' ? (
-                <FiSun className="w-4 h-4" />
-              ) : (
-                <FiMoon className="w-4 h-4" />
-              )}
-            </button>
-
-            {/* Mobile Hamburger */}
-            <button
-              onClick={openMenu}
-              className="md:hidden p-2 rounded-full text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
-              aria-label="Open menu"
-            >
-              <FiMenu className="w-5 h-5" />
+              <List size={20} aria-hidden="true" />
             </button>
           </div>
         </div>
-      </nav>
+      </header>
 
-      {/* Mobile Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-          isMenuOpen
-            ? 'opacity-100 pointer-events-auto'
-            : 'opacity-0 pointer-events-none'
-        }`}
+        ref={scrimRef}
         onClick={closeMenu}
+        aria-hidden="true"
+        className={`fixed inset-0 z-scrim bg-black/50 opacity-0 md:hidden ${
+          menuOpen ? '' : 'pointer-events-none'
+        }`}
       />
 
       <aside
-        ref={sideMenuRef}
-        className={`fixed top-0 right-0 bottom-0 z-50 w-72 bg-white dark:bg-[#0c0c0c] border-l border-gray-200 dark:border-white/10 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        ref={drawerRef}
+        inert={menuOpen ? undefined : 'true'}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site navigation"
+        className="fixed inset-y-0 right-0 z-drawer flex w-72 translate-x-full flex-col border-l border-line bg-surface md:hidden"
       >
-        {/* Sidebar Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 dark:border-white/10">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center shadow-md shadow-blue-500/30">
-              <Image
-                src="/logo.png"
-                alt="dev.haku Logo"
-                width={16}
-                height={16}
-              />
-            </div>
-            <span className="font-semibold text-sm text-gray-900 dark:text-white tracking-tight">
-              dev<span className="text-blue-600 font-bold">.haku</span>
-            </span>
-          </div>
+        <div className="flex h-16 items-center justify-between border-b border-line px-5">
+          <span className="text-body-sm font-semibold text-fg">
+            dev<span className="text-accent">.haku</span>
+          </span>
           <button
+            type="button"
             onClick={closeMenu}
-            className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
-            aria-label="Close menu"
+            aria-label="Close navigation menu"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-fg-muted transition-colors duration-fast ease-inout hover:bg-sunken hover:text-fg active:translate-y-px"
           >
-            <FiX className="w-5 h-5" />
+            <X size={20} aria-hidden="true" />
           </button>
         </div>
 
-        {/* Sidebar Nav */}
-        <nav className="flex-1 px-4 py-6 flex flex-col gap-1">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={() => {
-                setActiveItem(item);
-                closeMenu();
-              }}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
-                activeItem === item
-                  ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400'
-                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white'
-              }`}
-            >
-              {item}
-            </a>
-          ))}
+        <nav aria-label="Sections" className="flex flex-col gap-1 p-4">
+          {navItems.map((item) => {
+            const isActive = active === item.href.slice(1);
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                aria-current={isActive ? 'true' : undefined}
+                className={`flex items-center gap-3 rounded-md px-4 py-3 text-body-sm transition-colors duration-fast ease-inout ${
+                  isActive
+                    ? 'bg-sunken font-medium text-fg'
+                    : 'text-fg-muted hover:bg-sunken hover:text-fg'
+                }`}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`h-4 w-0.5 rounded-sm ${isActive ? 'bg-accent' : 'bg-transparent'}`}
+                />
+                {item.label}
+              </a>
+            );
+          })}
         </nav>
-
-        {/* Sidebar Footer */}
-        <div className="px-6 py-5 border-t border-gray-100 dark:border-white/10">
-          <button
-            onClick={toggleTheme}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
-          >
-            {theme === 'dark' ? (
-              <FiSun className="w-4 h-4" />
-            ) : (
-              <FiMoon className="w-4 h-4" />
-            )}
-            {theme === 'dark' ? 'Light mode' : 'Dark mode'}
-          </button>
-        </div>
       </aside>
     </>
   );
-};
-
-export default NavBar;
+}

@@ -2,80 +2,434 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Poppins, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color: whitesmoke;
-  background: #070707;
+/* ---------------------------------------------------------------------------
+   Design tokens. Authority: design_system.md section 4.
+   Components consume these through the semantic Tailwind names only.
+   Never write a hex value in a component.
+--------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  /* Deeper than a near-white page. A blank white field is the thing the
+     terminal direction is trying to avoid; this still clears AA comfortably. */
+  --bg: #ececed;
+  --surface: #f6f6f7;
+  --surface-alt: #e2e2e5;
+  --surface-sunken: #dededf;
+  --surface-translucent: rgb(236 236 237 / 0.84);
+
+  --border: #d2d2d6;
+  --border-strong: #8a8a93;
+
+  --text: #16161a;
+  --text-muted: #4b4b54;
+  --text-subtle: #63636d;
+
+  --accent: #1d4ed8;
+  --accent-alt: #1d4ed8;
+  --accent-weak: #dde5fa;
+
+  --invert-bg: #16161a;
+  --invert-text: #f6f6f7;
+
+  --danger: #b42318;
+
+  /* Texture. One global layer, not per-section decoration. */
+  --grid-line: rgb(22 22 26 / 0.075);
+  --grid-size: 56px;
+
+  --shadow-sm: 0 1px 2px rgb(22 22 26 / 0.05);
+  --shadow-md: 0 4px 12px rgb(22 22 26 / 0.07), 0 1px 2px rgb(22 22 26 / 0.05);
+
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 500ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --header-h: 56px;
 }
 
-.input-field, .textarea-field {
-  @apply w-full rounded-xl px-5 py-4 bg-white dark:bg-[#181818] text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition;
+.dark {
+  color-scheme: dark;
+
+  --bg: #0a0a0c;
+  --surface: #131317;
+  --surface-alt: #121216;
+  --surface-sunken: #1a1a1f;
+  --surface-translucent: rgb(10 10 12 / 0.84);
+
+  --border: #26262c;
+  --border-strong: #5e5e68;
+
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --text-subtle: #83838d;
+
+  --accent: #6e97f7;
+  --accent-alt: #6e97f7;
+  --accent-weak: #161c2e;
+
+  --invert-bg: #fafafa;
+  --invert-text: #0a0a0c;
+
+  --danger: #f97066;
+
+  --grid-line: rgb(255 255 255 / 0.06);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 14px rgb(0 0 0 / 0.5);
 }
 
-@layer components {
-  .reveal {
-    will-change: opacity, transform;
+
+/* ---------------------------------------------------------------------------
+   Terminal themes. Four of them, each applied as `.dark .t .t-<name>`, so every
+   `dark:` variant still resolves and only token values change.
+
+   Each theme is MONOCHROMATIC: one accent, and text tinted toward it. The
+   earlier single theme ran green, blue, amber and red together as a syntax
+   palette; this is the disciplined version, and it holds the one-accent rule
+   in design_system.md section 4.3 that every other theme obeys.
+
+   Shared chrome lives in `.t`; only colour lives in the variant.
+--------------------------------------------------------------------------- */
+
+.t {
+  color-scheme: dark;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.6);
+  --shadow-md: 0 4px 14px rgb(0 0 0 / 0.7);
+}
+
+.t-green {
+  --bg: #000000;
+  --surface: #0b0b0d;
+  --surface-alt: #060607;
+  --surface-sunken: #121215;
+  --surface-translucent: rgb(0 0 0 / 0.86);
+
+  --border: #1b2a21;
+  --border-strong: #3d5a49;
+
+  --text: #ddf5e6;
+  --text-muted: #8fae9c;
+  --text-subtle: #6f9780;
+
+  --accent: #3bd671;
+  --accent-alt: #3bd671;
+  --accent-weak: #0c1a12;
+
+  --invert-bg: #3bd671;
+  --invert-text: #000000;
+
+  --danger: #ff6b5e;
+
+  --grid-line: rgb(59 214 113 / 0.07);
+}
+
+.t-blue {
+  --bg: #000000;
+  --surface: #0b0b0d;
+  --surface-alt: #060607;
+  --surface-sunken: #121215;
+  --surface-translucent: rgb(0 0 0 / 0.86);
+
+  --border: #16212e;
+  --border-strong: #3f5771;
+
+  --text: #dceaff;
+  --text-muted: #92a8c4;
+  --text-subtle: #7b93ad;
+
+  --accent: #5ba8ff;
+  --accent-alt: #5ba8ff;
+  --accent-weak: #0d1726;
+
+  --invert-bg: #5ba8ff;
+  --invert-text: #000000;
+
+  --danger: #ff6b5e;
+
+  --grid-line: rgb(91 168 255 / 0.07);
+}
+
+.t-amber {
+  --bg: #000000;
+  --surface: #0b0b0d;
+  --surface-alt: #060607;
+  --surface-sunken: #121215;
+  --surface-translucent: rgb(0 0 0 / 0.86);
+
+  --border: #2a2215;
+  --border-strong: #5e5033;
+
+  --text: #fdecd4;
+  --text-muted: #c0a888;
+  --text-subtle: #a89170;
+
+  --accent: #ffb454;
+  --accent-alt: #ffb454;
+  --accent-weak: #241a0c;
+
+  --invert-bg: #ffb454;
+  --invert-text: #000000;
+
+  --danger: #ff6b5e;
+
+  --grid-line: rgb(255 180 84 / 0.07);
+}
+
+.t-red {
+  --bg: #000000;
+  --surface: #0b0b0d;
+  --surface-alt: #060607;
+  --surface-sunken: #121215;
+  --surface-translucent: rgb(0 0 0 / 0.86);
+
+  --border: #2b1a18;
+  --border-strong: #5f403c;
+
+  --text: #ffe2de;
+  --text-muted: #c29a95;
+  --text-subtle: #ab8782;
+
+  --accent: #ff6b5e;
+  --accent-alt: #ff6b5e;
+  --accent-weak: #260f0d;
+
+  --invert-bg: #ff6b5e;
+  --invert-text: #000000;
+
+  --danger: #ff6b5e;
+
+  --grid-line: rgb(255 107 94 / 0.07);
+}
+
+/* ---------------------------------------------------------------------------
+   Base layer
+--------------------------------------------------------------------------- */
+
+@layer base {
+  * {
+    border-color: var(--border);
   }
 
-  .reveal.visible {
-    opacity: 1;
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    background-color: var(--bg);
+  }
+
+  body {
+    position: relative;
+    background-color: transparent;
+    color: var(--text);
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* The one background effect on the site: a fixed engineering grid behind
+     all content. Fixed and pointer-events-none, so it never repaints while
+     scrolling and never intercepts input (Taste Skill 6.E). One layer for the
+     whole page rather than decoration bolted onto each section. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+  }
+
+  /* Alternating section ground, so no band of the page is a blank field.
+     Both values stay inside the active theme family: the page never inverts
+     mid-scroll (design_system.md section 18, theme lock). */
+  main > section:nth-of-type(even) {
+    background-color: var(--surface-alt);
+  }
+
+  section[id] {
+    scroll-margin-top: calc(var(--header-h) + 16px);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--invert-text);
+  }
+
+  .dark ::selection {
+    color: var(--bg);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Primitives
+--------------------------------------------------------------------------- */
+
+@layer components {
+  /* Tighter gutters than the editorial build. DENSITY 8 is a cockpit, not a
+     gallery: content runs closer to the rules that organise it. */
+  .container-page {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Mono path label, the section marker for the terminal direction. */
+  .path-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5ch;
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--text-subtle);
+  }
+
+  .path-label::before {
+    content: '~/';
+    color: var(--accent);
+  }
+
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 70;
+    padding: 0.625rem 1rem;
+    background-color: var(--invert-bg);
+    color: var(--invert-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transform: translateY(-200%);
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  .skip-link:focus-visible {
     transform: translateY(0);
   }
 }
 
-@layer utilities {
-  @keyframes blink {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
+/* ---------------------------------------------------------------------------
+   Motion start states.
 
-  .animate-blink {
-    animation: blink 0.8s step-end infinite;
-  }
+   Gated on `js-motion`, which the pre-paint script sets only when the user has
+   NOT asked for reduced motion. No JS, or reduced motion, and the class is
+   absent, so none of this applies and all content renders visible. That is the
+   whole reason the hidden state is not inline. See ADR-014 and ADR-019.
+--------------------------------------------------------------------------- */
 
-  @keyframes loading {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(250%);
-    }
-  }
-
-  .animate-loading-bar {
-    animation: loading 2s ease-in-out infinite;
-  }
-  @layer utilities {
-    .hover-glow {
-      transition: transform 0.3s ease, box-shadow 0.3s ease,
-        border-color 0.3s ease, opacity 0.3s ease;
-    }
-
-    .hover-glow:hover {
-      box-shadow: 0px 0px 15px rgba(59, 130, 246, 0.6); /* 60% opacity */
-      border-color: rgba(59, 130, 246, 0.6); /* 60% opacity */
-    }
-  }
+.js-motion [data-reveal] {
+  opacity: 0;
 }
 
-/* Utility classes for repeatable UI patterns */
-.section-container {
-  @apply w-full px-4 sm:px-8 lg:px-16 pt-28 pb-24 max-w-7xl mx-auto;
+.js-motion [data-reveal='up'] {
+  transform: translateY(18px);
 }
-.section-heading {
-  @apply text-center text-5xl font-bold text-gray-900 dark:text-white mb-6;
+
+.js-motion [data-reveal='down'] {
+  transform: translateY(-18px);
 }
-.card {
-  @apply bg-gray-50 dark:bg-[#0F0F0F] rounded-xl border border-gray-200 dark:border-gray-700 shadow transition;
+
+.js-motion [data-reveal='left'] {
+  transform: translateX(-32px);
 }
-.primary-btn {
-  @apply bg-blue-700 hover:bg-blue-600 text-white rounded-xl px-8 py-4 shadow-lg shadow-blue-700/30 transition-all duration-300 font-semibold flex items-center justify-center gap-2;
+
+.js-motion [data-reveal='right'] {
+  transform: translateX(32px);
 }
-.secondary-btn {
-  @apply border rounded-xl border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-700 dark:hover:text-blue-500 flex items-center justify-center gap-2 transition-all duration-300;
+
+.js-motion [data-hero-item] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+/* Masked reveals. The wrapper clips, the single child slides in from outside
+   the clip edge. `pb` reserves room for descenders, which an overflow-hidden
+   wrapper would otherwise shear off the bottom of a heading. */
+[data-mask],
+[data-hero-mask] {
+  overflow: hidden;
+}
+
+[data-mask] > *,
+[data-hero-mask] > * {
+  padding-bottom: 0.12em;
+}
+
+.js-motion [data-mask='up'] > * {
+  transform: translateY(100%);
+}
+
+.js-motion [data-mask='left'] > * {
+  transform: translateX(-100%);
+}
+
+.js-motion [data-mask='right'] > * {
+  transform: translateX(100%);
+}
+
+.js-motion [data-hero-mask] > * {
+  transform: translateY(100%);
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion. Every transform and transition collapses.
+--------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal],
+  [data-mask] > *,
+  [data-hero-mask] > *,
+  [data-hero-item] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .media-zoom {
+    transform: none !important;
+  }
+
+  /* The falling mark is purely playful and scroll-scrubbed, so under reduced
+     motion it has no job. Removed outright rather than left in the DOM at
+     opacity 0, which reads as a stranded element to anything auditing it. */
+  [data-falling-mark] {
+    display: none !important;
+  }
 }
