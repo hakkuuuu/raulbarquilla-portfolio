@@ -15,7 +15,7 @@ export default function SiteFooter() {
       <div className="wrap flex flex-col gap-8 pb-10 pt-12">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-start">
           <div>
-            <p className="pixel text-[1.4rem]">dev.haku</p>
+            <p className="pixel text-[1.4rem]">{profile.brand}</p>
             <p className="mt-2 max-w-[38ch] text-[0.92rem] text-night-muted">
               {profile.role} in {profile.location}.
             </p>

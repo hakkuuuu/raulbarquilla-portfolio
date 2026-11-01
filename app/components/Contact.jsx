@@ -1,6 +1,5 @@
 import {
   ArrowUpRight,
-  BehanceLogo,
   EnvelopeSimple,
   FacebookLogo,
   GithubLogo,
@@ -15,7 +14,6 @@ const ICONS = {
   email: EnvelopeSimple,
   github: GithubLogo,
   linkedin: LinkedinLogo,
-  behance: BehanceLogo,
   instagram: InstagramLogo,
   facebook: FacebookLogo,
 };
@@ -40,11 +38,11 @@ export default function Contact() {
         </a>
       </Reveal>
 
-      <ul className="mx-auto mt-12 grid max-w-[880px] gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mx-auto mt-12 grid max-w-[640px] gap-3 sm:grid-cols-2">
         {rest.map(({ icon, label, handle, href }, i) => {
           const Icon = ICONS[icon];
           return (
-            <Reveal as="li" key={label} delay={(i % 3) * 0.05}>
+            <Reveal as="li" key={label} delay={(i % 2) * 0.05}>
               <a
                 href={href}
                 target="_blank"

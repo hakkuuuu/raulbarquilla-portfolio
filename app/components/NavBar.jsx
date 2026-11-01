@@ -85,7 +85,7 @@ export default function NavBar() {
         <div className="wrap flex h-16 items-center justify-between gap-4">
           <a href="#home" className="flex shrink-0 items-center gap-2.5 text-ink">
             <BrandMark size={24} />
-            <span className="pixel text-[0.95rem]">dev.haku</span>
+            <span className="pixel text-[0.95rem]">{profile.brand}</span>
             <span className="sr-only">{profile.shortName}, back to top</span>
           </a>
 

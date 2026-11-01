@@ -11,7 +11,7 @@
 export const profile = {
   name: 'Raul B. Barquilla Jr.',
   shortName: 'Raul Barquilla Jr.',
-  brand: 'dev.haku',
+  brand: 'Raul Barquilla',
   role: 'AI & full-stack engineer',
   location: 'Albay, Philippines',
   email: 'raulbarquilla003@gmail.com',
@@ -39,7 +39,7 @@ export const navItems = [
  * under the 20-word cap.
  */
 export const hero = {
-  promptUser: 'raul@dev.haku',
+  promptUser: 'raul@barquilla',
   promptCommand: 'whoami',
   headlineBefore: 'I build ',
   headlineAccent: 'production',
@@ -340,7 +340,6 @@ export const channels = [
   { icon: 'email', label: 'Email', handle: profile.email, href: `mailto:${profile.email}` },
   { icon: 'github', label: 'GitHub', handle: 'hakkuuuu', href: 'https://github.com/hakkuuuu' },
   { icon: 'linkedin', label: 'LinkedIn', handle: 'raulbjr', href: 'https://www.linkedin.com/in/raulbjr/' },
-  { icon: 'behance', label: 'Behance', handle: 'raulbarquillajr', href: 'https://behance.net/raulbarquillajr' },
   { icon: 'instagram', label: 'Instagram', handle: 'hqkuuuuu', href: 'https://instagram.com/hqkuuuuu' },
   { icon: 'facebook', label: 'Facebook', handle: 'raulbarquillajr', href: 'https://www.facebook.com/raulbarquillajr' },
 ];

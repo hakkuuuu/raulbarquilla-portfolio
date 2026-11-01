@@ -1,7 +1,10 @@
+import { BACKGROUND, pixels } from './brandPixels.mjs';
+
+const PIXELS = pixels();
+
 /**
- * The dev.haku mark: a pixel "H" on the accent square, drawn on a 9x9 grid
- * so it matches the Silkscreen wordmark. Accent and accent-ink do not change
- * between themes, so the mark reads the same in light and dark.
+ * The brand mark: a pixel-art night owl developer, drawn from the shared grid
+ * in brandPixels.mjs. The favicon is generated from the same grid.
  *
  * Decorative only. The link around it carries the accessible name.
  */
@@ -10,14 +13,16 @@ export default function BrandMark({ size = 24, className = '' }) {
     <svg
       width={size}
       height={size}
-      viewBox="0 0 9 9"
+      viewBox="0 0 16 16"
       shapeRendering="crispEdges"
       aria-hidden="true"
       focusable="false"
       className={className}
     >
-      <rect width="9" height="9" rx="1.5" fill="var(--accent)" />
-      <path d="M2 2h1v5H2zM6 2h1v5H6zM3 4h3v1H3z" fill="var(--accent-ink)" />
+      <rect width="16" height="16" rx="3" fill={BACKGROUND} />
+      {PIXELS.map(({ x, y, fill }) => (
+        <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill={fill} />
+      ))}
     </svg>
   );
 }

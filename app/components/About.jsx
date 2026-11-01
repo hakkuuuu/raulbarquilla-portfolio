@@ -27,7 +27,7 @@ export default function About() {
               <span className="term-dot" />
               <span className="term-dot" />
               <span className="term-dot" />
-              <span className="ml-2">~/{profile.brand}</span>
+              <span className="ml-2">~/{profile.brand.toLowerCase().replace(/\s+/g, '-')}</span>
             </div>
             <div className="p-5">
               <p aria-hidden="true">

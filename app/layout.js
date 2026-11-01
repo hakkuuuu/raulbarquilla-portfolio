@@ -69,7 +69,13 @@ export const metadata = {
     description,
     images: ['/hero_img.png'],
   },
-  icons: { icon: '/favicon.ico' },
+  // Generated from app/components/ui/brandPixels.mjs. app/favicon.ico is
+  // linked automatically by Next (with a cache-busting hash), so only the
+  // SVG and the Apple touch icon are declared here.
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    apple: '/apple-touch-icon.png',
+  },
   robots: { index: true, follow: true },
 };
 
@@ -86,7 +92,6 @@ const personJsonLd = {
   sameAs: [
     'https://github.com/hakkuuuu',
     'https://www.linkedin.com/in/raulbjr/',
-    'https://behance.net/raulbarquillajr',
   ],
 };
 
