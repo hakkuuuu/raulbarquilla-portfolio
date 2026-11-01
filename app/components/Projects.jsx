@@ -4,74 +4,58 @@ import Reveal from './ui/Reveal';
 import Section from './ui/Section';
 
 /**
- * Two groups, because paid client work and personal projects answer different
- * questions for a recruiter and should not be shuffled together.
+ * Two groups, because paid client work and personal projects answer
+ * different questions for a recruiter and should not be shuffled together.
  *
- * The personal group is a six-column bento. Spans come from the data and read
- * 4+2, 3+3, 4+2 down the page, which gives the grid rhythm rather than one
- * repeated tile size, and fills every row exactly with no empty cell.
- *
- * The span class sits on the Reveal wrapper, not the card, because the wrapper
- * is the grid item. Tiles enter from the side of the grid they occupy.
- *
- * Mobile collapse is explicit: one column below `sm`, two equal columns from
- * `sm`, and the authored spans only from `lg`, where a 2-of-6 tile is still
- * wide enough to hold a screenshot.
+ * The personal group is a six-column bento. Spans come from the data and
+ * fill every row exactly. Below `lg` the spans are ignored: two equal
+ * columns from `sm`, one column on mobile.
  */
-function Bento({ children }) {
+function GroupLabel({ children, note }) {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5">
-      {children}
+    <div className="mb-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line pb-3">
+      <h3 className="font-mono text-[0.74rem] font-semibold uppercase tracking-[0.14em] text-muted">
+        {children}
+      </h3>
+      {note && <p className="max-w-prose text-[0.85rem] text-faint">{note}</p>}
     </div>
   );
 }
 
 export default function Projects() {
   return (
-    <Section id="projects" path={work.path} title={work.title} lead={work.lead}>
+    <Section
+      id="projects"
+      eyebrow={work.path}
+      title={work.title}
+      lead={work.lead}
+      className="border-y border-line bg-paper-2"
+    >
       <div className="flex flex-col gap-14">
         <div>
-          <Reveal from="left">
-            <div className="mb-5 border-t border-line pt-5">
-              <h3 className="font-mono text-label uppercase text-fg-subtle">
-                {work.professionalLabel}
-              </h3>
-              <p className="mt-2 max-w-prose text-body-sm text-fg-subtle">
-                {work.professionalNote}
-              </p>
-            </div>
-          </Reveal>
-
-          <Bento>
-            {professionalProjects.map((project, index) => (
-              <Reveal key={project.slug} from="up" className="lg:col-span-6">
-                <ProjectCard project={project} index={index} />
+          <GroupLabel note={work.professionalNote}>{work.professionalLabel}</GroupLabel>
+          <div className="grid gap-4">
+            {professionalProjects.map((project, i) => (
+              <Reveal key={project.slug}>
+                <ProjectCard project={project} index={i} />
               </Reveal>
             ))}
-          </Bento>
+          </div>
         </div>
 
         <div>
-          <Reveal from="left">
-            <div className="mb-5 border-t border-line pt-5">
-              <h3 className="font-mono text-label uppercase text-fg-subtle">
-                {work.personalLabel}
-              </h3>
-            </div>
-          </Reveal>
-
-          <Bento>
-            {personalProjects.map((project, index) => (
+          <GroupLabel>{work.personalLabel}</GroupLabel>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
+            {personalProjects.map((project, i) => (
               <Reveal
                 key={project.slug}
-                from={index % 2 === 0 ? 'left' : 'right'}
-                delay={(index % 2) * 0.08}
+                delay={(i % 2) * 0.06}
                 className={SPAN_CLASS[project.span ?? 3]}
               >
-                <ProjectCard project={project} index={index} />
+                <ProjectCard project={project} index={i} />
               </Reveal>
             ))}
-          </Bento>
+          </div>
         </div>
       </div>
     </Section>

@@ -8,7 +8,6 @@ import {
   LinkedinLogo,
 } from '@phosphor-icons/react/ssr';
 import { channels, contact } from '../data/site';
-import Magnetic from './motion/Magnetic';
 import Reveal from './ui/Reveal';
 import Section from './ui/Section';
 
@@ -22,82 +21,51 @@ const ICONS = {
 };
 
 /**
- * Direct channels only. The message form was removed (ADR-017): it had no
- * credentials behind it, so it could not send, and a contact form that
- * silently fails is worse than no form at all.
+ * Closing call to action, centered as in the reference. Direct channels
+ * only: there is no message form (ADR-017), because a form with no
+ * credentials behind it fails silently.
  *
- * Email is promoted out of the list and set at heading scale, because it is
- * the one path this section exists to push people down. The rest are a
- * hairline list, ordered by relevance to the primary audience.
+ * Email is promoted to the one yellow button, because it is the path this
+ * section exists to push people down. The rest are small cards.
  */
 export default function Contact() {
   const [primary, ...rest] = channels;
-  const PrimaryIcon = ICONS[primary.icon];
 
   return (
-    <Section id="contact" path={contact.path} title={contact.title} lead={contact.lead}>
-      <Reveal from="left">
-        <a
-          href={primary.href}
-          className="group flex items-center justify-between gap-6 border-y border-line py-8 transition-colors duration-base ease-inout hover:bg-sunken"
-        >
-          <span className="flex min-w-0 items-center gap-5">
-            <PrimaryIcon
-              size={28}
-              aria-hidden="true"
-              className="shrink-0 text-fg-subtle transition-colors duration-fast ease-inout group-hover:text-accent"
-            />
-            <span className="min-w-0">
-              <span className="block font-mono text-label uppercase text-fg-subtle">
-                {primary.label}
-              </span>
-              <span className="mt-2 block truncate text-h3 text-fg transition-colors duration-fast ease-inout group-hover:text-accent">
-                {primary.handle}
-              </span>
-            </span>
-          </span>
-          <Magnetic strength={0.4}>
-            <ArrowUpRight
-              size={28}
-              aria-hidden="true"
-              className="shrink-0 text-fg-subtle transition-colors duration-fast ease-inout group-hover:text-fg"
-            />
-          </Magnetic>
+    <Section id="contact" eyebrow={contact.path} title={contact.title} lead={contact.lead} align="center">
+      <Reveal className="flex justify-center">
+        <a href={primary.href} className="btn btn-primary btn-lg max-w-full">
+          <EnvelopeSimple size={20} weight="bold" aria-hidden="true" className="shrink-0" />
+          <span className="truncate">{primary.handle}</span>
         </a>
       </Reveal>
 
-      <ul className="mt-10 grid gap-x-10 sm:grid-cols-2">
+      <ul className="mx-auto mt-12 grid max-w-[880px] gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {rest.map(({ icon, label, handle, href }, i) => {
           const Icon = ICONS[icon];
           return (
-            <li key={label}>
-              <Reveal from={i % 2 === 0 ? 'left' : 'right'} delay={(i % 2) * 0.06}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 border-b border-line py-4 transition-colors duration-fast ease-inout hover:bg-sunken"
-                >
-                  <Icon
-                    size={20}
-                    aria-hidden="true"
-                    className="shrink-0 text-fg-subtle transition-colors duration-fast ease-inout group-hover:text-accent"
-                  />
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-body-sm text-fg">{label}</span>
-                    <span className="block truncate font-mono text-label text-fg-subtle">
-                      {handle}
-                    </span>
-                  </span>
-                  <ArrowUpRight
-                    size={16}
-                    aria-hidden="true"
-                    className="shrink-0 text-fg-subtle transition-colors duration-fast ease-inout group-hover:text-fg"
-                  />
-                  <span className="sr-only">(opens in a new tab)</span>
-                </a>
-              </Reveal>
-            </li>
+            <Reveal as="li" key={label} delay={(i % 3) * 0.05}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card group flex items-center gap-3.5 p-4 transition-colors duration-100 hover:border-ink"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-paper-2 text-ink">
+                  <Icon size={19} aria-hidden="true" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-semibold leading-tight text-ink">{label}</span>
+                  <span className="block truncate font-mono text-[0.78rem] text-faint">{handle}</span>
+                </span>
+                <ArrowUpRight
+                  size={16}
+                  aria-hidden="true"
+                  className="shrink-0 text-faint transition-colors duration-100 group-hover:text-ink"
+                />
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
+            </Reveal>
           );
         })}
       </ul>

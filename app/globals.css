@@ -3,402 +3,318 @@
 @tailwind utilities;
 
 /* ---------------------------------------------------------------------------
-   Design tokens. Authority: design_system.md section 4.
-   Components consume these through the semantic Tailwind names only.
-   Never write a hex value in a component.
+   Design tokens. Paper-and-ink system, modelled on munderdiffl.in.
+   Light is warm paper with a yellow highlighter accent. Dark is the "night"
+   palette the reference uses for its footer and terminal blocks.
+   Components consume these through the Tailwind names or the component
+   classes below. Never write a hex value in a component.
 --------------------------------------------------------------------------- */
 
 :root {
   color-scheme: light;
 
-  /* Deeper than a near-white page. A blank white field is the thing the
-     terminal direction is trying to avoid; this still clears AA comfortably. */
-  --bg: #ececed;
-  --surface: #f6f6f7;
-  --surface-alt: #e2e2e5;
-  --surface-sunken: #dededf;
-  --surface-translucent: rgb(236 236 237 / 0.84);
+  --paper: #fff8e7;
+  --paper-2: #fbefd2;
+  --card: #fffdf7;
+  --paper-translucent: rgb(255 248 231 / 0.88);
 
-  --border: #d2d2d6;
-  --border-strong: #8a8a93;
+  --ink: #1a1320;
+  --muted: #5a5347;
+  --faint: #8a8274;
 
-  --text: #16161a;
-  --text-muted: #4b4b54;
-  --text-subtle: #63636d;
+  --line: #e6d9bc;
+  --line-strong: #d6c59e;
 
-  --accent: #1d4ed8;
-  --accent-alt: #1d4ed8;
-  --accent-weak: #dde5fa;
+  --accent: #ffca54;
+  --accent-hover: #ffd97e;
+  --accent-ink: #17150e;
+  --accent-soft: rgb(255 202 84 / 0.22);
 
-  --invert-bg: #16161a;
-  --invert-text: #f6f6f7;
+  --green: #2e7d4f;
+  --purple: #7b4fb0;
 
-  --danger: #b42318;
+  /* Always dark, in both themes: footer and terminal blocks. */
+  --night: #1a1320;
+  --night-2: #241b2c;
+  --night-line: #3a3040;
+  --night-ink: #f3ead3;
+  --night-muted: #8f866f;
 
-  /* Texture. One global layer, not per-section decoration. */
-  --grid-line: rgb(22 22 26 / 0.075);
-  --grid-size: 56px;
-
-  --shadow-sm: 0 1px 2px rgb(22 22 26 / 0.05);
-  --shadow-md: 0 4px 12px rgb(22 22 26 / 0.07), 0 1px 2px rgb(22 22 26 / 0.05);
-
-  --dur-fast: 120ms;
-  --dur-base: 200ms;
-  --dur-slow: 500ms;
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
-
-  --header-h: 56px;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --header-h: 64px;
 }
 
 .dark {
   color-scheme: dark;
 
-  --bg: #0a0a0c;
-  --surface: #131317;
-  --surface-alt: #121216;
-  --surface-sunken: #1a1a1f;
-  --surface-translucent: rgb(10 10 12 / 0.84);
+  --paper: #1a1320;
+  --paper-2: #241b2c;
+  --card: #1e1727;
+  --paper-translucent: rgb(26 19 32 / 0.88);
 
-  --border: #26262c;
-  --border-strong: #5e5e68;
+  --ink: #f3ead3;
+  --muted: #bdb39d;
+  --faint: #8c8093;
 
-  --text: #fafafa;
-  --text-muted: #a1a1aa;
-  --text-subtle: #83838d;
+  --line: #2e2438;
+  --line-strong: #5a4e68;
 
-  --accent: #6e97f7;
-  --accent-alt: #6e97f7;
-  --accent-weak: #161c2e;
+  --accent-soft: rgb(255 202 84 / 0.16);
 
-  --invert-bg: #fafafa;
-  --invert-text: #0a0a0c;
+  --green: #6fcf97;
+  --purple: #a77be0;
 
-  --danger: #f97066;
-
-  --grid-line: rgb(255 255 255 / 0.06);
-
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
-  --shadow-md: 0 4px 14px rgb(0 0 0 / 0.5);
+  /* One step darker than the page so the footer and terminals still read
+     as a separate surface on a night page. */
+  --night: #130e19;
+  --night-2: #1e1727;
+  --night-line: #2e2438;
+  --night-muted: #8c8093;
 }
-
-
-/* ---------------------------------------------------------------------------
-   Terminal themes. Four of them, each applied as `.dark .t .t-<name>`, so every
-   `dark:` variant still resolves and only token values change.
-
-   Each theme is MONOCHROMATIC: one accent, and text tinted toward it. The
-   earlier single theme ran green, blue, amber and red together as a syntax
-   palette; this is the disciplined version, and it holds the one-accent rule
-   in design_system.md section 4.3 that every other theme obeys.
-
-   Shared chrome lives in `.t`; only colour lives in the variant.
---------------------------------------------------------------------------- */
-
-.t {
-  color-scheme: dark;
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.6);
-  --shadow-md: 0 4px 14px rgb(0 0 0 / 0.7);
-}
-
-.t-green {
-  --bg: #000000;
-  --surface: #0b0b0d;
-  --surface-alt: #060607;
-  --surface-sunken: #121215;
-  --surface-translucent: rgb(0 0 0 / 0.86);
-
-  --border: #1b2a21;
-  --border-strong: #3d5a49;
-
-  --text: #ddf5e6;
-  --text-muted: #8fae9c;
-  --text-subtle: #6f9780;
-
-  --accent: #3bd671;
-  --accent-alt: #3bd671;
-  --accent-weak: #0c1a12;
-
-  --invert-bg: #3bd671;
-  --invert-text: #000000;
-
-  --danger: #ff6b5e;
-
-  --grid-line: rgb(59 214 113 / 0.07);
-}
-
-.t-blue {
-  --bg: #000000;
-  --surface: #0b0b0d;
-  --surface-alt: #060607;
-  --surface-sunken: #121215;
-  --surface-translucent: rgb(0 0 0 / 0.86);
-
-  --border: #16212e;
-  --border-strong: #3f5771;
-
-  --text: #dceaff;
-  --text-muted: #92a8c4;
-  --text-subtle: #7b93ad;
-
-  --accent: #5ba8ff;
-  --accent-alt: #5ba8ff;
-  --accent-weak: #0d1726;
-
-  --invert-bg: #5ba8ff;
-  --invert-text: #000000;
-
-  --danger: #ff6b5e;
-
-  --grid-line: rgb(91 168 255 / 0.07);
-}
-
-.t-amber {
-  --bg: #000000;
-  --surface: #0b0b0d;
-  --surface-alt: #060607;
-  --surface-sunken: #121215;
-  --surface-translucent: rgb(0 0 0 / 0.86);
-
-  --border: #2a2215;
-  --border-strong: #5e5033;
-
-  --text: #fdecd4;
-  --text-muted: #c0a888;
-  --text-subtle: #a89170;
-
-  --accent: #ffb454;
-  --accent-alt: #ffb454;
-  --accent-weak: #241a0c;
-
-  --invert-bg: #ffb454;
-  --invert-text: #000000;
-
-  --danger: #ff6b5e;
-
-  --grid-line: rgb(255 180 84 / 0.07);
-}
-
-.t-red {
-  --bg: #000000;
-  --surface: #0b0b0d;
-  --surface-alt: #060607;
-  --surface-sunken: #121215;
-  --surface-translucent: rgb(0 0 0 / 0.86);
-
-  --border: #2b1a18;
-  --border-strong: #5f403c;
-
-  --text: #ffe2de;
-  --text-muted: #c29a95;
-  --text-subtle: #ab8782;
-
-  --accent: #ff6b5e;
-  --accent-alt: #ff6b5e;
-  --accent-weak: #260f0d;
-
-  --invert-bg: #ff6b5e;
-  --invert-text: #000000;
-
-  --danger: #ff6b5e;
-
-  --grid-line: rgb(255 107 94 / 0.07);
-}
-
-/* ---------------------------------------------------------------------------
-   Base layer
---------------------------------------------------------------------------- */
 
 @layer base {
-  * {
-    border-color: var(--border);
-  }
-
   html {
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    background-color: var(--bg);
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 16px);
   }
 
   body {
-    position: relative;
-    background-color: transparent;
-    color: var(--text);
-    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    @apply font-sans;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    padding-top: var(--header-h);
   }
 
-  /* The one background effect on the site: a fixed engineering grid behind
-     all content. Fixed and pointer-events-none, so it never repaints while
-     scrolling and never intercepts input (Taste Skill 6.E). One layer for the
-     whole page rather than decoration bolted onto each section. */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-    background-size: var(--grid-size) var(--grid-size);
+  h1,
+  h2,
+  h3 {
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
   }
 
-  /* Alternating section ground, so no band of the page is a blank field.
-     Both values stay inside the active theme family: the page never inverts
-     mid-scroll (design_system.md section 18, theme lock). */
-  main > section:nth-of-type(even) {
-    background-color: var(--surface-alt);
+  /* The highlighter stroke. Use <em> inside a heading to mark one phrase. */
+  h1 em,
+  h2 em {
+    font-style: normal;
+    background: linear-gradient(transparent 58%, var(--accent) 58%);
+    padding: 0 0.08em;
   }
 
-  section[id] {
-    scroll-margin-top: calc(var(--header-h) + 16px);
-  }
-
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+  /* On night the stripe turns into a block, so dark mode colours the text
+     instead. Light mode keeps the stripe: yellow text on paper is ~1.5:1. */
+  .dark h1 em,
+  .dark h2 em {
+    color: var(--accent);
+    background: none;
+    padding: 0;
   }
 
   ::selection {
-    background-color: var(--accent);
-    color: var(--invert-text);
+    background: var(--accent);
+    color: var(--accent-ink);
   }
 
-  .dark ::selection {
-    color: var(--bg);
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
-/* ---------------------------------------------------------------------------
-   Primitives
---------------------------------------------------------------------------- */
-
 @layer components {
-  /* Tighter gutters than the editorial build. DENSITY 8 is a cockpit, not a
-     gallery: content runs closer to the rules that organise it. */
-  .container-page {
-    width: 100%;
-    max-width: 78rem;
-    margin-inline: auto;
-    padding-inline: 1rem;
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
 
-  @media (min-width: 640px) {
-    .container-page {
-      padding-inline: 1.5rem;
-    }
+  .eyebrow {
+    @apply font-mono;
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
-  @media (min-width: 1024px) {
-    .container-page {
-      padding-inline: 2rem;
-    }
+  .lead {
+    font-size: 1.14rem;
+    color: var(--muted);
   }
 
-  /* Mono path label, the section marker for the terminal direction. */
-  .path-label {
+  .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5ch;
-    font-family: var(--font-mono), ui-monospace, monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-    color: var(--text-subtle);
+    gap: 9px;
+    padding: 12px 20px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--card);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background 0.12s,
+      border-color 0.12s,
+      box-shadow 0.25s,
+      transform 0.12s;
   }
 
-  .path-label::before {
-    content: '~/';
-    color: var(--accent);
+  .btn:hover {
+    border-color: var(--ink);
+  }
+
+  .btn:active {
+    transform: translateY(1px) scale(0.985);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    box-shadow: 0 6px 22px rgb(255 202 84 / 0.42);
+  }
+
+  .btn-lg {
+    padding: 15px 26px;
+    font-size: 1.05rem;
+  }
+
+  .btn-sm {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+
+  .chip {
+    @apply font-mono;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .chip-on {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  /* Stack tags. Same family as .chip but sentence case, because a
+     technology name is not a status. */
+  .tag {
+    @apply font-mono;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper-2);
+    color: var(--muted);
+    font-size: 0.76rem;
+  }
+
+  /* Dark terminal block. Always night, in both themes. */
+  .term {
+    @apply font-mono;
+    background: var(--night);
+    color: var(--night-ink);
+    border: 1px solid var(--night-line);
+    border-radius: var(--radius);
+    font-size: 0.86rem;
+    line-height: 1.7;
+    overflow: hidden;
+  }
+
+  .term-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--night-line);
+    color: var(--night-muted);
+    font-size: 0.74rem;
+  }
+
+  .term-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--night-line);
+  }
+
+  .pixel {
+    @apply font-pixel;
+    letter-spacing: 0.02em;
   }
 
   .skip-link {
     position: fixed;
-    top: 0.75rem;
-    left: 0.75rem;
+    top: 12px;
+    left: 12px;
     z-index: 70;
-    padding: 0.625rem 1rem;
-    background-color: var(--invert-bg);
-    color: var(--invert-text);
-    font-size: 0.875rem;
-    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
     transform: translateY(-200%);
-    transition: transform var(--dur-base) var(--ease-out);
   }
 
   .skip-link:focus-visible {
-    transform: translateY(0);
+    transform: none;
   }
 }
 
 /* ---------------------------------------------------------------------------
-   Motion start states.
-
-   Gated on `js-motion`, which the pre-paint script sets only when the user has
-   NOT asked for reduced motion. No JS, or reduced motion, and the class is
-   absent, so none of this applies and all content renders visible. That is the
-   whole reason the hidden state is not inline. See ADR-014 and ADR-019.
+   Scroll reveal. The hidden start state only applies under `js-motion`,
+   which ThemeScript sets before paint and only when reduced motion is off.
+   No JS or reduced motion means the content is simply visible.
 --------------------------------------------------------------------------- */
-
 .js-motion [data-reveal] {
   opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
-.js-motion [data-reveal='up'] {
-  transform: translateY(18px);
+.js-motion [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
 }
-
-.js-motion [data-reveal='down'] {
-  transform: translateY(-18px);
-}
-
-.js-motion [data-reveal='left'] {
-  transform: translateX(-32px);
-}
-
-.js-motion [data-reveal='right'] {
-  transform: translateX(32px);
-}
-
-.js-motion [data-hero-item] {
-  opacity: 0;
-  transform: translateY(14px);
-}
-
-/* Masked reveals. The wrapper clips, the single child slides in from outside
-   the clip edge. `pb` reserves room for descenders, which an overflow-hidden
-   wrapper would otherwise shear off the bottom of a heading. */
-[data-mask],
-[data-hero-mask] {
-  overflow: hidden;
-}
-
-[data-mask] > *,
-[data-hero-mask] > * {
-  padding-bottom: 0.12em;
-}
-
-.js-motion [data-mask='up'] > * {
-  transform: translateY(100%);
-}
-
-.js-motion [data-mask='left'] > * {
-  transform: translateX(-100%);
-}
-
-.js-motion [data-mask='right'] > * {
-  transform: translateX(100%);
-}
-
-.js-motion [data-hero-mask] > * {
-  transform: translateY(100%);
-}
-
-/* ---------------------------------------------------------------------------
-   Reduced motion. Every transform and transition collapses.
---------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -408,28 +324,7 @@
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  [data-reveal],
-  [data-mask] > *,
-  [data-hero-mask] > *,
-  [data-hero-item] {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .media-zoom {
-    transform: none !important;
-  }
-
-  /* The falling mark is purely playful and scroll-scrubbed, so under reduced
-     motion it has no job. Removed outright rather than left in the DOM at
-     opacity 0, which reads as a stranded element to anything auditing it. */
-  [data-falling-mark] {
-    display: none !important;
+    animation-duration: 0.01ms !important;
   }
 }

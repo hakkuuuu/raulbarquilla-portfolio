@@ -1,52 +1,52 @@
 import Reveal from './Reveal';
-import ScrambleText from '../motion/ScrambleText';
+
+/** Wraps the last word of a plain-text title in <em> for the highlighter. */
+function Highlighted({ text }) {
+  const cut = text.lastIndexOf(' ');
+  if (cut < 0) return <em>{text}</em>;
+  return (
+    <>
+      {text.slice(0, cut + 1)}
+      <em>{text.slice(cut + 1)}</em>
+    </>
+  );
+}
 
 /**
- * The page section landmark. design_system.md sections 5.4 and 6.2.
+ * The page section landmark. Owns the container width and the vertical
+ * rhythm, so no section sets its own max-width or padding.
  *
- * Owns the container width and the vertical rhythm so no section can drift.
- * Do not set max-w-* or py-* on a section; change it here instead.
- *
- * `path` is the terminal direction's section marker: a mono `~/about` label
- * that replaces the old uppercase eyebrow. It is not decoration, it is the
- * section's name in the page's own idiom, and it is the only label the section
- * carries, so the eyebrow budget still holds at one per section.
- *
- * The heading is a masked reveal: it slides up out of a clip rather than
- * fading, which gives each section a clear opening beat.
+ * Header pattern from the reference: mono eyebrow, bold heading, muted lead.
+ * The last word of `title` takes the highlighter stroke, so content stays a
+ * plain string in site.js. `align="center"` centers the header block.
  */
-export default function Section({ id, title, lead, path, children, className = '' }) {
+export default function Section({
+  id,
+  eyebrow,
+  title,
+  lead,
+  align = 'left',
+  className = '',
+  children,
+}) {
   const headingId = `${id}-heading`;
+  const centered = align === 'center';
 
   return (
     <section
       id={id}
       aria-labelledby={headingId}
-      className={`border-t border-line py-14 md:py-20 ${className}`.trim()}
+      className={`py-[clamp(48px,7vw,96px)] ${className}`.trim()}
     >
-      <div className="container-page">
-        {title ? (
-          <>
-            <div className="max-w-prose">
-              {path && (
-                <Reveal from="left">
-                  <p className="path-label mb-3">{path}</p>
-                </Reveal>
-              )}
-              <h2 id={headingId} aria-label={title} className="font-mono text-h2 text-fg">
-                <ScrambleText text={title} />
-              </h2>
-              {lead && (
-                <Reveal from="up" delay={0.1}>
-                  <p className="mt-3 text-body-sm text-fg-muted">{lead}</p>
-                </Reveal>
-              )}
-            </div>
-            <div className="mt-8">{children}</div>
-          </>
-        ) : (
-          children
-        )}
+      <div className="wrap">
+        <Reveal className={centered ? 'mx-auto max-w-[760px] text-center' : 'max-w-[720px]'}>
+          {eyebrow && <span className="eyebrow">{eyebrow}</span>}
+          <h2 id={headingId} className="text-[clamp(1.65rem,3.6vw,2.4rem)]">
+            <Highlighted text={title} />
+          </h2>
+          {lead && <p className="mt-4 text-muted">{lead}</p>}
+        </Reveal>
+        <div className="mt-10">{children}</div>
       </div>
     </section>
   );

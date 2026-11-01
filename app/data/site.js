@@ -12,7 +12,7 @@ export const profile = {
   name: 'Raul B. Barquilla Jr.',
   shortName: 'Raul Barquilla Jr.',
   brand: 'dev.haku',
-  role: 'Full-stack developer',
+  role: 'AI & full-stack engineer',
   location: 'Albay, Philippines',
   email: 'raulbarquilla003@gmail.com',
   resume: '/barquilla_raul_resume.pdf',
@@ -20,10 +20,14 @@ export const profile = {
   sourceUrl: 'https://github.com/hakkuuuu/raulbarquilla-portfolio',
 };
 
-/** Frozen. Links to these anchors exist outside this repository. See ADR-010. */
+/**
+ * Frozen. Links to these anchors exist outside this repository. See ADR-010.
+ * New anchors may be added; existing ones must not be renamed or removed.
+ */
 export const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
@@ -39,16 +43,16 @@ export const hero = {
   promptCommand: 'whoami',
   headlineBefore: 'I build ',
   headlineAccent: 'production',
-  headlineAfter: ' web apps.',
+  headlineAfter: ' AI systems.',
   lead:
-    'Full-stack developer in Albay, Philippines. I work in TypeScript across Next.js, Postgres, and the kind of third-party integrations that only ever fail at 2am. I like systems that exit zero and say nothing.',
+    'AI and full-stack engineer in Albay, Philippines. I design agentic systems on Claude and GPT, wire them into CRMs and internal tools, and ship them on infrastructure I secure and run myself.',
   /* Right column of the hero. Deliberately NOT the same facts as About: this
      is what I do now, About is background. Keeping them disjoint is why
      `focus` and `availability` were removed from about.facts. */
   meta: [
-    { key: 'focus', value: 'TypeScript, Next.js, Postgres' },
-    { key: 'currently', value: 'CRM and lead-pipeline integrations' },
-    { key: 'status', value: 'Open to full-time and contract' },
+    { key: 'focus', value: 'Agentic AI, TypeScript, Next.js, Postgres' },
+    { key: 'currently', value: 'AI, CRM pipelines and IT at Pandr Outsourcing' },
+    { key: 'status', value: 'Open to part-time or contract' },
     { key: 'uptime', value: 'Shipping since 2023, no unplanned reboots' },
   ],
 };
@@ -57,7 +61,7 @@ export const about = {
   path: 'about',
   title: 'About me',
   body:
-    "I'm a full-stack developer from Albay, Philippines. I finished Computer Science at Bicol University in 2023 and now build production systems for a living, mostly TypeScript on Next.js with Postgres behind it.",
+    "I'm an AI and full-stack engineer from Albay, Philippines. I finished Computer Science at Bicol University in 2023 and now build production systems for a living: AI agents and integrations in TypeScript, on Next.js with Postgres behind it.",
   bodyExtra:
     'Lately that has meant integration work: webhooks, CRM syncing, and the unglamorous reliability details that decide whether a pipeline can be trusted at 3am. Idempotency keys. Signature verification. What happens on the second delivery of an event you already handled. None of it demos well and all of it is the job.',
   bodyClose:
@@ -69,40 +73,120 @@ export const about = {
 };
 
 /**
+ * Roles, newest first. `highlights` are written as outcomes and scope, not
+ * as a duty list. Client names are redacted: confidential work is described
+ * by what was built, never by who it was built for.
+ */
+export const experience = {
+  path: 'experience',
+  title: 'Where I work',
+  lead:
+    'One role that covers the whole stack: the AI and integration systems the business runs on, and the hardware, software and assets underneath them.',
+  roles: [
+    {
+      role: 'IT Specialist',
+      company: 'Pandr Outsourcing',
+      location: 'Legazpi, Albay',
+      start: 'Jul 2026',
+      end: 'Present',
+      current: true,
+      summary:
+        'Own the IT function end to end. I build the internal and client systems the business runs on, and I am the Level 3 escalation point for everything from a failed laptop to a broken integration.',
+      highlights: [
+        'Shipped more than five production systems for internal teams and confidential clients.',
+        'Built a lead-intake pipeline that verifies, parses and routes inbound leads into Salesforce CRM.',
+        'Built an outbound GTM pipeline: lead sourcing and enrichment, HubSpot contact sync, and Aircall for calling leads.',
+        'Built an admin portal for a client to manage products, agents and support tickets.',
+        'Built an internal ticketing dashboard and a chatbot that runs in the team Mattermost workspace.',
+        'Level 3 support: escalated hardware and software troubleshooting across the office.',
+        'Run IT asset management: inventory, check-out and check-in, repair tracking and disposal.',
+      ],
+      stack: ['TypeScript', 'Next.js', 'PostgreSQL', 'Salesforce', 'HubSpot', 'Aircall', 'Mattermost'],
+    },
+  ],
+};
+
+/**
  * Six groups, which fills both a 2-column and a 3-column grid exactly.
- * Contents reflect what is actually in the repositories, not an aspirational
- * list. Refreshed 2026-10-04 from a scan of the active projects.
+ * `groups` are the strongest skills, as stated by Raul on 2026-11-01. `also`
+ * keeps the earlier repository-scan list (2026-10-04) as secondary skills.
  */
 export const skills = {
   path: 'stack',
-  title: 'Tech stack',
+  title: 'Core strengths',
   lead:
-    'What I reach for, grouped by where it sits in the stack. No percentages next to anything: a number beside a language name has never once predicted whether someone can ship, and you would be right not to believe mine.',
+    'Where I am strongest, grouped by layer. AI is the top of the stack, but it only ships because the architecture, security and infrastructure under it hold up.',
   groups: [
     {
-      name: 'Languages & frameworks',
-      items: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Node.js', 'Express', 'Laravel', 'Vue'],
+      name: 'AI engineering',
+      items: [
+        'Claude / Anthropic API',
+        'OpenAI GPT',
+        'Agentic AI systems',
+        'Prompt engineering',
+        'LLM token and cost management',
+      ],
     },
     {
-      name: 'Interface',
-      items: ['Tailwind CSS', 'shadcn/ui', 'Radix UI', 'Base UI', 'HeroUI', 'Motion', 'Recharts'],
+      name: 'Architecture & security',
+      items: [
+        'System architecture',
+        'Auth tokens and sessions',
+        'Webhook signature verification',
+        'Idempotency',
+        'Application security',
+      ],
     },
     {
-      name: 'Data',
-      items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Supabase', 'Sanity'],
+      name: 'Infrastructure & DevOps',
+      items: ['CI/CD pipelines', 'Docker', 'VPS administration', 'OVHcloud', 'SSH', 'Vercel'],
+    },
+    {
+      name: 'Core stack',
+      items: ['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL'],
     },
     {
       name: 'Integrations',
-      items: ['Salesforce', 'Resend', 'Svix webhooks', 'Clerk', 'REST APIs', 'TanStack Query'],
+      items: ['Salesforce', 'HubSpot', 'Aircall', 'Mattermost', 'Resend', 'Svix webhooks', 'REST APIs'],
     },
     {
-      name: 'Testing & quality',
-      items: ['Vitest', 'Biome', 'ESLint'],
+      name: 'IT operations',
+      items: [
+        'Level 3 troubleshooting',
+        'Hardware support',
+        'Software support',
+        'IT asset management',
+      ],
     },
-    {
-      name: 'Tooling & deploy',
-      items: ['Docker', 'Git', 'pnpm', 'Vite', 'Vercel', 'Figma', 'Postman'],
-    },
+  ],
+  /* Real, but not the headline. Kept so nothing from the earlier list is lost. */
+  alsoLabel: 'Also worked with',
+  also: [
+    'JavaScript',
+    'Express',
+    'Laravel',
+    'Vue',
+    'Tailwind CSS',
+    'shadcn/ui',
+    'Radix UI',
+    'Base UI',
+    'HeroUI',
+    'Motion',
+    'Recharts',
+    'TanStack Query',
+    'Clerk',
+    'MongoDB',
+    'MySQL',
+    'Supabase',
+    'Sanity',
+    'Vitest',
+    'Biome',
+    'ESLint',
+    'Git',
+    'pnpm',
+    'Vite',
+    'Figma',
+    'Postman',
   ],
 };
 
@@ -138,7 +222,7 @@ export const professionalProjects = [
     // TODO: confirm the stack for this one. It was not in the local working
     // copies, so nothing here is inferred from a screenshot.
     stack: [],
-    cover: '/projects/gtm-pipeline.jpg',
+    cover: '/projects/gtm-pipeline-2026-11.jpg',
     confidential: true,
   },
   {
@@ -149,10 +233,13 @@ export const professionalProjects = [
     role:
       'Built the full pipeline: signature verification, the parsing and routing modules, a Postgres lookup layer with atomic round-robin assignment and idempotency keys, Salesforce duplicate detection, fallback notification emails, an authenticated admin console, and a hermetic test suite that runs against an in-memory store with no database.',
     stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Salesforce API', 'Resend', 'Svix', 'Vitest', 'Docker'],
-    // Both dashboards are solid-barred over every identifying element FIRST,
-    // then blurred at 25%. Bars remove the information; the blur is
-    // presentation. At this blur level large text would otherwise still read.
-    cover: '/projects/lead-intake.jpg',
+    // Both dashboards are solid-barred over every identifying element: product
+    // names and logos, the employer label, spend figures, a lead's name and
+    // franchise names. No blur, so the UI itself stays readable. Re-check the
+    // bars whenever a cover is recaptured. Raw captures never enter the repo.
+    // A recapture needs a NEW filename: next/image caches by URL for a year
+    // (next.config.mjs), so overwriting a file in place keeps serving the old.
+    cover: '/projects/lead-intake-2026-11.jpg',
     confidential: true,
   },
 ];

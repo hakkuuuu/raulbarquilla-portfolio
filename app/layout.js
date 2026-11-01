@@ -1,21 +1,27 @@
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Silkscreen } from 'next/font/google';
 import { ThemeProvider } from './context/ThemeContext';
 import ThemeScript from './components/ThemeScript';
-import SmoothScroll from './components/motion/SmoothScroll';
-import FallingMark from './components/motion/FallingMark';
 import NavBar from './components/NavBar';
 import SiteFooter from './components/SiteFooter';
 import { profile } from './data/site';
 import './globals.css';
 
-const sans = Geist({
+const sans = Inter({
   variable: '--font-sans',
   subsets: ['latin'],
   display: 'swap',
 });
 
-const mono = Geist_Mono({
+const mono = JetBrains_Mono({
   variable: '--font-mono',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+/* Accent face only: the logo mark and small status labels. Never body copy. */
+const pixel = Silkscreen({
+  variable: '--font-pixel',
+  weight: ['400', '700'],
   subsets: ['latin'],
   display: 'swap',
 });
@@ -27,7 +33,7 @@ export const viewport = {
 };
 
 const description =
-  'Raul Barquilla Jr. is a full-stack developer in Albay, Philippines, building production web applications with React, Next.js, Node and Laravel.';
+  'Raul Barquilla Jr. is an AI and full-stack engineer in Albay, Philippines, building agentic AI systems, CRM integrations and production web apps with TypeScript, Next.js and PostgreSQL.';
 
 export const metadata = {
   metadataBase: new URL(profile.siteUrl),
@@ -37,6 +43,9 @@ export const metadata = {
   },
   description,
   keywords: [
+    'AI engineer',
+    'agentic AI',
+    'Claude API',
     'full-stack developer',
     'React developer',
     'Next.js developer',
@@ -83,16 +92,14 @@ const personJsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${mono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${mono.variable} ${pixel.variable}`}>
       <body>
         <ThemeScript />
-        <SmoothScroll />
         <ThemeProvider>
           <a href="#main" className="skip-link">
             Skip to content
           </a>
           <NavBar />
-          <FallingMark />
           <main id="main">{children}</main>
           <SiteFooter />
         </ThemeProvider>
